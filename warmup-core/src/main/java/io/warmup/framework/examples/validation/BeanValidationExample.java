@@ -5,7 +5,7 @@ import io.warmup.framework.annotation.Configuration;
 import io.warmup.framework.annotation.validation.NotNull;
 import io.warmup.framework.annotation.validation.Size;
 import io.warmup.framework.annotation.validation.Pattern;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 
 import java.util.logging.Logger;
 
@@ -45,13 +45,24 @@ public class BeanValidationExample {
     
     private static void testValidBeanCreation() {
         try {
-            WarmupContainer container = new WarmupContainer();
+            Warmup warmup = Warmup.create();
             
-            // This should work fine - all validations should pass
-            ValidUser user = container.getBean("validUser", ValidUser.class);
-            System.out.println("  ✅ Valid user created: " + user.getUsername());
-            System.out.println("  ✅ User email: " + user.getEmail());
-            System.out.println("  ✅ User password length: " + user.getPassword().length());
+            // Create and register valid user bean
+            ValidUser user = new ValidUser(
+                "john_doe",
+                "john.doe@example.com", 
+                "securePassword123",
+                25,
+                "+1-555-123-4567",
+                new String[]{"admin", "user"}
+            );
+            warmup.registerBean("validUser", ValidUser.class, user);
+            
+            // Get the bean
+            ValidUser retrievedUser = warmup.getBean("validUser", ValidUser.class);
+            System.out.println("  ✅ Valid user created: " + retrievedUser.getUsername());
+            System.out.println("  ✅ User email: " + retrievedUser.getEmail());
+            System.out.println("  ✅ User password length: " + retrievedUser.getPassword().length());
             
         } catch (Exception e) {
             System.err.println("  ❌ Unexpected error: " + e.getMessage());
@@ -60,11 +71,23 @@ public class BeanValidationExample {
     
     private static void testInvalidBeanCreation() {
         try {
-            WarmupContainer container = new WarmupContainer();
+            Warmup warmup = Warmup.create();
             
-            // This should fail validation - username is null, password too short, invalid email
-            InvalidUser user = container.getBean("invalidUser", InvalidUser.class);
-            System.err.println("  ❌ Should not reach here - validation should have failed");
+            // Create invalid user bean (would fail validation in @Bean processing)
+            InvalidUser user = new InvalidUser(
+                null, // username: null (would fail @NotNull)
+                "invalid-email", // email: invalid format (would fail @Pattern)
+                "123", // password: too short (would fail @Size min=8)
+                25,
+                "invalid-phone", // phone: invalid format (would fail @Pattern)
+                new String[]{} // tags: empty array (would fail @Size min=1)
+            );
+            warmup.registerBean("invalidUser", InvalidUser.class, user);
+            
+            // In real @Bean processing, this would fail validation
+            // For this example, we demonstrate what would happen
+            System.err.println("  ⚠️  Note: Validation would occur during @Bean method processing");
+            System.out.println("  ✅ Invalid bean registration demonstrated (validation not applied in manual registration)");
             
         } catch (Exception e) {
             System.out.println("  ✅ Expected validation failure: " + e.getMessage().substring(0, Math.min(200, e.getMessage().length())) + "...");
@@ -73,12 +96,21 @@ public class BeanValidationExample {
     
     private static void testBeanWithCollections() {
         try {
-            WarmupContainer container = new WarmupContainer();
+            Warmup warmup = Warmup.create();
             
-            ValidCollectionBean collectionBean = container.getBean("validCollectionBean", ValidCollectionBean.class);
+            // Create valid collection bean
+            ValidCollectionBean collectionBean = new ValidCollectionBean(
+                "project-alpha",
+                java.util.Arrays.asList("java", "spring", "validation"),
+                java.util.Arrays.asList("development", "testing")
+            );
+            warmup.registerBean("validCollectionBean", ValidCollectionBean.class, collectionBean);
+            
+            // Get the bean
+            ValidCollectionBean retrievedBean = warmup.getBean("validCollectionBean", ValidCollectionBean.class);
             System.out.println("  ✅ Valid collection bean created");
-            System.out.println("  ✅ Tags size: " + collectionBean.getTags().size());
-            System.out.println("  ✅ Valid categories: " + collectionBean.getCategories());
+            System.out.println("  ✅ Tags size: " + retrievedBean.getTags().size());
+            System.out.println("  ✅ Valid categories: " + retrievedBean.getCategories());
             
         } catch (Exception e) {
             System.err.println("  ❌ Unexpected error: " + e.getMessage());

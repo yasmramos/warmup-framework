@@ -1,7 +1,7 @@
 package io.warmup.framework.examples.validation;
 
 import io.warmup.framework.annotation.validation.*;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.annotation.Configuration;
 import io.warmup.framework.annotation.Bean;
 
@@ -180,15 +180,18 @@ public class CustomValidationExample {
         try {
             logger.info("Starting Custom Validation Example...");
             
-            // Create Warmup container
-            WarmupContainer container = new WarmupContainer();
+            // Create Warmup instance using public API
+            Warmup warmup = Warmup.create();
+            
+            // Register configuration class as bean
+            warmup.registerBean(CustomValidationExample.class, new CustomValidationExample());
             
             // Create and register custom validators
             // Note: In real usage, validators would be registered during container initialization
             logger.info("Custom validators registered: EmailValidator, PasswordValidator, UsernameValidator, CountryValidator");
             
             // Test cases
-            testValidUser(container);
+            testValidUser(warmup);
             testInvalidUser();
             
         } catch (Exception e) {
@@ -200,7 +203,7 @@ public class CustomValidationExample {
     /**
      * Test with valid user data.
      */
-    private static void testValidUser(WarmupContainer container) {
+    private static void testValidUser(Warmup warmup) {
         logger.info("\n=== Testing Valid User ===");
         
         User validUser = new User(

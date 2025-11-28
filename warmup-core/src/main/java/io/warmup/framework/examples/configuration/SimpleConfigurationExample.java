@@ -1,7 +1,7 @@
 package io.warmup.framework.examples.configuration;
 
 import io.warmup.framework.annotation.*;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 
 /**
  * Simple practical example showing @Configuration and @Bean usage.
@@ -15,42 +15,36 @@ public class SimpleConfigurationExample {
     public static void main(String[] args) {
         System.out.println("=== Warmup Framework @Configuration/@Bean Example ===");
         
-        WarmupContainer container = null;
-        
         try {
-            // Create container
-            container = new WarmupContainer();
+            // Create warmup instance using public API
+            Warmup warmup = Warmup.create();
             
-            // Register configuration classes
+            // Register configuration classes as beans
             System.out.println("Registering configuration classes...");
-            container.register(AppConfig.class, true);
-            container.register(DatabaseConfig.class, true);
-            container.register(ServiceConfig.class, true);
-            
-            // Initialize container (processes @Configuration classes)
-            System.out.println("Initializing container...");
-            container.initializeAllComponents();
+            warmup.registerBean(AppConfig.class, new AppConfig());
+            warmup.registerBean(DatabaseConfig.class, new DatabaseConfig());
+            warmup.registerBean(ServiceConfig.class, new ServiceConfig());
             
             // Get beans
             System.out.println("\n=== Testing Bean Resolution ===");
             
             // Test basic @Bean
-            GreetingService greetingService = container.get(GreetingService.class);
+            GreetingService greetingService = warmup.getBean(GreetingService.class);
             System.out.println("Greeting Service: " + greetingService.getGreeting("World"));
             
             // Test @Bean with dependencies
-            UserService userService = container.get(UserService.class);
+            UserService userService = warmup.getBean(UserService.class);
             userService.createUser("John Doe");
             
             // Test @Bean with custom name
-            MessageSender emailSender = container.getNamed(MessageSender.class, "emailSender");
+            MessageSender emailSender = warmup.getBean("emailSender", MessageSender.class);
             System.out.println("Email Sender: " + emailSender.getType());
             
-            MessageSender smsSender = container.getNamed(MessageSender.class, "smsSender");
+            MessageSender smsSender = warmup.getBean("smsSender", MessageSender.class);
             System.out.println("SMS Sender: " + smsSender.getType());
             
-            // Test @Primary bean resolution
-            DataSource dataSource = container.get(DataSource.class);
+            // Test bean resolution
+            DataSource dataSource = warmup.getBean(DataSource.class);
             System.out.println("DataSource Type: " + dataSource.getClass().getSimpleName());
             
             System.out.println("\n=== All tests completed successfully! ===");
@@ -58,15 +52,6 @@ public class SimpleConfigurationExample {
         } catch (Exception e) {
             System.err.println("Error during execution: " + e.getMessage());
             e.printStackTrace();
-        } finally {
-            // Shutdown
-            if (container != null) {
-                try {
-                    container.shutdown();
-                } catch (Exception e) {
-                    System.err.println("Error during shutdown: " + e.getMessage());
-                }
-            }
         }
     }
     

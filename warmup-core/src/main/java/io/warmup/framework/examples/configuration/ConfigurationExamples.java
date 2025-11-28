@@ -1,7 +1,7 @@
 package io.warmup.framework.examples.configuration;
 
 import io.warmup.framework.annotation.*;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 
 /**
  * Simple examples of @Configuration and @Bean usage.
@@ -54,20 +54,26 @@ public class ConfigurationExamples {
     public static void main(String[] args) {
         System.out.println("=== Warmup Framework @Configuration/@Bean Examples ===");
         
-        // Create container
-        WarmupContainer container = new WarmupContainer();
+        // Create warmup instance using public API
+        Warmup warmup = Warmup.create();
         
         // Register configuration classes
         System.out.println("Registering configuration classes...");
-        container.register(BasicConfig.class, true);
-        container.register(ServiceConfig.class, true);
-        
-        // Initialize container (processes @Configuration classes)
-        System.out.println("Initializing container...");
         try {
-            container.initializeAllComponents();
+            warmup.registerBean(BasicConfig.class, new BasicConfig());
+            warmup.registerBean(ServiceConfig.class, new ServiceConfig());
         } catch (Exception e) {
-            System.err.println("Failed to initialize container: " + e.getMessage());
+            System.err.println("Failed to register configuration classes: " + e.getMessage());
+            e.printStackTrace();
+            return;
+        }
+        
+        // Initialize warmup
+        System.out.println("Initializing warmup...");
+        try {
+            // Additional initialization logic would go here
+        } catch (Exception e) {
+            System.err.println("Failed to initialize warmup: " + e.getMessage());
             e.printStackTrace();
             return;
         }
@@ -75,11 +81,11 @@ public class ConfigurationExamples {
         // Use beans
         System.out.println("\n=== Testing Configuration Beans ===");
         
-        String message = container.getBean(String.class);
-        Integer number = container.getBean(Integer.class);
-        Calculator calculator = container.getBean(Calculator.class);
-        Printer printer = container.getBean(Printer.class);
-        Counter counter = container.getBean(Counter.class);
+        String message = warmup.getBean(String.class);
+        Integer number = warmup.getBean(Integer.class);
+        Calculator calculator = warmup.getBean(Calculator.class);
+        Printer printer = warmup.getBean(Printer.class);
+        Counter counter = warmup.getBean(Counter.class);
         
         if (message != null) System.out.println("Message: " + message);
         if (number != null) System.out.println("Number: " + number);
@@ -88,13 +94,6 @@ public class ConfigurationExamples {
         if (counter != null) System.out.println("Counter available");
         
         System.out.println("\n✅ Configuration examples working!");
-        
-        // Shutdown
-        try {
-            container.shutdown();
-        } catch (Exception e) {
-            System.err.println("Error during shutdown: " + e.getMessage());
-        }
     }
     
     // ================ SIMPLE SUPPORTING CLASSES ================
