@@ -115,8 +115,9 @@ public class SimpleTransactionalTest {
         
         try {
             // Setup container
-            Warmup warmup = Warmup.create().start();
+            Warmup warmup = Warmup.create();
             warmup.scanPackages("io.warmup.framework.examples.simple");
+            warmup.getContainer().start();
             
             // Get test instance
             SimpleTransactionalTest test = warmup.getBean(SimpleTransactionalTest.class);

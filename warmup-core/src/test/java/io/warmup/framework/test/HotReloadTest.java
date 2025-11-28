@@ -31,13 +31,19 @@ class HotReloadTest {
     
     @BeforeEach
     void setUp() {
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
         
         // Create EventBus manually first
         eventBus = new EventBus();
         
         // Register EventBus in warmup instance
         warmup.registerBean(EventBus.class, eventBus);
+        
+        try {
+            warmup.getContainer().start();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to start container", e);
+        }
         
         hotReloadManager = new HotReloadManager(warmup.getContainer(), eventBus);
     }
@@ -154,7 +160,7 @@ class HotReloadTest {
         
         // Cuando intentamos recargar una clase
         assertDoesNotThrow(() -> {
-            container.reloadClass(testClassName);
+            warmup.getContainer().reloadClass(testClassName);
         });
         
         // Entonces no debería lanzar excepción (aunque la clase podría no existir)

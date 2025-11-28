@@ -26,8 +26,9 @@ public class AsyncIntegrationTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
         warmup.scanPackages("io.warmup.framework.aop");
+        warmup.getContainer().start();
         testService = warmup.getBean(AsyncTestService.class);
     }
 

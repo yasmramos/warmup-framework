@@ -29,7 +29,12 @@ public class PrimaryAlternativeTest {
     
     @BeforeEach
     public void setUp() {
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
+        try {
+            warmup.getContainer().start();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to start container", e);
+        }
     }
     
     @AfterEach
@@ -205,7 +210,12 @@ public class PrimaryAlternativeTest {
         warmup.registerBean(Consumer.class, new Consumer());
         
         // Start warmup to initialize dependencies
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
+        try {
+            warmup.getContainer().start();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to start container", e);
+        }
         
         Consumer consumer = warmup.getBean(Consumer.class);
         assertNotNull(consumer);
@@ -229,7 +239,12 @@ public class PrimaryAlternativeTest {
         warmup.registerBean(AnotherHighPriorityPrimary.class, new AnotherHighPriorityPrimary()); // This should cause conflict
         
         // Start warmup to initialize dependencies
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
+        try {
+            warmup.getContainer().start();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to start container", e);
+        }
         
         assertThrows(IllegalStateException.class, () -> {
             warmup.getBean(TestInterface.class);
@@ -251,7 +266,12 @@ public class PrimaryAlternativeTest {
             warmup.registerBean(Consumer.class, new Consumer());
             
             // Start warmup to initialize dependencies
-            warmup = Warmup.create().start();
+            warmup = Warmup.create();
+            try {
+                warmup.getContainer().start();
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to start container", e);
+            }
             
             // Without dev profile, simple should be selected
             Consumer consumer = warmup.getBean(Consumer.class);

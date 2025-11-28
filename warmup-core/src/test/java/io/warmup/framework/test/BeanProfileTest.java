@@ -33,7 +33,12 @@ public class BeanProfileTest {
     @BeforeEach
     void setUp() {
         // Clean up any existing warmup instance
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
+        try {
+            warmup.getContainer().start();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to start container", e);
+        }
     }
     
     @AfterEach

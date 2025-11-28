@@ -86,11 +86,12 @@ public class SimpleConditionalTest {
         System.setProperty("app.mode", "production");
         System.setProperty("feature.cache", "true");
         
-        Warmup warmup = Warmup.create().start();
+        Warmup warmup = Warmup.create();
         
         try {
             System.out.println("   🚀 Inicializando contenedor...");
             warmup.scanPackages("io.warmup.framework.examples.simple");
+            warmup.getContainer().start();
             System.out.println("   ✅ Contenedor inicializado correctamente");
             
         } catch (Exception e) {

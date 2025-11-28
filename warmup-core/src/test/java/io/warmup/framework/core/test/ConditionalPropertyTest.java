@@ -212,9 +212,9 @@ public class ConditionalPropertyTest {
             System.setProperty(key, props.getProperty(key));
         }
         
-        Warmup warmup = Warmup.create().start();
+        Warmup warmup = Warmup.create();
         try {
-            container.initializeAllComponents();
+            warmup.getContainer().start();
         } catch (Exception e) {
             System.out.println("   ⚠️  Error inicializando contenedor: " + e.getMessage());
             return;
@@ -224,14 +224,14 @@ public class ConditionalPropertyTest {
         System.out.println("   📊 Verificando beans registrados en escenario real:");
         
         try {
-            container.getBean(CacheService.class);
+            warmup.getBean(CacheService.class);
             System.out.println("   ✓ CacheService registrado (cache.enabled=true)");
         } catch (Exception e) {
             System.out.println("   ⚠️  CacheService no encontrado (puede ser porque no está registrado en el contenedor)");
         }
         
         try {
-            container.getBean(EmailService.class);
+            warmup.getBean(EmailService.class);
             System.out.println("   ✓ EmailService registrado (email.provider=sendgrid)");
         } catch (Exception e) {
             System.out.println("   ⚠️  EmailService no encontrado (puede ser porque no está registrado en el contenedor)");

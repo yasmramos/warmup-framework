@@ -27,7 +27,12 @@ public class ConfigurationBeanTest {
     
     @BeforeEach
     public void setUp() {
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
+        try {
+            warmup.getContainer().start();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to start container", e);
+        }
     }
     
     @AfterEach

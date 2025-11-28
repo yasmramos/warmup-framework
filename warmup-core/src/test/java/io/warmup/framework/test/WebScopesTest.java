@@ -34,8 +34,13 @@ public class WebScopesTest {
     
     @BeforeEach
     public void setUp() {
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
         warmup.scanPackages("io.warmup.framework.test");
+        try {
+            warmup.getContainer().start();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to start container", e);
+        }
         webScopeContext = warmup.getContainer().getWebScopeContext();
     }
     
@@ -357,9 +362,11 @@ public class WebScopesTest {
     public void testDependencyInjectionInWebScopes() {
         System.out.println("🔍 Testing dependency injection in web scopes...");
         
-        warmup.registerBean(SessionScopedBean.class, new SessionScopedBean());
-        warmup.registerBean(ApplicationScopedBean.class, new ApplicationScopedBean());
-        warmup.registerBean(RequestScopedWithDeps.class, new RequestScopedWithDeps());
+        SessionScopedBean sessionBean = new SessionScopedBean();
+        ApplicationScopedBean appBean = new ApplicationScopedBean();
+        warmup.registerBean(SessionScopedBean.class, sessionBean);
+        warmup.registerBean(ApplicationScopedBean.class, appBean);
+        warmup.registerBean(RequestScopedWithDeps.class, new RequestScopedWithDeps(sessionBean, appBean));
         
         String sessionId = "session-deps";
         String requestId = "request-deps";
@@ -367,8 +374,8 @@ public class WebScopesTest {
         webScopeContext.setCurrentRequest(requestId);
         
         // Get session and application scoped beans first
-        SessionScopedBean sessionBean = warmup.getContainer().getSessionScopedBean(SessionScopedBean.class, sessionId);
-        ApplicationScopedBean appBean = warmup.getBean(ApplicationScopedBean.class);
+        sessionBean = warmup.getContainer().getSessionScopedBean(SessionScopedBean.class, sessionId);
+        appBean = warmup.getBean(ApplicationScopedBean.class);
         
         // Verify they were created
         assertNotNull(sessionBean);

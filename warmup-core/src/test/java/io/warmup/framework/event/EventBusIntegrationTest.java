@@ -31,12 +31,14 @@ public class EventBusIntegrationTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
         warmup.scanPackages("io.warmup.framework.event");
         
         // Manually register EventBus as it's not automatically scanned
         eventBus = new EventBus();
         warmup.registerBean("eventBus", EventBus.class, eventBus);
+        
+        warmup.getContainer().start();
         
         // Create test listeners
         listener1 = new TestEventListener("listener1");

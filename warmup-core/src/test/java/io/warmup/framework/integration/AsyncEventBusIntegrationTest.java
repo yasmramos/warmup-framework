@@ -34,7 +34,7 @@ public class AsyncEventBusIntegrationTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        warmup = Warmup.create().start();
+        warmup = Warmup.create();
         
         // Create EventBus manually
         eventBus = new EventBus();
@@ -45,6 +45,8 @@ public class AsyncEventBusIntegrationTest {
         // Register both as beans
         warmup.registerBean(EventBus.class, eventBus);
         warmup.registerBean(AsyncEventProcessor.class, eventProcessor);
+        
+        warmup.getContainer().start();
         
         // Create test listeners
         asyncListener = new AsyncEventListener();
