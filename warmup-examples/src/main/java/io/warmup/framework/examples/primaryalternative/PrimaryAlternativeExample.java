@@ -1,6 +1,7 @@
 package io.warmup.framework.examples.primaryalternative;
 
 import io.warmup.framework.annotation.*;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.core.WarmupContainer;
 
 /**
@@ -226,14 +227,15 @@ public class PrimaryAlternativeExample {
     public static void demonstrateBasicUsage() throws Exception {
         System.out.println("\n🎯 === BASIC PRIMARY/ALTERNATIVE USAGE ===");
         
-        WarmupContainer container = new WarmupContainer();
+        Warmup warmup = Warmup.create();
+        WarmupContainer container = warmup.start();
         
-        // Register all components
-        container.register(SimpleEmailService.class);
-        container.register(PremiumEmailService.class);
-        container.register(BusinessEmailService.class);
-        container.register(SmsNotificationService.class);
-        container.register(NotificationController.class);
+        // Register all components (using reflection to create instances)
+        warmup.registerBean(SimpleEmailService.class, new SimpleEmailService());
+        warmup.registerBean(PremiumEmailService.class, new PremiumEmailService());
+        warmup.registerBean(BusinessEmailService.class, new BusinessEmailService());
+        warmup.registerBean(SmsNotificationService.class, new SmsNotificationService());
+        warmup.registerBean(NotificationController.class, new NotificationController());
         
         // Get best implementation - should be PremiumEmailService (priority 100)
         NotificationService service = container.getBestImplementation(NotificationService.class);
@@ -249,12 +251,13 @@ public class PrimaryAlternativeExample {
     public static void demonstratePriorityResolution() throws Exception {
         System.out.println("\n🏆 === PRIORITY RESOLUTION DEMONSTRATION ===");
         
-        WarmupContainer container = new WarmupContainer();
+        Warmup warmup = Warmup.create();
+        WarmupContainer container = warmup.start();
         
-        // Register all notification services
-        container.register(SimpleEmailService.class);        // No priority (default 0)
-        container.register(BusinessEmailService.class);      // Priority 50
-        container.register(PremiumEmailService.class);       // Priority 100 (should win)
+        // Register all notification services (using reflection to create instances)
+        warmup.registerBean(SimpleEmailService.class, new SimpleEmailService());        // No priority (default 0)
+        warmup.registerBean(BusinessEmailService.class, new BusinessEmailService());      // Priority 50
+        warmup.registerBean(PremiumEmailService.class, new PremiumEmailService());       // Priority 100 (should win)
         
         // Get best implementation
         NotificationService service = container.getBestImplementation(NotificationService.class);
@@ -269,11 +272,12 @@ public class PrimaryAlternativeExample {
     public static void demonstrateAlternativeExclusion() throws Exception {
         System.out.println("\n🚫 === ALTERNATIVE EXCLUSION DEMONSTRATION ===");
         
-        WarmupContainer container = new WarmupContainer();
+        Warmup warmup = Warmup.create();
+        WarmupContainer container = warmup.start();
         
-        // Register both regular and alternative implementations
-        container.register(SimpleEmailService.class);     // Regular (should be used)
-        container.register(SmsNotificationService.class); // Alternative (should be excluded)
+        // Register both regular and alternative implementations (using reflection to create instances)
+        warmup.registerBean(SimpleEmailService.class, new SimpleEmailService());     // Regular (should be used)
+        warmup.registerBean(SmsNotificationService.class, new SmsNotificationService()); // Alternative (should be excluded)
         
         NotificationService service = container.getBestImplementation(NotificationService.class);
         System.out.println("✅ Selected regular service (alternative excluded): " + 
@@ -287,13 +291,14 @@ public class PrimaryAlternativeExample {
     public static void demonstrateUserServiceIntegration() throws Exception {
         System.out.println("\n👥 === USER SERVICE INTEGRATION DEMONSTRATION ===");
         
-        WarmupContainer container = new WarmupContainer();
+        Warmup warmup = Warmup.create();
+        WarmupContainer container = warmup.start();
         
-        // Register user-related components
-        container.register(SimpleUserRepository.class);
-        container.register(DatabaseUserRepository.class);  // @Primary - should be used
-        container.register(InMemoryUserRepository.class);  // @Alternative - should be excluded
-        container.register(UserService.class);
+        // Register user-related components (using reflection to create instances)
+        warmup.registerBean(SimpleUserRepository.class, new SimpleUserRepository());
+        warmup.registerBean(DatabaseUserRepository.class, new DatabaseUserRepository());  // @Primary - should be used
+        warmup.registerBean(InMemoryUserRepository.class, new InMemoryUserRepository());  // @Alternative - should be excluded
+        warmup.registerBean(UserService.class, new UserService());
         
         UserService userService = container.get(UserService.class);
         userService.createUser("John Doe, john@example.com");
