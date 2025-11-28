@@ -1,7 +1,7 @@
 package io.warmup.framework.test;
 
 import io.warmup.framework.annotation.*;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.core.WebScopeContext;
 import io.warmup.framework.core.ScopeManager;
 
@@ -29,24 +29,20 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class WebScopesTest {
     
-    private WarmupContainer container;
+    private Warmup warmup;
     private WebScopeContext webScopeContext;
     
     @BeforeEach
     public void setUp() {
-        container = new WarmupContainer();
-        webScopeContext = container.getWebScopeContext();
+        warmup = Warmup.create().start();
+        warmup.scanPackages("io.warmup.framework.test");
+        webScopeContext = warmup.getContainer().getWebScopeContext();
     }
     
     @AfterEach
     public void tearDown() {
-        if (container != null) {
-            try {
-                container.shutdown();
-            } catch (Exception e) {
-                // Ignore shutdown errors in tests
-            }
-        }
+        // Clean up the warmup instance
+        warmup = null;
     }
     
     // Helper method to generate truly unique IDs even with reflection/JIT

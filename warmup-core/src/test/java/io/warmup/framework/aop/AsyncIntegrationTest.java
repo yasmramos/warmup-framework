@@ -2,7 +2,7 @@ package io.warmup.framework.aop;
 
 import io.warmup.framework.annotation.Async;
 import io.warmup.framework.annotation.Component;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -21,15 +21,14 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class AsyncIntegrationTest {
 
-    private WarmupContainer container;
+    private Warmup warmup;
     private AsyncTestService testService;
 
     @BeforeEach
     void setUp() throws Exception {
-        container = new WarmupContainer();
-        container.scanPackage("io.warmup.framework.aop");
-        container.start();
-        testService = container.getBean(AsyncTestService.class);
+        warmup = Warmup.create().start();
+        warmup.scanPackages("io.warmup.framework.aop");
+        testService = warmup.getBean(AsyncTestService.class);
     }
 
     @Test

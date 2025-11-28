@@ -1,6 +1,6 @@
 package io.warmup.framework.test.configuration;
 
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.core.WebScopeContext;
 import io.warmup.framework.annotation.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,8 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ConfigurationBeanTest {
     
-    private WarmupContainer container;
-    private WebScopeContext webScopeContext;
+    private Warmup warmup;
 
     // Helper method to initialize container with exception handling
     private void initializeContainer() {
@@ -37,21 +36,14 @@ public class ConfigurationBeanTest {
     
     @BeforeEach
     public void setUp() {
-        container = new WarmupContainer();
-        // Initialize webScopeContext directly to avoid container dependency issues
-        webScopeContext = new WebScopeContext(container);
+        warmup = Warmup.create().start();
+    }
     }
     
     @AfterEach
     public void tearDown() {
-        if (container != null) {
-            try {
-                container.shutdown();
-            } catch (Exception e) {
-                // Log but don't fail the test on shutdown errors
-                System.err.println("Warning: Error during container shutdown: " + e.getMessage());
-            }
-        }
+        // Clean up the warmup instance
+        warmup = null;
     }
     
     // ================ BASIC CONFIGURATION TESTS ================
@@ -62,11 +54,10 @@ public class ConfigurationBeanTest {
         TestConfig config = new TestConfig();
         
         // Register configuration class
-        container.register(TestConfig.class, true);
-        initializeContainer();
+        warmup.registerBean(TestConfig.class, new TestConfig());
         
         // Test bean creation
-        TestService service = container.get(TestService.class);
+        TestService service = warmup.getBean(TestService.class);
         assertNotNull(service);
         assertTrue(service instanceof TestServiceImpl);
     }

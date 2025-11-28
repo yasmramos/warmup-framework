@@ -3,7 +3,7 @@ package io.warmup.framework.integration;
 import io.warmup.framework.annotation.Async;
 import io.warmup.framework.annotation.Component;
 import io.warmup.framework.async.AsyncExecutor;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.event.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class AsyncEventBusIntegrationTest {
 
-    private WarmupContainer container;
+    private Warmup warmup;
     private EventBus eventBus;
     private AsyncEventProcessor eventProcessor;
     private AsyncEventListener asyncListener;
@@ -34,7 +34,7 @@ public class AsyncEventBusIntegrationTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        container = new WarmupContainer();
+        warmup = Warmup.create().start();
         
         // Create EventBus manually
         eventBus = new EventBus();
@@ -43,11 +43,8 @@ public class AsyncEventBusIntegrationTest {
         eventProcessor = new AsyncEventProcessor(eventBus);
         
         // Register both as beans
-        container.register(EventBus.class, eventBus);
-        container.register(AsyncEventProcessor.class, eventProcessor);
-        
-        container.scanPackage("io.warmup.framework.integration");
-        container.start();
+        warmup.registerBean(EventBus.class, eventBus);
+        warmup.registerBean(AsyncEventProcessor.class, eventProcessor);
         
         // Create test listeners
         asyncListener = new AsyncEventListener();

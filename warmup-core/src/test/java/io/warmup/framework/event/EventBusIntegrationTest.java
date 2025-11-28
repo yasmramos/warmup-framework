@@ -1,7 +1,7 @@
 package io.warmup.framework.event;
 
 import io.warmup.framework.annotation.Component;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class EventBusIntegrationTest {
 
-    private WarmupContainer container;
+    private Warmup warmup;
     private EventBus eventBus;
     private TestEventListener listener1;
     private TestEventListener listener2;
@@ -31,10 +31,12 @@ public class EventBusIntegrationTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        container = new WarmupContainer();
-        container.scanPackage("io.warmup.framework.event");
-        container.start();
-        eventBus = container.getEventBus();
+        warmup = Warmup.create().start();
+        warmup.scanPackages("io.warmup.framework.event");
+        
+        // Manually register EventBus as it's not automatically scanned
+        eventBus = new EventBus();
+        warmup.registerBean("eventBus", EventBus.class, eventBus);
         
         // Create test listeners
         listener1 = new TestEventListener("listener1");
@@ -50,10 +52,8 @@ public class EventBusIntegrationTest {
             eventBus.clearAllListeners();
         }
         
-        // Clean up the container
-        if (container != null) {
-            container.shutdown();
-        }
+        // Clean up the warmup instance
+        warmup = null;
     }
 
 

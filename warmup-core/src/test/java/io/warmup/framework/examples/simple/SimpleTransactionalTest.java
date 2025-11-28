@@ -9,7 +9,7 @@ import io.warmup.framework.core.BasicPlatformTransactionManager;
 import io.warmup.framework.core.PlatformTransactionManager;
 import io.warmup.framework.core.TransactionManager;
 import io.warmup.framework.core.TransactionAspect;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -115,11 +115,11 @@ public class SimpleTransactionalTest {
         
         try {
             // Setup container
-            WarmupContainer container = new WarmupContainer();
-            container.initializeAllComponents();
+            Warmup warmup = Warmup.create().start();
+            warmup.scanPackages("io.warmup.framework.examples.simple");
             
             // Get test instance
-            SimpleTransactionalTest test = container.getBean(SimpleTransactionalTest.class);
+            SimpleTransactionalTest test = warmup.getBean(SimpleTransactionalTest.class);
             
             // Run tests
             test.testBasicTransaction();

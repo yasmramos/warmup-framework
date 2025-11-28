@@ -1,6 +1,6 @@
 package io.warmup.framework.test;
 
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.event.EventBus;
 import io.warmup.framework.hotreload.HotReloadEvent;
 import io.warmup.framework.hotreload.HotReloadManager;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class HotReloadTest {
     
-    private WarmupContainer container;
+    private Warmup warmup;
     private EventBus eventBus;
     private HotReloadManager hotReloadManager;
     
@@ -31,15 +31,15 @@ class HotReloadTest {
     
     @BeforeEach
     void setUp() {
-        container = new WarmupContainer();
+        warmup = Warmup.create().start();
         
         // Create EventBus manually first
         eventBus = new EventBus();
         
-        // Register EventBus in container
-        container.register(EventBus.class, eventBus);
+        // Register EventBus in warmup instance
+        warmup.registerBean(EventBus.class, eventBus);
         
-        hotReloadManager = new HotReloadManager(container, eventBus);
+        hotReloadManager = new HotReloadManager(warmup.getContainer(), eventBus);
     }
     
     @Test

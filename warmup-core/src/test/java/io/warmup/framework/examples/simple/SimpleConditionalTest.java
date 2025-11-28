@@ -5,7 +5,7 @@ import io.warmup.framework.annotation.ConditionalOnProperty;
 import io.warmup.framework.annotation.Configuration;
 import io.warmup.framework.config.PropertySource;
 import io.warmup.framework.core.ConditionEvaluator;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 
 import java.util.Properties;
 
@@ -86,11 +86,11 @@ public class SimpleConditionalTest {
         System.setProperty("app.mode", "production");
         System.setProperty("feature.cache", "true");
         
-        WarmupContainer container = new WarmupContainer();
+        Warmup warmup = Warmup.create().start();
         
         try {
             System.out.println("   🚀 Inicializando contenedor...");
-            container.initializeAllComponents();
+            warmup.scanPackages("io.warmup.framework.examples.simple");
             System.out.println("   ✅ Contenedor inicializado correctamente");
             
         } catch (Exception e) {
