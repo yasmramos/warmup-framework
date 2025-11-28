@@ -4,6 +4,7 @@ import io.warmup.framework.annotation.Alternative;
 import io.warmup.framework.annotation.Component;
 import io.warmup.framework.annotation.Inject;
 import io.warmup.framework.annotation.Primary;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.core.WarmupContainer;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Test;
@@ -24,11 +25,13 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class PrimaryAlternativeTest {
     
+    private Warmup warmup;
     private WarmupContainer container;
     
     @BeforeEach
     public void setUp() {
-        container = new WarmupContainer();
+        warmup = Warmup.create();
+        container = warmup.container;
     }
     
     @AfterEach
@@ -123,7 +126,7 @@ public class PrimaryAlternativeTest {
     public void testSingleImplementation() {
         System.out.println("🔍 Testing single implementation without annotations...");
         
-        container.register(SimpleImplementation.class);
+        warmup.registerBean(SimpleImplementation.class, new SimpleImplementation());
         
         TestInterface service = null;
         try {
@@ -142,8 +145,8 @@ public class PrimaryAlternativeTest {
     public void testPrimaryBean() {
         System.out.println("🔍 Testing @Primary bean selection...");
         
-        container.register(SimpleImplementation.class);
-        container.register(PrimaryImplementation.class);
+        warmup.registerBean(SimpleImplementation.class, new SimpleImplementation());
+        warmup.registerBean(PrimaryImplementation.class, new PrimaryImplementation());
         
         TestInterface service = null;
         try {
@@ -162,9 +165,9 @@ public class PrimaryAlternativeTest {
     public void testHighPriorityPrimary() {
         System.out.println("🔍 Testing @Primary priority resolution...");
         
-        container.register(SimpleImplementation.class);
-        container.register(HighPriorityPrimary.class);
-        container.register(MediumPriorityPrimary.class);
+        warmup.registerBean(SimpleImplementation.class, new SimpleImplementation());
+        warmup.registerBean(HighPriorityPrimary.class, new HighPriorityPrimary());
+        warmup.registerBean(MediumPriorityPrimary.class, new MediumPriorityPrimary());
         
         TestInterface service = null;
         try {
@@ -183,8 +186,8 @@ public class PrimaryAlternativeTest {
     public void testAlternativeBean() {
         System.out.println("🔍 Testing @Alternative bean exclusion...");
         
-        container.register(SimpleImplementation.class);
-        container.register(AlternativeImplementation.class);
+        warmup.registerBean(SimpleImplementation.class, new SimpleImplementation());
+        warmup.registerBean(AlternativeImplementation.class, new AlternativeImplementation());
         
         // Alternative beans should be excluded by default
         TestInterface service = null;
@@ -204,9 +207,9 @@ public class PrimaryAlternativeTest {
     public void testInjectionWithPrimary() throws Exception {
         System.out.println("🔍 Testing dependency injection with @Primary...");
         
-        container.register(SimpleImplementation.class);
-        container.register(PrimaryImplementation.class);
-        container.register(Consumer.class);
+        warmup.registerBean(SimpleImplementation.class, new SimpleImplementation());
+        warmup.registerBean(PrimaryImplementation.class, new PrimaryImplementation());
+        warmup.registerBean(Consumer.class, new Consumer());
         
         // Start container to initialize dependencies
         container.start();
@@ -225,12 +228,12 @@ public class PrimaryAlternativeTest {
     public void testSamePriorityPrimary() throws Exception {
         System.out.println("🔍 Testing @Primary conflict resolution...");
         
-        container.register(SimpleImplementation.class);
-        container.register(HighPriorityPrimary.class);
-        container.register(MediumPriorityPrimary.class);
+        warmup.registerBean(SimpleImplementation.class, new SimpleImplementation());
+        warmup.registerBean(HighPriorityPrimary.class, new HighPriorityPrimary());
+        warmup.registerBean(MediumPriorityPrimary.class, new MediumPriorityPrimary());
         
         // Add another bean with same highest priority as HighPriorityPrimary
-        container.register(AnotherHighPriorityPrimary.class); // This should cause conflict
+        warmup.registerBean(AnotherHighPriorityPrimary.class, new AnotherHighPriorityPrimary()); // This should cause conflict
         
         // Start container to initialize dependencies
         container.start();
@@ -250,9 +253,9 @@ public class PrimaryAlternativeTest {
         public void testAlternativeWithProfile() throws Exception {
             System.out.println("🔍 Testing @Alternative with profile...");
             
-            container.register(SimpleImplementation.class);
-            container.register(DevAlternative.class);
-            container.register(Consumer.class);
+            warmup.registerBean(SimpleImplementation.class, new SimpleImplementation());
+            warmup.registerBean(DevAlternative.class, new DevAlternative());
+            warmup.registerBean(Consumer.class, new Consumer());
             
             // Start container to initialize dependencies
             container.start();
