@@ -1,6 +1,6 @@
 package io.warmup.framework.examples.config;
 
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.examples.services.*;
 
 import java.util.Scanner;
@@ -29,8 +29,8 @@ public class ConditionalPropertyExample {
             System.out.println("Este ejemplo demuestra cómo @ConditionalOnProperty controla");
             System.out.println("qué beans se registran basado en propiedades del sistema.\n");
             
-            // Crear el contenedor
-            WarmupContainer container = new WarmupContainer();
+            // Crear warmup instance usando API pública
+            Warmup warmup = Warmup.create();
             
             // Configurar propiedades del sistema
             configureSystemProperties();
@@ -38,18 +38,14 @@ public class ConditionalPropertyExample {
             // Mostrar propiedades configuradas
             showConfiguredProperties();
             
-            // Inicializar el contenedor (esto activa la evaluación de condiciones)
-            System.out.println("\n🚀 Inicializando contenedor...");
-            container.initializeAllComponents();
-            
             // Mostrar qué beans fueron registrados
-            showRegisteredBeans(container);
+            showRegisteredBeans(warmup);
             
             // Demostrar el uso de los beans registrados
-            demonstrateBeanUsage(container);
+            demonstrateBeanUsage(warmup);
             
             // Esperar input del usuario para continuar
-            promptForNextDemo(container);
+            promptForNextDemo(warmup);
             
         } catch (Exception e) {
             System.err.println("❌ Error ejecutando ejemplo: " + e.getMessage());
@@ -115,40 +111,40 @@ public class ConditionalPropertyExample {
     /**
      * Mostrar qué beans fueron registrados exitosamente.
      */
-    private static void showRegisteredBeans(WarmupContainer container) {
+    private static void showRegisteredBeans(Warmup warmup) {
         System.out.println("\n✅ Beans registrados condicionalmente:");
         
         // Cache Service (cache.enabled = true)
-        tryShowBean(container, CacheService.class, "Cache Service");
+        tryShowBean(warmup, CacheService.class, "Cache Service");
         
         // Email Service (email.provider = sendgrid)
-        tryShowBean(container, EmailService.class, "Email Service");
+        tryShowBean(warmup, EmailService.class, "Email Service");
         
         // Database Service (database.primary.type = mysql)
-        tryShowBean(container, DatabaseService.class, "Database Service");
+        tryShowBean(warmup, DatabaseService.class, "Database Service");
         
         // Monitoring Service (monitoring.advanced.enabled = true)
-        tryShowBean(container, MonitoringService.class, "Monitoring Service");
+        tryShowBean(warmup, MonitoringService.class, "Monitoring Service");
         
         // Notification Service
-        tryShowBean(container, NotificationService.class, "Notification Service");
+        tryShowBean(warmup, NotificationService.class, "Notification Service");
         
         // Security Service (security.strict.mode = true, invert = true)
-        tryShowBean(container, RelaxedSecurityService.class, "Relaxed Security Service");
+        tryShowBean(warmup, RelaxedSecurityService.class, "Relaxed Security Service");
         
         // Experimental Service (feature.experimental.enabled no existe, matchIfMissing = true)
-        tryShowBean(container, ExperimentalService.class, "Experimental Service");
+        tryShowBean(warmup, ExperimentalService.class, "Experimental Service");
         
         // Legacy Migration Service (database.legacy.mode no existe, notHavingValue)
-        tryShowBean(container, LegacyMigrationService.class, "Legacy Migration Service");
+        tryShowBean(warmup, LegacyMigrationService.class, "Legacy Migration Service");
     }
     
     /**
      * Intentar mostrar un bean si está registrado.
      */
-    private static <T> void tryShowBean(WarmupContainer container, Class<T> type, String description) {
+    private static <T> void tryShowBean(Warmup warmup, Class<T> type, String description) {
         try {
-            T bean = container.getBean(type);
+            T bean = warmup.getBean(type);
             System.out.println("   ✓ " + description + " (" + type.getSimpleName() + ")");
         } catch (Exception e) {
             System.out.println("   ✗ " + description + " - No registrado (condición no cumplida)");
@@ -158,12 +154,12 @@ public class ConditionalPropertyExample {
     /**
      * Demostrar el uso de los beans registrados.
      */
-    private static void demonstrateBeanUsage(WarmupContainer container) {
+    private static void demonstrateBeanUsage(Warmup warmup) {
         System.out.println("\n🎯 Demostrando funcionalidad de beans registrados:");
         
         // Usar Cache Service
         try {
-            CacheService cache = container.getBean(CacheService.class);
+            CacheService cache = warmup.getBean(CacheService.class);
             cache.put("test-key", "test-value");
             cache.get("test-key");
             System.out.println("   Cache Info: " + cache.getInfo());
@@ -173,7 +169,7 @@ public class ConditionalPropertyExample {
         
         // Usar Email Service
         try {
-            EmailService email = container.getBean(EmailService.class);
+            EmailService email = warmup.getBean(EmailService.class);
             email.sendEmail("user@example.com", "Test Subject", "Test Body");
             System.out.println("   Email Provider: " + email.getProviderInfo());
         } catch (Exception e) {
@@ -182,7 +178,7 @@ public class ConditionalPropertyExample {
         
         // Usar Database Service
         try {
-            DatabaseService db = container.getBean(DatabaseService.class);
+            DatabaseService db = warmup.getBean(DatabaseService.class);
             db.connect();
             System.out.println("   DB Info: " + db.getDatabaseInfo());
             db.disconnect();
@@ -194,7 +190,7 @@ public class ConditionalPropertyExample {
     /**
      * Prompt para demostrar diferentes configuraciones.
      */
-    private static void promptForNextDemo(WarmupContainer container) {
+    private static void promptForNextDemo(Warmup warmup) {
         System.out.println("\n============================================================");
         System.out.println("🎛️  DEMOSTRACIÓN INTERACTIVA");
         System.out.println("Vamos a cambiar algunas propiedades y ver cómo esto afecta");
@@ -211,15 +207,9 @@ public class ConditionalPropertyExample {
             System.out.println("\n📝 Demo 1: Deshabilitando cache (feature.cache.enabled = false)");
             System.setProperty("feature.cache.enabled", "false");
             
-            container = new WarmupContainer();
-            try {
-                container.initializeAllComponents();
-            } catch (Exception e) {
-                System.err.println("Error initializing container: " + e.getMessage());
-                return;
-            }
+            warmup = Warmup.create();
             
-            tryShowBean(container, CacheService.class, "Cache Service");
+            tryShowBean(warmup, CacheService.class, "Cache Service");
             
             System.out.println("\nPresiona ENTER para la siguiente demo...");
             scanner.nextLine();
@@ -228,15 +218,9 @@ public class ConditionalPropertyExample {
             System.out.println("\n📝 Demo 2: Cambiando email provider a SMTP");
             System.setProperty("email.provider", "smtp");
             
-            container = new WarmupContainer();
-            try {
-                container.initializeAllComponents();
-            } catch (Exception e) {
-                System.err.println("Error initializing container: " + e.getMessage());
-                return;
-            }
+            warmup = Warmup.create();
             
-            tryShowBean(container, EmailService.class, "Email Service");
+            tryShowBean(warmup, EmailService.class, "Email Service");
             
             System.out.println("\nPresiona ENTER para la demo final...");
             scanner.nextLine();
@@ -245,15 +229,9 @@ public class ConditionalPropertyExample {
             System.out.println("\n📝 Demo 3: Deshabilitando modo relajado de seguridad");
             System.setProperty("security.strict.mode", "false");
             
-            container = new WarmupContainer();
-            try {
-                container.initializeAllComponents();
-            } catch (Exception e) {
-                System.err.println("Error initializing container: " + e.getMessage());
-                return;
-            }
+            warmup = Warmup.create();
             
-            tryShowBean(container, RelaxedSecurityService.class, "Relaxed Security Service");
+            tryShowBean(warmup, RelaxedSecurityService.class, "Relaxed Security Service");
             
             System.out.println("\n✅ ¡Demo completa! @ConditionalOnProperty funciona correctamente.");
             

@@ -1,7 +1,7 @@
 package io.warmup.framework.examples.config;
 
 import io.warmup.framework.annotation.Inject;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.examples.services.AuditService;
 import io.warmup.framework.examples.services.TransactionalUserService;
 import io.warmup.framework.examples.services.TransactionalUserService.User;
@@ -39,18 +39,21 @@ public class TransactionalExample {
         log.info("Starting Transactional Example Application");
         
         try {
-            // Initialize the container
-            WarmupContainer container = new WarmupContainer();
-            container.initializeAllComponents();
+            // Initialize warmup using public API
+            Warmup warmup = Warmup.create();
             
-            // Get the example instance
-            TransactionalExample example = container.getBean(TransactionalExample.class);
+            // Create and register the example instance
+            TransactionalExample example = new TransactionalExample();
+            warmup.registerBean(TransactionalExample.class, example);
+            
+            // Get the example instance from warmup
+            TransactionalExample retrievedExample = warmup.getBean(TransactionalExample.class);
             
             // Run demonstrations
-            example.demonstrateBasicTransactions();
-            example.demonstrateTransactionPropagation();
-            example.demonstrateRollbackScenarios();
-            example.demonstrateReadOnlyTransactions();
+            retrievedExample.demonstrateBasicTransactions();
+            retrievedExample.demonstrateTransactionPropagation();
+            retrievedExample.demonstrateRollbackScenarios();
+            retrievedExample.demonstrateReadOnlyTransactions();
             
             log.info("Transactional Example Application completed successfully");
             
