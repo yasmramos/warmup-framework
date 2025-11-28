@@ -5,7 +5,7 @@ import io.warmup.framework.annotation.Component;
 import io.warmup.framework.annotation.Inject;
 import io.warmup.framework.annotation.Primary;
 import io.warmup.framework.core.Warmup;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Test;
 
@@ -26,23 +26,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PrimaryAlternativeTest {
     
     private Warmup warmup;
-    private WarmupContainer container;
     
     @BeforeEach
     public void setUp() {
-        warmup = Warmup.create();
-        container = warmup.container;
+        warmup = Warmup.create().start();
     }
     
     @AfterEach
     public void tearDown() {
-        if (container != null) {
-            try {
-                container.shutdown();
-            } catch (Exception e) {
-                // Ignore shutdown errors in tests
-            }
-        }
+        // Clean up the warmup instance
+        warmup = null;
     }
     
     // Test interfaces and implementations

@@ -5,7 +5,7 @@ import io.warmup.framework.annotation.ConditionalOnProperty;
 import io.warmup.framework.annotation.Configuration;
 import io.warmup.framework.config.PropertySource;
 import io.warmup.framework.core.ConditionEvaluator;
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import io.warmup.framework.examples.services.CacheService;
 import io.warmup.framework.examples.services.EmailService;
 
@@ -212,7 +212,7 @@ public class ConditionalPropertyTest {
             System.setProperty(key, props.getProperty(key));
         }
         
-        WarmupContainer container = new WarmupContainer();
+        Warmup warmup = Warmup.create().start();
         try {
             container.initializeAllComponents();
         } catch (Exception e) {
