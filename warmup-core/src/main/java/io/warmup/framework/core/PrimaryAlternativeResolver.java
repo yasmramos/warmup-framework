@@ -315,4 +315,103 @@ public class PrimaryAlternativeResolver {
             return null;
         }
     }
+
+    /**
+     * 🚀 NATIVE: Alternative method that uses activeProfiles directly when container is null
+     */
+    public static Dependency resolveBestImplementationWithProfiles(
+            Class<?> interfaceType, 
+            Set<Dependency> implementations, 
+            Set<String> activeProfiles,
+            Map<Class<?>, io.warmup.framework.metadata.MethodMetadata> classToMethodMetadataMap) {
+        
+        if (implementations == null || implementations.isEmpty()) {
+            return null;
+        }
+
+        log.log(Level.INFO, "🔍 [DEBUG] PrimaryAlternativeResolver.resolveBestImplementationWithProfiles called");
+        log.log(Level.INFO, "🔍 [DEBUG] Interface type: {0}", interfaceType.getSimpleName());
+        log.log(Level.INFO, "🔍 [DEBUG] Number of implementations: {0}", implementations.size());
+        log.log(Level.INFO, "🔍 [DEBUG] classToMethodMetadataMap: {0}", classToMethodMetadataMap != null ? classToMethodMetadataMap.size() + " entries" : "NULL");
+
+        // Use activeProfiles directly instead of getting from container
+        String[] profilesArray = activeProfiles.toArray(new String[0]);
+        Set<String> profileSet = new HashSet<>(Arrays.asList(profilesArray));
+
+        // Strategy: Group by @Primary priority, filter @Alternative by profile
+        // Deduplicate implementations by actual class to avoid conflicts
+        Map<Class<?>, Dependency> uniqueImplementations = new LinkedHashMap<>();
+        
+        for (Dependency implementation : implementations) {
+            Class<?> implClass = implementation.getType();
+            // Keep only the first occurrence of each class
+            uniqueImplementations.putIfAbsent(implClass, implementation);
+        }
+        
+        Map<Integer, List<Dependency>> primaryByPriority = new TreeMap<>(Collections.reverseOrder());
+        
+        for (Dependency implementation : uniqueImplementations.values()) {
+            Class<?> implClass = implementation.getType();
+            
+            // 🔍 Check @Alternative annotation (only for non-primary)
+            Alternative alternativeAnnotation = AsmCoreUtils.getAnnotationProgressive(implClass, Alternative.class);
+            if (alternativeAnnotation != null) {
+                String alternativeProfile = alternativeAnnotation.profile();
+                boolean profileCompatible = alternativeProfile.isEmpty(); // No profile means always compatible
+                
+                if (!alternativeProfile.isEmpty() && profileSet.contains(alternativeProfile)) {
+                    profileCompatible = true;
+                }
+                
+                if (!profileCompatible) {
+                    log.log(Level.INFO, "❌ Excluding implementation {0} due to @Alternative profile not matching active profiles", 
+                            implClass.getSimpleName());
+                    continue;
+                }
+            }
+            
+            // 🔍 Check @Primary annotation
+            Primary primaryAnnotation = AsmCoreUtils.getAnnotationProgressive(implClass, Primary.class);
+            int priority = primaryAnnotation != null ? primaryAnnotation.value() : -1;
+            
+            primaryByPriority.computeIfAbsent(priority, k -> new ArrayList<>()).add(implementation);
+            
+            log.log(Level.INFO, "✅ Added implementation {0} with priority {1}", 
+                    new Object[]{implClass.getSimpleName(), priority});
+        }
+        
+        // Choose the best implementation from highest priority
+        Dependency bestImplementation = null;
+        
+        for (Map.Entry<Integer, List<Dependency>> entry : primaryByPriority.entrySet()) {
+            List<Dependency> implementationsAtPriority = entry.getValue();
+            int priority = entry.getKey();
+            
+            if (implementationsAtPriority.size() == 1) {
+                bestImplementation = implementationsAtPriority.get(0);
+                log.log(Level.INFO, "✅ Selected {0} with unique priority {1}", 
+                        new Object[]{bestImplementation.getType().getSimpleName(), priority});
+                break;
+            } else {
+                // Multiple implementations with same priority - need deterministic selection
+                log.log(Level.WARNING, "⚠️ Found {0} implementations with same priority {1}, using first occurrence", 
+                        new Object[]{implementationsAtPriority.size(), priority});
+                
+                // Use the first occurrence to maintain consistency
+                bestImplementation = implementationsAtPriority.get(0);
+                log.log(Level.INFO, "✅ Selected {0} from {1} implementations with priority {2}", 
+                        new Object[]{bestImplementation.getType().getSimpleName(), implementationsAtPriority.size(), priority});
+                break;
+            }
+        }
+        
+        if (bestImplementation == null) {
+            // Fallback: select any available implementation
+            bestImplementation = implementations.iterator().next();
+            log.log(Level.INFO, "🔄 Fallback: Selected {0} as no @Primary found", 
+                    bestImplementation.getType().getSimpleName());
+        }
+        
+        return bestImplementation;
+    }
 }

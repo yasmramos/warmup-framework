@@ -207,6 +207,12 @@ public class CoreContainer implements IContainer {
     @SuppressWarnings("unchecked")
     private <T> T createInstance(Class<T> type, Dependency dependency) {
         try {
+            // ✅ NULL CHECK: Handle case where dependency is not registered
+            if (dependency == null) {
+                throw new IllegalArgumentException("No dependency registered for class: " + type.getName() + 
+                    ". Make sure the class is registered with container.register() or has @Component annotation.");
+            }
+            
             // 🚨 CIRCULAR DEPENDENCY PROTECTION: Skip JIT optimization for container types
             if (PROTECTED_CONTAINER_TYPES.contains(type)) {
                 log.log(Level.FINEST, "🛡️ Skipping JIT optimization for container type: {0}", type.getSimpleName());
@@ -376,6 +382,10 @@ public class CoreContainer implements IContainer {
     @Override
     @SuppressWarnings("unchecked")
     public <T> T getDependency(Class<T> type, Set<Class<?>> dependencyChain) throws Exception {
+        // ✅ Enhanced interface-to-implementation resolution for dependency injection
+        if (type.isInterface()) {
+            return dependencyRegistry.getBestImplementation(type);
+        }
         return (T) createInstance(type, dependencyRegistry.getDependencies().get(type));
     }
     

@@ -149,6 +149,12 @@ public class WarmupContainer implements IContainer {
      */
     @SuppressWarnings("unchecked")
     public <T> T get(Class<T> type) {
+        // Validate container state before resolving dependencies
+        if (isShutdown()) {
+            log.warning("Container is shutdown, rejecting dependency resolution for: " + type.getSimpleName());
+            throw new IllegalStateException("Container is shutdown, cannot resolve dependencies: " + type.getSimpleName());
+        }
+        
         // 🔍 [DEBUG] Add detailed logging for EventBus retrieval
         if (type == EventBus.class) {
             log.info("🔍 [DEBUG] WarmupContainer.get(EventBus) called - delegating to ContainerCoordinator");
@@ -711,8 +717,8 @@ public class WarmupContainer implements IContainer {
      * Get dependency metadata/state object for testing purposes
      */
     public Dependency getDependencyState(Class<?> type) {
-        // For testing purposes, return a simple dependency state object
-        return new Dependency(type, true);
+        // Return the real dependency from the registry to reflect actual state
+        return containerCoordinator.getCoreContainer().getDependencyRegistry().getDependency(type);
     }
     
     /**

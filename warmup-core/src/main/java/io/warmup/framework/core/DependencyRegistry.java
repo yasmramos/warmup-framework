@@ -1342,12 +1342,23 @@ public class DependencyRegistry {
                 new Object[]{profileCompatibleImplementations.size(), implementations.size(), MetadataRegistry.getSimpleName(interfaceType)});
         
         // 🚀 NATIVE: Use core MethodMetadata directly for @Primary/@Alternative resolution
-        Dependency bestDependency = PrimaryAlternativeResolver.resolveBestImplementationWithMethodMetadata(
-            interfaceType, 
-            profileCompatibleImplementations, 
-            container,
-            classToMethodMap
-        );
+        Dependency bestDependency;
+        if (container != null) {
+            bestDependency = PrimaryAlternativeResolver.resolveBestImplementationWithMethodMetadata(
+                interfaceType, 
+                profileCompatibleImplementations, 
+                container,
+                classToMethodMap
+            );
+        } else {
+            // ✅ FIX: Use activeProfiles directly when container is null (early initialization)
+            bestDependency = PrimaryAlternativeResolver.resolveBestImplementationWithProfiles(
+                interfaceType, 
+                profileCompatibleImplementations, 
+                activeProfiles,
+                classToMethodMap
+            );
+        }
         
         if (bestDependency == null) {
             throw new IllegalStateException("Failed to resolve best implementation for: " + MetadataRegistry.getClassName(interfaceType));

@@ -559,13 +559,12 @@ public class ContainerCoordinator {
      * 🚀 Shutdown container gracefully
      */
     public void shutdown() throws Exception {
-        log.info("🚀 Starting graceful shutdown...");
+        log.info("Starting graceful shutdown...");
         
-        // ✅ FIXED: Execute ShutdownManager shutdown to run destroy methods
+        // Execute ShutdownManager shutdown to run destroy methods
         if (coreContainer != null) {
             ShutdownManager shutdownManager = coreContainer.getShutdownManager();
             if (shutdownManager != null) {
-                log.info("🔄 Executing ShutdownManager shutdown for destroy methods...");
                 shutdownManager.shutdown();
             }
         }
@@ -573,10 +572,28 @@ public class ContainerCoordinator {
         // Execute shutdown phases
         startupManager.executeShutdown();
         
+        // Transition to SHUTDOWN state to prevent further dependency resolution
+        // Try both transitions to ensure shutdown state is reached
+        boolean transitionedToShuttingDown = stateManager.transitionToShuttingDown();
+        boolean transitionedToShutdown = stateManager.transitionToShutdown();
+        
+        // Force shutdown state if transitions failed
+        if (!stateManager.isShutdown()) {
+            log.warning("Normal shutdown transitions failed, forcing shutdown state");
+            try {
+                java.lang.reflect.Field field = stateManager.getClass().getDeclaredField("containerState");
+                field.setAccessible(true);
+                java.util.concurrent.atomic.AtomicInteger stateField = (java.util.concurrent.atomic.AtomicInteger) field.get(stateManager);
+                stateField.set(4); // Force to SHUTDOWN state
+            } catch (Exception e) {
+                log.log(java.util.logging.Level.WARNING, "Failed to force shutdown state", e);
+            }
+        }
+        
         // Clear caches
         clearPerformanceCaches();
         
-        log.info("✅ Container shutdown completed");
+        log.info("Container shutdown completed");
     }
     
     // === GETTERS FOR CORE COMPONENTS ===
