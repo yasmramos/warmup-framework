@@ -128,7 +128,6 @@ public class EventBusIntegrationTest {
         assertEquals(1, filteringListener.getProcessedCount());
         assertEquals(acceptedEvent, filteringListener.getLastProcessedEvent());
     }
-    }
 
     @Test
     @DisplayName("Test async event publishing")
@@ -145,7 +144,6 @@ public class EventBusIntegrationTest {
         // Then - Should complete within timeout
         assertTrue(latch.await(5, TimeUnit.SECONDS));
         assertEquals(1, asyncListener.getProcessedCount());
-    }
     }
 
     @Test
@@ -265,7 +263,6 @@ public class EventBusIntegrationTest {
     @Test
     @DisplayName("Test event priority handling")
     void testEventPriority() {
-("testEventPriority");
         // Given - Listeners with different priorities
         HighPriorityListener highPriority = new HighPriorityListener();
         LowPriorityListener lowPriority = new LowPriorityListener();
@@ -286,7 +283,6 @@ public class EventBusIntegrationTest {
         // Verify both listeners received the event
         assertEquals(1, highPriority.getProcessedCount());
         assertEquals(1, lowPriority.getProcessedCount());
-("testEventPriority");
     }
 
     // Test event classes
