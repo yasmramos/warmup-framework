@@ -971,6 +971,7 @@ public class WarmupContainer implements IContainer {
      * 🎯 Start container (Legacy compatibility)
      */
     public void start() throws Exception {
+        containerCoordinator.getCoreContainer().getDependencyRegistry().setContainer(this);
         executePhasedStartup();
     }
     

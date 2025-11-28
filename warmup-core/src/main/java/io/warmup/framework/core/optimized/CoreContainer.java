@@ -168,6 +168,9 @@ public class CoreContainer implements IContainer {
                         "🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(" + type.getName() + ") for interface"
                     );
                     return dependencyRegistry.getBestImplementation(type);
+                } catch (IllegalStateException e) {
+                    // Re-throw IllegalStateException as-is (e.g., multiple @Primary beans with same priority)
+                    throw e;
                 } catch (Exception e) {
                     java.util.logging.Logger.getLogger(CoreContainer.class.getName()).warning(
                         "❌ [DEBUG] getBestImplementation failed for " + type.getName() + ": " + e.getMessage()
