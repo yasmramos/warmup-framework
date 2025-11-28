@@ -32,7 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📚 Professional documentation and examples
 
 ### Core Features
-- **WarmupContainer**: Main IoC container implementation
+- **Warmup**: Main public API with fluent configuration and static factory methods
+- **WarmupContainer**: Internal IoC container implementation
 - **DependencyRegistry**: O(1) bean registry with intelligent caching
 - **PrimaryAlternativeResolver**: Smart bean selection and priority management
 - **ScopeManager**: Advanced scope management for request/session beans
@@ -67,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✅ Resolved dependency injection conflicts with @Primary annotations
 - ✅ Enhanced exception handling for semantic conflict resolution
 - ✅ Improved container initialization sequence
+- ✅ Updated public API documentation to reflect Warmup as main entry point
 
 ### Bug Fixes
 - 🐛 **CRITICAL**: Fixed primary bean detection in dependency resolution
@@ -74,6 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🐛 Fixed IllegalStateException handling for multiple @Primary beans
 - 🐛 Corrected DependencyRegistry container reference initialization
 - 🐛 Enhanced exception messages for better debugging
+- 🐛 **API**: Corrected public API documentation to use Warmup class as entry point
 
 ### Security Features
 - ✅ ClassLoader isolation and secure management
@@ -82,11 +85,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✅ Dependency sandboxing for isolated resolution
 
 ### Documentation
-- ✅ Comprehensive README with examples and benchmarks
+- ✅ Comprehensive README with examples using Warmup API
 - ✅ API documentation with detailed method descriptions
 - ✅ Performance comparison charts and metrics
 - ✅ Integration guides for popular frameworks
 - ✅ Migration guides from other DI containers
+- ✅ Updated examples to reflect public API structure
 
 ## Development Milestones
 

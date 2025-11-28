@@ -70,7 +70,7 @@ Add to your `pom.xml`:
 ### Basic Usage
 
 ```java
-import io.warmup.framework.core.WarmupContainer;
+import io.warmup.framework.core.Warmup;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
@@ -90,16 +90,19 @@ public class GreetingServiceImpl implements GreetingService {
 // Configure your application
 public class Application {
     public static void main(String[] args) throws Exception {
-        WarmupContainer container = new WarmupContainer();
-        container.start();
+        // Use Warmup as the main entry point
+        Warmup warmup = Warmup.create()
+            .scanPackages("com.company.application")
+            .withProfile("development")
+            .start();
         
-        // Resolve dependencies
-        GreetingService service = container.get(GreetingService.class);
+        // Resolve dependencies through the fluent API
+        GreetingService service = warmup.getBean(GreetingService.class);
         String result = service.greet("World");
         
         System.out.println(result); // Output: Hello, World!
         
-        container.shutdown();
+        warmup.stop();
     }
 }
 ```
@@ -135,6 +138,15 @@ public class FileLogger implements Logger {
 @Singleton
 public class DatabaseLogger implements Logger {
     // Production logging
+}
+
+// Application configuration with Warmup
+public class Application {
+    public static void main(String[] args) {
+        Warmup warmup = Warmup.runWithProfile("production");
+        Logger logger = warmup.getBean(Logger.class);
+        logger.log("Application started");
+    }
 }
 ```
 
@@ -178,6 +190,19 @@ public class Microservice {
         // Ultra-fast startup for microservices
     }
 }
+
+// Microservice bootstrap
+public class MicroserviceApplication {
+    public static void main(String[] args) {
+        Warmup warmup = Warmup.create()
+            .scanPackages("com.company.microservice")
+            .withProfile("production")
+            .start();
+            
+        Microservice service = warmup.getBean(Microservice.class);
+        service.start();
+    }
+}
 ```
 
 ### 2. **High-Performance APIs**
@@ -190,6 +215,15 @@ public class HighPerformanceAPI {
     
     @Inject
     private ComputationService computation;
+}
+
+// API bootstrap
+public class APIApplication {
+    public static void main(String[] args) {
+        Warmup warmup = Warmup.quickStart();
+        HighPerformanceAPI api = warmup.getBean(HighPerformanceAPI.class);
+        // Ready for high-frequency requests
+    }
 }
 ```
 
@@ -210,6 +244,18 @@ public class ProductionConfig {
     @Bean
     public DatabaseConfig prodDatabase() {
         return new DatabaseConfig("prod-db.company.com", 5432);
+    }
+}
+
+// Configuration bootstrap
+public class ConfigurationApplication {
+    public static void main(String[] args) {
+        Warmup warmup = Warmup.runWithProfile(
+            System.getProperty("spring.profiles.active", "development")
+        );
+        
+        DatabaseConfig dbConfig = warmup.getBean(DatabaseConfig.class);
+        System.out.println("Connected to: " + dbConfig.getUrl());
     }
 }
 ```
@@ -240,30 +286,38 @@ cat warmup-benchmark/benchmark-results.json
 ### Container Configuration
 
 ```java
-// Basic configuration
-WarmupContainer container = new WarmupContainer();
-container.configure()
-    .enablePerformanceMetrics(true)
-    .setCacheSize(1000)
-    .enableJITCompilation(true);
+// Quick start with minimal configuration
+Warmup warmup = Warmup.quickStart();
 
-// Advanced configuration
-container.configure()
-    .addProfile("development")
-    .addPackageToScan("com.company.application")
-    .enableDebugMode(true)
-    .setStartupTimeout(Duration.ofSeconds(30));
+// Fluent API for advanced configuration
+WarmupContainer container = Warmup.create()
+    .scanPackages("com.company.application")
+    .withProfile("development")
+    .withProperty("db.url", "jdbc:h2:mem:test")
+    .withAutoScan(true)
+    .withLazyInit(false)
+    .start();
+
+// Multiple profiles and properties
+Warmup warmup = Warmup.create()
+    .withProfiles("development", "test")
+    .withProperties(Map.of(
+        "db.url", "jdbc:h2:mem:test",
+        "cache.enabled", "true",
+        "log.level", "DEBUG"
+    ))
+    .start();
 ```
 
 ### Property-Based Configuration
 
 ```properties
 # application.properties
-warmup.container.profile=development
-warmup.container.cache.size=1000
-warmup.container.jit.enabled=true
-warmup.container.metrics.enabled=true
-warmup.container.debug.mode=false
+warmup.profile=development
+warmup.cache.enabled=true
+warmup.metrics.enabled=true
+warmup.auto.scan=true
+warmup.lazy.init=false
 ```
 
 ## 🧪 Testing
@@ -286,7 +340,7 @@ class MyServiceTest {
 // Mock Framework Integration
 @Test
 void testWithMocks() {
-    try (MockContext context = WarmupContainer.mock()) {
+    try (MockContext context = Warmup.testMode()) {
         MyService service = context.mock(MyService.class);
         when(service.process("test")).thenReturn("mocked");
         
@@ -304,6 +358,8 @@ void testWithMocks() {
 @EnableWarmupContainer
 public class Application {
     public static void main(String[] args) {
+        // Use Warmup for faster startup
+        Warmup warmup = Warmup.quickStart();
         SpringApplication.run(Application.class, args);
     }
 }
@@ -434,3 +490,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Built with ❤️ for the Java community**
+
+## Quick Start Commands
+
+```bash
+# Clone and build
+git clone https://github.com/your-org/warmup-framework.git
+cd warmup-framework
+mvn clean install
+
+# Run examples
+cd warmup-examples
+mvn spring-boot:run
+
+# Run benchmarks
+mvn test -Pbenchmark
+
+# Quick API test
+java -cp "warmup-core/target/warmup-core-1.0-SNAPSHOT.jar" \
+  io.warmup.framework.examples.QuickStartExample
+```
