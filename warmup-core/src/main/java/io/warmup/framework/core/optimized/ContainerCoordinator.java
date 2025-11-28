@@ -653,7 +653,8 @@ public class ContainerCoordinator {
     public EventBus getEventBus() {
         try {
             // Ensure EventBus is registered in dependency registry
-            EventBusResolver.ensureEventBusRegistered(coreContainer.getDependencyRegistry(), null);
+            // CRITICAL FIX: Pass 'this' instead of null to allow proper EventBus initialization
+            EventBusResolver.ensureEventBusRegistered(coreContainer.getDependencyRegistry(), this);
             
             // Get EventBus from dependency registry (now registered by EventBusResolver)
             EventBus eventBus = coreContainer.getDependencyRegistry().getBean(EventBus.class);
