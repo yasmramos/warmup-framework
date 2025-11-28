@@ -33,7 +33,7 @@ public class BeanValidationTest {
     
     @BeforeEach
     void setUp() {
-        container = null;
+        warmup = Warmup.create().start();
     }
     
     @AfterEach

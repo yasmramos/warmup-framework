@@ -123,7 +123,7 @@ public class PrimaryAlternativeTest {
         
         TestInterface service = null;
         try {
-            service = container.getBestImplementation(TestInterface.class);
+            service = warmup.getBean(TestInterface.class);
         } catch (Exception e) {
             System.out.println("   ⚠️  Error obteniendo implementación: " + e.getMessage());
             return;
@@ -143,7 +143,7 @@ public class PrimaryAlternativeTest {
         
         TestInterface service = null;
         try {
-            service = container.getBestImplementation(TestInterface.class);
+            service = warmup.getBean(TestInterface.class);
         } catch (Exception e) {
             System.out.println("   ⚠️  Error obteniendo implementación: " + e.getMessage());
             return;
@@ -164,7 +164,7 @@ public class PrimaryAlternativeTest {
         
         TestInterface service = null;
         try {
-            service = container.getBestImplementation(TestInterface.class);
+            service = warmup.getBean(TestInterface.class);
         } catch (Exception e) {
             System.out.println("   ⚠️  Error obteniendo implementación: " + e.getMessage());
             return;
@@ -185,7 +185,7 @@ public class PrimaryAlternativeTest {
         // Alternative beans should be excluded by default
         TestInterface service = null;
         try {
-            service = container.getBestImplementation(TestInterface.class);
+            service = warmup.getBean(TestInterface.class);
         } catch (Exception e) {
             System.out.println("   ⚠️  Error obteniendo implementación: " + e.getMessage());
             return;
@@ -204,10 +204,10 @@ public class PrimaryAlternativeTest {
         warmup.registerBean(PrimaryImplementation.class, new PrimaryImplementation());
         warmup.registerBean(Consumer.class, new Consumer());
         
-        // Start container to initialize dependencies
-        container.start();
+        // Start warmup to initialize dependencies
+        warmup = Warmup.create().start();
         
-        Consumer consumer = container.get(Consumer.class);
+        Consumer consumer = warmup.getBean(Consumer.class);
         assertNotNull(consumer);
         
         TestInterface service = consumer.getTestService();
@@ -228,11 +228,11 @@ public class PrimaryAlternativeTest {
         // Add another bean with same highest priority as HighPriorityPrimary
         warmup.registerBean(AnotherHighPriorityPrimary.class, new AnotherHighPriorityPrimary()); // This should cause conflict
         
-        // Start container to initialize dependencies
-        container.start();
+        // Start warmup to initialize dependencies
+        warmup = Warmup.create().start();
         
         assertThrows(IllegalStateException.class, () -> {
-            container.getBestImplementation(TestInterface.class);
+            warmup.getBean(TestInterface.class);
         });
         
         System.out.println("✅ @Primary conflict resolution test passed");
@@ -250,11 +250,11 @@ public class PrimaryAlternativeTest {
             warmup.registerBean(DevAlternative.class, new DevAlternative());
             warmup.registerBean(Consumer.class, new Consumer());
             
-            // Start container to initialize dependencies
-            container.start();
+            // Start warmup to initialize dependencies
+            warmup = Warmup.create().start();
             
             // Without dev profile, simple should be selected
-            Consumer consumer = container.get(Consumer.class);
+            Consumer consumer = warmup.getBean(Consumer.class);
             TestInterface service = consumer.getTestService();
             assertEquals("simple", service.getMessage());
             

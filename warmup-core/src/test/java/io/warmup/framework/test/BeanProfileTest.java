@@ -32,8 +32,8 @@ public class BeanProfileTest {
     
     @BeforeEach
     void setUp() {
-        // Clean up any existing container
-        container = null;
+        // Clean up any existing warmup instance
+        warmup = Warmup.create().start();
     }
     
     @AfterEach
