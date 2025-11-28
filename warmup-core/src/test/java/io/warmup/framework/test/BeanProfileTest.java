@@ -91,7 +91,7 @@ public class BeanProfileTest {
         System.out.println("🧪 Test: Bean with non-matching @Profile should NOT be registered");
         
         // Create container with staging profile (doesn't match any @Profile)
-        container = new WarmupContainer(null, "staging");
+        container = new WarmupContainer(null, new String[]{"staging"});
         
         // Register the configuration class
         TestConfig config = new TestConfig();
@@ -111,7 +111,7 @@ public class BeanProfileTest {
         System.out.println("🧪 Test: Bean with multiple @Profile values should register if any matches");
         
         // Create container with test profile
-        container = new WarmupContainer(null, "test");
+        container = new WarmupContainer(null, new String[]{"test"});
         
         // Register the configuration class
         TestConfig config = new TestConfig();
@@ -139,7 +139,7 @@ public class BeanProfileTest {
         System.out.println("🧪 Test: Bean with multiple @Profile values should NOT register if none match");
         
         // Create container with prod profile (not matching dev or test)
-        container = new WarmupContainer(null, "prod");
+        container = new WarmupContainer(null, new String[]{"prod"});
         
         // Register the configuration class
         TestConfig config = new TestConfig();
@@ -194,43 +194,28 @@ public class BeanProfileTest {
     void testBeanWithDefaultProfile_InNonDefaultContainer() throws Exception {
         System.out.println("🧪 Test: Bean with @Profile(\"default\") should NOT register in non-default container");
         
-        // Create container with dev profile
-        container = new WarmupContainer(null, "dev");
+        // Create container with dev profile and register a configuration that has ONLY @Profile("default") beans
+        container = new WarmupContainer(null, new String[]{"dev"});
         
-        // Register the configuration class
-        TestConfig config = new TestConfig();
+        // Register the configuration class with ONLY @Profile("default") beans
+        DefaultOnlyConfig defaultOnlyConfig = new DefaultOnlyConfig();
         try {
-            container.register(TestConfig.class, true);
+            container.register(DefaultOnlyConfig.class, true);
         } catch (Exception e) {
-            throw new RuntimeException("Error registering TestConfig", e);
+            throw new RuntimeException("Error registering DefaultOnlyConfig", e);
         }
         initializeContainer();
-        
-        // When using a container with "dev" profile, the beans with @Profile("default") 
-        // should not be registered, so calling get(SimpleService.class) should find
-        // the beans that DO match (devService and multiProfileService), but we want to verify
-        // that the @Profile("default") beans are NOT registered.
-        // 
-        // The way to verify this is to create a configuration where ONLY @Profile("default") 
-        // beans exist, so if any bean is found, it means @Profile("default") is being incorrectly registered.
-        
-        // Create a container with a different configuration that has ONLY @Profile("default") beans
-        WarmupContainer defaultOnlyContainer = new WarmupContainer(null, "dev");
-        DefaultOnlyConfig defaultOnlyConfig = new DefaultOnlyConfig();
-        defaultOnlyContainer.register(DefaultOnlyConfig.class, true);
-        defaultOnlyContainer.initializeAllComponents();
         
         // Should NOT be able to get any beans since only @Profile("default") beans exist in DefaultOnlyConfig
         // and the container has "dev" profile
         assertThrows(Exception.class, () -> {
             try {
-                defaultOnlyContainer.get(SimpleService.class);
+                container.get(SimpleService.class);
             } catch (Exception e) {
                 throw new RuntimeException("Bean retrieval failed as expected", e);
             }
         }, "Bean with @Profile(\"default\") should not register in non-default container");
         
-        defaultOnlyContainer.shutdown();
         System.out.println("✅ Test passed: Bean with default profile not registered in dev container");
     }
     

@@ -42,14 +42,15 @@ public class ContainerMetrics {
     }
 
     public int getDependencyCount() {
-        return container.getDependencies().size();
+        return container != null ? container.getDependencies().size() : 0;
     }
 
     public int getAspectCount() {
-        return container.getAspects().size();
+        return container != null ? container.getAspects().size() : 0;
     }
 
     public int getActiveInstances() {
+        if (container == null) return 0;
         Set<?> dependencies = (Set<?>) container.getDependencies();
         return dependencies != null ? dependencies.size() : 0;
     }

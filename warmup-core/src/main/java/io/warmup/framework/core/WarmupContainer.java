@@ -105,7 +105,14 @@ public class WarmupContainer implements IContainer {
      * 🚀 Constructor with profiles (Legacy support)
      */
     public WarmupContainer(String defaultProfile, String[] profiles) {
-        this();
+        // ✅ FIX: Pass profiles to ContainerCoordinator
+        this.containerCoordinator = new ContainerCoordinator(profiles);
+        
+        // ✅ GET COMPONENTES ESPECIALIZADOS para compatibilidad legacy
+        this.cacheManager = containerCoordinator.getCoreContainer().getCacheManager();
+        this.metricsManager = containerCoordinator.getCoreContainer().getMetricsManager();
+        this.healthCheckManager = containerCoordinator.getCoreContainer().getHealthCheckManager();
+        
         log.info("🚀 NativeWarmupContainerOptimized initialized with profiles: " + Arrays.toString(profiles));
     }
     
@@ -113,7 +120,14 @@ public class WarmupContainer implements IContainer {
      * 🚀 Constructor with profiles and phased startup flag (Legacy support)
      */
     public WarmupContainer(String defaultProfile, String[] profiles, boolean enablePhasedStartup) {
-        this();
+        // ✅ FIX: Pass profiles to ContainerCoordinator
+        this.containerCoordinator = new ContainerCoordinator(profiles);
+        
+        // ✅ GET COMPONENTES ESPECIALIZADOS para compatibilidad legacy
+        this.cacheManager = containerCoordinator.getCoreContainer().getCacheManager();
+        this.metricsManager = containerCoordinator.getCoreContainer().getMetricsManager();
+        this.healthCheckManager = containerCoordinator.getCoreContainer().getHealthCheckManager();
+        
         log.info("🚀 NativeWarmupContainerOptimized initialized with profiles: " + Arrays.toString(profiles) + ", phased startup: " + enablePhasedStartup);
         if (enablePhasedStartup) {
             // Configure phased startup if enabled
@@ -150,6 +164,12 @@ public class WarmupContainer implements IContainer {
             } else {
                 log.warning("❌ [DEBUG] WarmupContainer.get(EventBus) returning NULL");
             }
+        }
+        
+        // Validate bean existence - throw exception if bean not found
+        if (result == null) {
+            throw new RuntimeException("Bean not found: " + type.getName() + 
+                ". This could be due to profile mismatch or bean not being registered.");
         }
         
         return result;
@@ -466,14 +486,14 @@ public class WarmupContainer implements IContainer {
      * 🎯 Get session scoped bean (stub for web compatibility)
      */
     public <T> T getSessionScopedBean(Class<T> type, String sessionId) {
-        return getBean(type);
+        return getWebScopeContext().getSessionScopedBean(type, sessionId);
     }
     
     /**
      * 🎯 Get request scoped bean (stub for web compatibility)
      */
     public <T> T getRequestScopedBean(Class<T> type) {
-        return getBean(type);
+        return getWebScopeContext().getRequestScopedBean(type);
     }
     
     /**
@@ -1186,6 +1206,10 @@ public class WarmupContainer implements IContainer {
                 
             } catch (Exception e) {
                 log.log(Level.SEVERE, "❌ Failed to process @Configuration classes", e);
+                // Re-throw WarmupException as-is, wrap others in RuntimeException
+                if (e instanceof io.warmup.framework.exception.WarmupException) {
+                    throw e;
+                }
                 throw new RuntimeException("Failed to process @Configuration classes", e);
             }
         }

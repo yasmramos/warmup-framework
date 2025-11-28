@@ -57,18 +57,58 @@ public class ContainerCoordinator {
     private final PerformanceOptimizer performanceOptimizer;
     private final StateManager stateManager;
     
+    // ✅ PROFILES
+    private final String[] profiles;
+    
     // ✅ PERFORMANCE METRICS
     private final AtomicLong totalRequests = new AtomicLong(0);
     private final AtomicLong successfulRequests = new AtomicLong(0);
     private final AtomicLong failedRequests = new AtomicLong(0);
     
     public ContainerCoordinator() {
+        // Set default profiles
+        this.profiles = new String[]{"default"};
+        
         // Initialize core components in correct order
         this.coreContainer = initializeCoreContainer();
         this.jitEngine = initializeJITEngine();
         this.startupManager = initializeStartupManager();
         this.performanceOptimizer = initializePerformanceOptimizer();
         this.stateManager = initializeStateManager();
+        
+        // Ensure EventBus is registered early for reliable access
+        try {
+            EventBusResolver.ensureEventBusRegistered(coreContainer.getDependencyRegistry(), null);
+            log.log(Level.FINE, "✅ EventBus registered during ContainerCoordinator initialization");
+        } catch (Exception e) {
+            log.log(Level.WARNING, "⚠️ EventBus registration failed during initialization: {0}", e.getMessage());
+            // Continue initialization - EventBus will be created lazily if needed
+        }
+    }
+    
+    /**
+     * 🚀 Constructor with profiles support
+     * @param profiles profiles to initialize with
+     */
+    public ContainerCoordinator(String[] profiles) {
+        // Store profiles for later use
+        this.profiles = profiles != null ? profiles : new String[]{"default"};
+        
+        // Initialize core components with specific profiles
+        this.coreContainer = initializeCoreContainer();
+        this.jitEngine = initializeJITEngine();
+        this.startupManager = initializeStartupManager();
+        this.performanceOptimizer = initializePerformanceOptimizer();
+        this.stateManager = initializeStateManager();
+        
+        // Ensure EventBus is registered early for reliable access
+        try {
+            EventBusResolver.ensureEventBusRegistered(coreContainer.getDependencyRegistry(), null);
+            log.log(Level.FINE, "✅ EventBus registered during ContainerCoordinator initialization with profiles: " + Arrays.toString(profiles));
+        } catch (Exception e) {
+            log.log(Level.WARNING, "⚠️ EventBus registration failed during initialization: {0}", e.getMessage());
+            // Continue initialization - EventBus will be created lazily if needed
+        }
         
         // Ensure EventBus is registered early for reliable access
         try {
@@ -86,8 +126,8 @@ public class ContainerCoordinator {
      * 🚀 Initialize CoreContainer with all managers
      */
     private CoreContainer initializeCoreContainer() {
-        // Create ProfileManager first to get active profiles
-        ProfileManager profileManager = ManagerFactory.getManager(ProfileManager.class);
+        // Create ProfileManager first to get active profiles - FIXED: Pass stored profiles
+        ProfileManager profileManager = ManagerFactory.getManager(ProfileManager.class, null, this.profiles);
         
         // Get active profiles from ProfileManager to fix EventBus registration
         Set<String> activeProfiles = profileManager.getActiveProfiles();
