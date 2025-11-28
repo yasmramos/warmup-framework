@@ -1,6 +1,7 @@
 package io.warmup.framework.event;
 
 import io.warmup.framework.core.DependencyRegistry;
+import io.warmup.framework.core.Dependency;
 import io.warmup.framework.core.WarmupContainer;
 
 import java.util.*;
@@ -64,30 +65,55 @@ public class EventBusResolver {
      * @param container WarmupContainer
      */
     public static void ensureEventBusRegistered(DependencyRegistry dependencyRegistry, WarmupContainer container) {
+        System.out.println("🔍 [DEBUG] ensureEventBusRegistered() INICIADO");
+        System.out.println("🔍 [DEBUG] - dependencyRegistry: " + (dependencyRegistry != null ? "NO_NULL" : "NULL"));
+        System.out.println("🔍 [DEBUG] - container: " + (container != null ? "NO_NULL" : "NULL"));
+        
         try {
-            // Check if already registered (O(1))
-            if (dependencyRegistry.getBean(EventBus.class) != null) {
+            // ✅ FIX: Check if already registered directly in dependencies map (avoid getBean() which requires container)
+            System.out.println("🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...");
+            Dependency existingDependency = dependencyRegistry.getDependency(EventBus.class);
+            System.out.println("🔍 [DEBUG] getDependency(EventBus.class) resultado: " + (existingDependency != null ? "EXISTS" : "NULL"));
+            
+            if (existingDependency != null) {
+                System.out.println("🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...");
                 return; // Already registered
             }
             
             // Resolve EventBus (creates if needed)
+            System.out.println("🔍 [DEBUG] Resolviendo EventBus...");
             EventBus eventBus = resolveEventBus(dependencyRegistry, container);
+            System.out.println("🔍 [DEBUG] EventBus resuelto: " + (eventBus != null ? "NO_NULL" : "NULL"));
+            
+            if (eventBus == null) {
+                System.out.println("❌ [DEBUG] EventBus resuelto es NULL!");
+                return;
+            }
             
             // Direct registration (no reflection)
+            System.out.println("🔍 [DEBUG] Registrando EventBus en DependencyRegistry...");
             dependencyRegistry.register(EventBus.class, eventBus);
+            System.out.println("🔍 [DEBUG] Register EventBus completado sin excepción aparente");
             
             // Also register EventPublisher
+            System.out.println("🔍 [DEBUG] Registrando EventPublisher...");
             EventPublisher eventPublisher = new EventPublisher(eventBus);
             dependencyRegistry.register(EventPublisher.class, eventPublisher);
+            System.out.println("🔍 [DEBUG] Register EventPublisher completado");
             
             // Cache registration for fast lookup
             beanCache.put(EventBus.class, eventBus);
             beanCache.put(EventPublisher.class, eventPublisher);
             
+            System.out.println("✅ [DEBUG] EventBus y EventPublisher registrados exitosamente");
             log.log(Level.FINEST, "✅ EventBus y EventPublisher registrados exitosamente");
             
         } catch (Exception e) {
+            System.out.println("❌ [DEBUG] Excepción capturada en ensureEventBusRegistered: " + e.getClass().getName() + " - " + e.getMessage());
+            System.out.println("❌ [DEBUG] Stack trace:");
+            e.printStackTrace();
             log.log(Level.WARNING, "⚠️ Error registrando EventBus: {0}", e.getMessage());
+            log.log(Level.WARNING, "⚠️ Stack trace completo:", e);
             // Continue with minimal setup
         }
     }
@@ -119,7 +145,9 @@ public class EventBusResolver {
     private static EventBus createEventBus(DependencyRegistry dependencyRegistry, WarmupContainer container) {
         try {
             // Create EventBus con optimal configuration
+            System.out.println("🔧 [DEBUG] Creando nueva instancia de EventBus...");
             EventBus eventBus = new EventBus();
+            System.out.println("🔧 [DEBUG] EventBus creado: " + (eventBus != null ? "NO_NULL" : "NULL"));
             
             // Register essential event listeners si existen
             registerEssentialEventListeners(eventBus, dependencyRegistry, container);

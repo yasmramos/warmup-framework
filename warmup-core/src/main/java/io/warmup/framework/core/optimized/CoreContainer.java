@@ -122,9 +122,37 @@ public class CoreContainer implements IContainer {
         long startTime = System.nanoTime();
         boolean success = false;
         
+        // 🔍 [DEBUG] Add detailed logging for EventBus retrieval
+        if (type == EventBus.class) {
+            java.util.logging.Logger.getLogger(CoreContainer.class.getName()).info(
+                "🔍 [DEBUG] CoreContainer.getInstance(EventBus) called - checking dependency registry"
+            );
+        }
+        
         try {
             // ✅ O(1) Singleton cache check
             Dependency dependency = dependencyRegistry.getDependencies().get(type);
+            
+            // 🔍 [DEBUG] Log dependency check result
+            if (type == EventBus.class) {
+                java.util.logging.Logger.getLogger(CoreContainer.class.getName()).info(
+                    "🔍 [DEBUG] dependencyRegistry.getDependencies().get(EventBus.class) = " + 
+                    (dependency != null ? dependency.toString() : "NULL")
+                );
+                if (dependency != null) {
+                    java.util.logging.Logger.getLogger(CoreContainer.class.getName()).info(
+                        "🔍 [DEBUG] isInstanceCreated = " + dependency.isInstanceCreated() + 
+                        ", shouldCacheInstance = " + dependency.shouldCacheInstance()
+                    );
+                    if (dependency.isInstanceCreated()) {
+                        Object cachedInstance = dependency.getCachedInstance();
+                        java.util.logging.Logger.getLogger(CoreContainer.class.getName()).info(
+                            "🔍 [DEBUG] getCachedInstance() = " + 
+                            (cachedInstance != null ? cachedInstance.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(cachedInstance)) : "NULL")
+                        );
+                    }
+                }
+            }
             if (dependency != null && dependency.isInstanceCreated() && dependency.shouldCacheInstance()) {
                 Object cachedInstance = dependency.getCachedInstance();
                 if (cachedInstance != null) {

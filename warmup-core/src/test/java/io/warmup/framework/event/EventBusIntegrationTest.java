@@ -3,6 +3,7 @@ package io.warmup.framework.event;
 import io.warmup.framework.annotation.Component;
 import io.warmup.framework.core.WarmupContainer;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -42,6 +43,21 @@ public class EventBusIntegrationTest {
         counterListener = new EventCounterListener();
     }
 
+    @AfterEach
+    void tearDown() throws Exception {
+        // Clean up all listeners after each test to ensure test isolation
+        if (eventBus != null) {
+            eventBus.clearAllListeners();
+        }
+        
+        // Clean up the container
+        if (container != null) {
+            container.shutdown();
+        }
+    }
+
+
+
     @Test
     @DisplayName("Test basic event publishing and listening")
     void testBasicEventPublishing() {
@@ -67,6 +83,7 @@ public class EventBusIntegrationTest {
     @Test
     @DisplayName("Test event filtering by event type")
     void testEventTypeFiltering() {
+
         // Given - Subscribe different listeners to different event types
         eventBus.subscribe(TestEvent.class, event -> listener1.onEvent(event));
         eventBus.subscribe(OtherTestEvent.class, event -> listener2.onEvent(event));
@@ -86,11 +103,13 @@ public class EventBusIntegrationTest {
         assertEquals(1, listener2.getReceivedEvents().size()); // Only OtherTestEvent
         assertEquals(testEvent, listener1.getReceivedEvents().get(0));
         assertEquals(otherEvent, listener2.getReceivedEvents().get(0));
+
     }
 
     @Test
     @DisplayName("Test listener filtering with canHandle method")
     void testListenerFiltering() {
+
         // Given - Subscribe filtering listener
         filteringListener.setAcceptedValue(42);
         eventBus.subscribe(TestEvent.class, event -> filteringListener.onEvent(event));
@@ -109,6 +128,7 @@ public class EventBusIntegrationTest {
         assertEquals(1, filteringListener.getProcessedCount());
         assertEquals(acceptedEvent, filteringListener.getLastProcessedEvent());
     }
+    }
 
     @Test
     @DisplayName("Test async event publishing")
@@ -126,10 +146,12 @@ public class EventBusIntegrationTest {
         assertTrue(latch.await(5, TimeUnit.SECONDS));
         assertEquals(1, asyncListener.getProcessedCount());
     }
+    }
 
     @Test
     @DisplayName("Test multiple concurrent event publishing")
     void testConcurrentEventPublishing() throws InterruptedException {
+
         // Given - Multiple listeners and event counter
         eventBus.subscribe(TestEvent.class, event -> listener1.onEvent(event));
         eventBus.subscribe(TestEvent.class, event -> listener2.onEvent(event));
@@ -160,13 +182,17 @@ public class EventBusIntegrationTest {
         
         assertEquals(eventCount, listener1.getReceivedEvents().size());
         assertEquals(eventCount, listener2.getReceivedEvents().size());
+
     }
 
     @Test
     @DisplayName("Test event unsubscription")
     void testEventUnsubscription() {
+
         // Given - Subscribe and then unsubscribe
+
         eventBus.subscribe(TestEvent.class, event -> listener1.onEvent(event));
+
         eventBus.subscribe(TestEvent.class, event -> listener2.onEvent(event));
         
         // When - Unsubscribe one listener
@@ -182,11 +208,13 @@ public class EventBusIntegrationTest {
         
         assertEquals(0, listener1.getReceivedEvents().size()); // Unsubscribed
         assertEquals(1, listener2.getReceivedEvents().size()); // Still subscribed
+
     }
 
     @Test
     @DisplayName("Test dead letter queue for failed events")
     void testDeadLetterQueue() {
+
         // Given - Subscribe failing listener
         FailingEventListener failingListener = new FailingEventListener();
         eventBus.subscribe(TestEvent.class, event -> failingListener.onEvent(event));
@@ -206,11 +234,13 @@ public class EventBusIntegrationTest {
         List<DeadLetterEvent> deadLetters = eventBus.getDeadLetterEvents();
         // This assertion may need adjustment based on actual implementation
         // assertTrue(deadLetters.size() > 0);
+
     }
 
     @Test
     @DisplayName("Test event statistics tracking")
     void testEventStatistics() {
+
         // Given - Event with statistics tracking
         eventBus.subscribe(TestEvent.class, event -> listener1.onEvent(event));
 
@@ -229,11 +259,13 @@ public class EventBusIntegrationTest {
         assertNotNull(stats);
         assertTrue(stats.getPublishedCount() >= 5);
         assertTrue(stats.getProcessedCount() >= 0);
+
     }
 
     @Test
     @DisplayName("Test event priority handling")
     void testEventPriority() {
+("testEventPriority");
         // Given - Listeners with different priorities
         HighPriorityListener highPriority = new HighPriorityListener();
         LowPriorityListener lowPriority = new LowPriorityListener();
@@ -254,6 +286,7 @@ public class EventBusIntegrationTest {
         // Verify both listeners received the event
         assertEquals(1, highPriority.getProcessedCount());
         assertEquals(1, lowPriority.getProcessedCount());
+("testEventPriority");
     }
 
     // Test event classes

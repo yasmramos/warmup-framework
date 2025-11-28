@@ -5,6 +5,7 @@ import io.warmup.framework.annotation.Qualifier;
 import io.warmup.framework.annotation.Value;
 import io.warmup.framework.config.PropertySource;
 import io.warmup.framework.asm.AsmCoreUtils;
+import io.warmup.framework.event.EventBus;
 import io.warmup.framework.metadata.MetadataRegistry;
 import io.warmup.framework.metadata.MethodMetadata;
 import io.warmup.framework.core.metadata.ClassMetadata;
@@ -224,12 +225,20 @@ public class DependencyRegistry {
      * @throws IllegalArgumentException if the instance is null
      */
     public <T> void register(Class<T> type, T instance) {
+        System.out.println("🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: " + 
+                          (type != null ? type.getName() : "NULL_TYPE") + 
+                          " con instancia: " + (instance != null ? instance.getClass().getName() : "NULL_INSTANCE"));
+        
         if (instance == null) {
+            System.out.println("❌ [DEBUG] Instance es NULL - lanzando IllegalArgumentException");
             throw new IllegalArgumentException("Instance cannot be null");
         }
         
         // ✅ CRITICAL: Validate @Profile annotation before registration
+        System.out.println("🔍 [DEBUG] Obteniendo @Profile annotation para: " + type.getName());
         io.warmup.framework.annotation.Profile profileAnnotation = AsmCoreUtils.getAnnotationProgressive(type, io.warmup.framework.annotation.Profile.class);
+        System.out.println("🔍 [DEBUG] @Profile annotation resultado: " + (profileAnnotation != null ? "ENCONTRADO" : "NULL"));
+        
         if (profileAnnotation != null) {
             boolean profileMatch = false;
             for (String profile : profileAnnotation.value()) {
@@ -239,39 +248,69 @@ public class DependencyRegistry {
                 }
             }
             
+            System.out.println("🔍 [DEBUG] @Profile value: " + Arrays.toString(profileAnnotation.value()));
+            System.out.println("🔍 [DEBUG] Active profiles: " + activeProfiles);
+            System.out.println("🔍 [DEBUG] Profile match: " + profileMatch);
+            
             if (!profileMatch) {
-                System.out.println("❌ [DEBUG] Bloqueando registro directo de " + MetadataRegistry.getSimpleName(type) + " - perfil mismatch. Requerido: " + Arrays.toString(profileAnnotation.value()) + ", Activos: " + activeProfiles);
+                System.out.println("❌ [DEBUG] PERFIL MISMATCH - Bloqueando registro directo de " + MetadataRegistry.getSimpleName(type) + " - perfil mismatch. Requerido: " + Arrays.toString(profileAnnotation.value()) + ", Activos: " + activeProfiles);
                 log.log(Level.INFO, "⏭️ Skipping direct registration of {0} - profile mismatch. Required: {1}, Active: {2}",
                         new Object[]{MetadataRegistry.getSimpleName(type), 
                                    Arrays.toString(profileAnnotation.value()),
                                    activeProfiles});
                 return;  // Don't register if profile doesn't match
+            } else {
+                System.out.println("✅ [DEBUG] PERFIL MATCH - Continuando con el registro");
             }
+        } else {
+            System.out.println("🔍 [DEBUG] Sin @Profile annotation - procediendo con registro");
         }
         
+        System.out.println("🔍 [DEBUG] Verificando dependencia existente...");
         Dependency existing = dependencies.get(type);
+        System.out.println("🔍 [DEBUG] Dependencia existente: " + (existing != null ? "EXISTS" : "NULL"));
+        
         if (existing != null) {
+            System.out.println("🔍 [DEBUG] Verificando si la dependencia existente ya tiene instancia...");
+            System.out.println("🔍 [DEBUG] existing.isInstanceCreated(): " + existing.isInstanceCreated());
+            
             // 🔍 FIX: Si ya existe un Dependency, solo actualizar la instancia si no la tiene
             if (!existing.isInstanceCreated()) {
+                System.out.println("🔍 [DEBUG] Actualizando dependencia existente con nueva instancia");
                 existing.setInstance(instance);
                 // Updated existing Dependency with instance: " + type.getName()
             } else {
+                System.out.println("🔍 [DEBUG] Dependencia existente ya tiene instancia, no actualizando");
                 // Existing Dependency already has instance: " + type.getName()
             }
             return;
         }
         
         // 🔍 FIX: Verificar si la clase tiene constructores con parámetros inyectables
+        System.out.println("🔍 [DEBUG] Verificando constructores inyectables para: " + type.getName());
         boolean hasInjectableConstructors = hasConstructorWithInjectableParameters(type);
         boolean shouldBeSingleton = !hasInjectableConstructors;
+        
+        System.out.println("🔍 [DEBUG] Has injectable constructors: " + hasInjectableConstructors);
+        System.out.println("🔍 [DEBUG] Should be singleton: " + shouldBeSingleton);
         
         // Bean registration for " + type.getName() + ":
         // - Has injectable constructors: " + hasInjectableConstructors + "
         // - Should be singleton: " + shouldBeSingleton
         
+        System.out.println("🔍 [DEBUG] Creando nuevo Dependency...");
         Dependency dependency = new Dependency(type, shouldBeSingleton, instance);
+        System.out.println("🔍 [DEBUG] Dependency creado exitosamente");
+        
+        System.out.println("🔍 [DEBUG] Agregando a dependencies map...");
         dependencies.put(type, dependency);
+        System.out.println("🔍 [DEBUG] Agregado a dependencies map");
+        
+        System.out.println("🔍 [DEBUG] Registrando implementaciones de interfaces...");
         registerInterfaceImplementations(type, dependency);
+        System.out.println("🔍 [DEBUG] Registro de interfaces completado");
+        
+        System.out.println("✅ [DEBUG] register() completado exitosamente para: " + type.getName());
     }
 
     /**
@@ -999,21 +1038,40 @@ public class DependencyRegistry {
      * @return the bean instance, or null if not found or error occurs
      */
     public <T> T getBean(Class<T> type) {
+        // 🔍 [DEBUG] Add detailed logging for EventBus retrieval
+        if (type == EventBus.class) {
+            System.out.println("🔍 [DEBUG] DependencyRegistry.getBean(EventBus.class) called");
+            System.out.println("🔍 [DEBUG] container reference = " + (container != null ? "NOT NULL" : "NULL"));
+        }
+        
         try {
+            if (container == null) {
+                System.out.println("❌ [DEBUG] CRITICAL: container is NULL in DependencyRegistry.getBean()!");
+                throw new RuntimeException("Container is null in DependencyRegistry.getBean() for type: " + type.getName());
+            }
+            
+            System.out.println("🔍 [DEBUG] Calling container.get(" + type.getName() + ")");
             T bean = container.get(type);
+            
             // Debug logging to track bean resolution
             if (bean != null) {
                 java.util.logging.Logger.getLogger(DependencyRegistry.class.getName()).info(
                     "DependencyRegistry.getBean(" + type.getName() + ") returning instance: " + 
                     bean.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(bean))
                 );
+            } else {
+                System.out.println("❌ [DEBUG] container.get(" + type.getName() + ") returned NULL");
             }
+            
             // Aplicar AOP al bean principal
             if (bean != null) {
                 return (T) container.applyAopSafely(bean);
             }
             return null;
         } catch (Exception ex) {
+            System.out.println("❌ [DEBUG] Exception in DependencyRegistry.getBean(" + type.getName() + "): " + ex.getMessage());
+            ex.printStackTrace();
+            
             // Re-lanzar la excepción para que el comportamiento esperado se mantenga
             throw new RuntimeException("No se pudo obtener bean de tipo: " + MetadataRegistry.getClassName(type), ex);
         }

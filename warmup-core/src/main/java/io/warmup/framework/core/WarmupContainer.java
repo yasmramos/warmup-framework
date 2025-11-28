@@ -135,7 +135,24 @@ public class WarmupContainer implements IContainer {
      */
     @SuppressWarnings("unchecked")
     public <T> T get(Class<T> type) {
-        return containerCoordinator.get(type);
+        // 🔍 [DEBUG] Add detailed logging for EventBus retrieval
+        if (type == EventBus.class) {
+            log.info("🔍 [DEBUG] WarmupContainer.get(EventBus) called - delegating to ContainerCoordinator");
+        }
+        
+        T result = containerCoordinator.get(type);
+        
+        // 🔍 [DEBUG] Log the result
+        if (type == EventBus.class) {
+            if (result != null) {
+                log.info("✅ [DEBUG] WarmupContainer.get(EventBus) returning: " + 
+                    result.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(result)));
+            } else {
+                log.warning("❌ [DEBUG] WarmupContainer.get(EventBus) returning NULL");
+            }
+        }
+        
+        return result;
     }
     
     /**
@@ -1085,7 +1102,18 @@ public class WarmupContainer implements IContainer {
      * 🎯 Obtiene el EventBus del container
      */
     public EventBus getEventBus() {
-        return containerCoordinator.getEventBus();
+        log.info("🔍 [DEBUG] WarmupContainer.getEventBus() called");
+        
+        EventBus eventBus = containerCoordinator.getEventBus();
+        
+        if (eventBus != null) {
+            log.info("✅ [DEBUG] WarmupContainer.getEventBus() returning: " + 
+                eventBus.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(eventBus)));
+        } else {
+            log.severe("❌ [DEBUG] WarmupContainer.getEventBus() returning NULL - This will cause NPE in tests!");
+        }
+        
+        return eventBus;
     }
     
     /**

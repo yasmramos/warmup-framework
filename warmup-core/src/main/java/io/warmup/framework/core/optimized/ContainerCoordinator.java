@@ -86,13 +86,20 @@ public class ContainerCoordinator {
      * 🚀 Initialize CoreContainer with all managers
      */
     private CoreContainer initializeCoreContainer() {
-        // Use ManagerFactory to create all required managers
-        DependencyRegistry dependencyRegistry = ManagerFactory.getManager(DependencyRegistry.class);
+        // Create ProfileManager first to get active profiles
+        ProfileManager profileManager = ManagerFactory.getManager(ProfileManager.class);
+        
+        // Get active profiles from ProfileManager to fix EventBus registration
+        Set<String> activeProfiles = profileManager.getActiveProfiles();
+        
+        // Create DependencyRegistry with active profiles to fix EventBus @Profile validation
+        DependencyRegistry dependencyRegistry = ManagerFactory.getManager(DependencyRegistry.class, activeProfiles);
+        
+        // Create other managers
         AopHandler aopHandler = ManagerFactory.getManager(AopHandler.class);
         EventManager eventManager = ManagerFactory.getManager(EventManager.class);
         AsyncHandler asyncHandler = ManagerFactory.getManager(AsyncHandler.class);
         ShutdownManager shutdownManager = ManagerFactory.getManager(ShutdownManager.class);
-        ProfileManager profileManager = ManagerFactory.getManager(ProfileManager.class);
         ModuleManager moduleManager = ManagerFactory.getManager(ModuleManager.class);
         HealthCheckManager healthCheckManager = ManagerFactory.getManager(HealthCheckManager.class);
         MetricsManager metricsManager = ManagerFactory.getManager(MetricsManager.class);
@@ -203,8 +210,29 @@ public class ContainerCoordinator {
     public <T> T get(Class<T> type) {
         totalRequests.incrementAndGet();
         
+        // 🔍 [DEBUG] Add detailed logging for EventBus retrieval
+        if (type == EventBus.class) {
+            java.util.logging.Logger.getLogger(ContainerCoordinator.class.getName()).info(
+                "🔍 [DEBUG] ContainerCoordinator.get(EventBus) called"
+            );
+        }
+        
         try {
             T instance = coreContainer.getInstance(type);
+            
+            // 🔍 [DEBUG] Log the result
+            if (type == EventBus.class) {
+                if (instance != null) {
+                    java.util.logging.Logger.getLogger(ContainerCoordinator.class.getName()).info(
+                        "✅ [DEBUG] ContainerCoordinator.get(EventBus) returning: " + 
+                        instance.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(instance))
+                    );
+                } else {
+                    java.util.logging.Logger.getLogger(ContainerCoordinator.class.getName()).warning(
+                        "❌ [DEBUG] ContainerCoordinator.get(EventBus) returning NULL"
+                    );
+                }
+            }
             if (instance != null) {
                 java.util.logging.Logger.getLogger(ContainerCoordinator.class.getName()).info(
                     "ContainerCoordinator.get(" + type.getName() + ") returning instance: " + 
@@ -651,17 +679,28 @@ public class ContainerCoordinator {
      * 🎯 Obtiene el EventBus del container
      */
     public EventBus getEventBus() {
+        log.info("🔍 [DEBUG] ContainerCoordinator.getEventBus() called");
+        
         try {
             // Ensure EventBus is registered in dependency registry
-            // CRITICAL FIX: Pass 'this' instead of null to allow proper EventBus initialization
-            EventBusResolver.ensureEventBusRegistered(coreContainer.getDependencyRegistry(), this);
+            // FIXED: EventBusResolver can work with null container parameter since it's not used
+            log.info("🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()");
+            EventBusResolver.ensureEventBusRegistered(coreContainer.getDependencyRegistry(), null);
+            log.info("✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed");
             
-            // Get EventBus from dependency registry (now registered by EventBusResolver)
-            EventBus eventBus = coreContainer.getDependencyRegistry().getBean(EventBus.class);
+            // 🔧 FIXED: Get EventBus directly from dependencies map instead of getBean() 
+            // to avoid container null reference issue
+            log.info("🔍 [DEBUG] Getting EventBus directly from dependencies map");
+            io.warmup.framework.core.Dependency eventBusDependency = 
+                coreContainer.getDependencyRegistry().getDependency(EventBus.class);
             
-            if (eventBus != null) {
-                log.log(Level.FINE, "✅ EventBus resolved successfully via EventBusResolver");
-                return eventBus;
+            if (eventBusDependency != null && eventBusDependency.isInstanceCreated()) {
+                EventBus eventBus = (EventBus) eventBusDependency.getCachedInstance();
+                if (eventBus != null) {
+                    log.log(Level.FINE, "✅ EventBus resolved successfully from dependencies map: " + 
+                        eventBus.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(eventBus)));
+                    return eventBus;
+                }
             }
             
             // Fallback: Create EventBus directly if not found in registry
