@@ -7,14 +7,14 @@ import io.warmup.framework.hotreload.HotReloadEvent;
 import io.warmup.framework.hotreload.HotReloadAsmOptimizer;
 import io.warmup.framework.hotreload.HotReloadStatus;
 
-// Import configuration classes
-import io.warmup.framework.hotreload.advanced.PreservationConfig;
-import io.warmup.framework.hotreload.advanced.MethodReloadConfig;
-import io.warmup.framework.hotreload.advanced.ChangeDetectionConfig;
-import io.warmup.framework.hotreload.advanced.DashboardConfig;
-import io.warmup.framework.hotreload.advanced.StatePreservationManager;
-import io.warmup.framework.hotreload.advanced.SystemHealthStatus;
-import io.warmup.framework.hotreload.advanced.GlobalMetrics;
+// Import configuration classes - commented out non-existent classes
+// import io.warmup.framework.hotreload.advanced.PreservationConfig;
+// import io.warmup.framework.hotreload.advanced.MethodReloadConfig;
+// import io.warmup.framework.hotreload.advanced.ChangeDetectionConfig;
+// import io.warmup.framework.hotreload.advanced.DashboardConfig;
+// import io.warmup.framework.hotreload.advanced.StatePreservationManager;
+// import io.warmup.framework.hotreload.advanced.SystemHealthStatus;
+// import io.warmup.framework.hotreload.advanced.GlobalMetrics;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -44,6 +44,12 @@ import java.util.logging.Logger;
 public class AdvancedHotReloadManager {
     
     private static final Logger log = Logger.getLogger(AdvancedHotReloadManager.class.getName());
+    
+    // Constants for reload strategies
+    public static final String NO_CHANGE = "NO_CHANGE";
+    public static final String METHOD_LEVEL_RELOAD = "METHOD_LEVEL_RELOAD";
+    public static final String CLASS_RELOAD = "CLASS_RELOAD";
+    public static final String FULL_CLASS_RELOAD = "FULL_CLASS_RELOAD";
     
     private final WarmupContainer container;
     private final EventBus eventBus;
