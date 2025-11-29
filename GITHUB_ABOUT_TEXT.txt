@@ -1,1 +1,0 @@
-Ultra-fast Java DI container with O(1) bean resolution, sub-millisecond startup, and intelligent caching for modern applications.
