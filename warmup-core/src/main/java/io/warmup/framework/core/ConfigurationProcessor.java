@@ -223,12 +223,15 @@ public class ConfigurationProcessor {
         // 🚀 OPTIMIZACIÓN O(1): Invalidar caches TTL
         invalidateCaches();
         
-        // Cache instance for singleton beans
-        if (scopeType == ScopeManager.ScopeType.SINGLETON) {
+        // 🔧 FIX: Cache instance only for singleton and application scope beans
+        if (scopeType == ScopeManager.ScopeType.SINGLETON || scopeType == ScopeManager.ScopeType.APPLICATION_SCOPE) {
             for (String beanName : beanNames) {
                 beanNameToInstance.put(beanName, beanInstance);
             }
             beanTypeToInstance.put(beanType, beanInstance);
+        } else if (scopeType == ScopeManager.ScopeType.PROTOTYPE) {
+            // 🔧 CRITICAL FIX: Do NOT cache prototype bean instances
+            logger.fine("🔧 PROTOTYPE @Bean instance NOT cached in ConfigurationProcessor: " + beanType.getSimpleName());
         }
     }
     
@@ -312,9 +315,19 @@ public class ConfigurationProcessor {
                         } else {
                             logger.fine("⏳ Dependency no existe aún para: " + actualType.getName() + " - será registrado por registerBean()");
                         }
+                    } else if (methodScopeType == ScopeManager.ScopeType.PROTOTYPE) {
+                        // 🔧 CRITICAL FIX: For prototype beans, do NOT store the instance at all
+                        // The instance should only exist temporarily for the registration process
+                        logger.fine("🔧 PROTOTYPE @Bean instance NOT stored - will be created on demand: " + actualType.getSimpleName());
+                        
+                        // Clear any existing instance to ensure prototype behavior
+                        io.warmup.framework.core.Dependency dependency = dependencyRegistry.getDependency(actualType);
+                        if (dependency != null) {
+                            dependency.clearInstanceForPrototype();
+                        }
                     } else {
-                        // For prototype beans, do NOT store the instance - it will be created on demand
-                        logger.fine("⏭️  Instancia @Bean NO almacenada (PROTOTYPE): " + actualType.getSimpleName() + " - se creará bajo demanda");
+                        // For other scopes (request, session), do not store the instance
+                        logger.fine("⏭️  Instancia @Bean NO almacenada (OTHER SCOPE): " + actualType.getSimpleName() + " - scope: " + methodScopeType);
                     }
                 } catch (Exception e) {
                     logger.warning("Error almacenando instancia en Dependency: " + e.getMessage());
@@ -420,30 +433,38 @@ public class ConfigurationProcessor {
         Bean beanAnnotation = AsmCoreUtils.getAnnotationProgressive(method, Bean.class);
         if (beanAnnotation != null && !beanAnnotation.scope().isEmpty()) {
             try {
-                return ScopeManager.ScopeType.valueOf(beanAnnotation.scope().toUpperCase());
+                ScopeManager.ScopeType scopeFromAnnotation = ScopeManager.ScopeType.valueOf(beanAnnotation.scope().toUpperCase());
+                logger.fine("Scope from @Bean annotation: " + beanAnnotation.scope() + " -> " + scopeFromAnnotation);
+                return scopeFromAnnotation;
             } catch (IllegalArgumentException e) {
                 logger.warning("Invalid scope specified in @Bean annotation: " + beanAnnotation.scope() + " for method " + method.getName());
             }
         }
         
-        // Check for explicit scope annotations on method
+        // Check for explicit scope annotations on method - using progressive annotation detection
         if (method.isAnnotationPresent(Singleton.class)) {
+            logger.fine("Scope detected from @Singleton annotation on method: " + method.getName());
             return ScopeManager.ScopeType.SINGLETON;
         }
         
-        if (method.isAnnotationPresent(io.warmup.framework.annotation.ApplicationScope.class)) {
+        // 🔧 FIX: Use AsmCoreUtils for progressive annotation detection
+        if (AsmCoreUtils.hasAnnotationProgressive(method, io.warmup.framework.annotation.ApplicationScope.class)) {
+            logger.fine("Scope detected from @ApplicationScope annotation on method: " + method.getName());
             return ScopeManager.ScopeType.APPLICATION_SCOPE;
         }
         
-        if (method.isAnnotationPresent(io.warmup.framework.annotation.SessionScope.class)) {
+        if (AsmCoreUtils.hasAnnotationProgressive(method, io.warmup.framework.annotation.SessionScope.class)) {
+            logger.fine("Scope detected from @SessionScope annotation on method: " + method.getName());
             return ScopeManager.ScopeType.SESSION_SCOPE;
         }
         
-        if (method.isAnnotationPresent(io.warmup.framework.annotation.RequestScope.class)) {
+        if (AsmCoreUtils.hasAnnotationProgressive(method, io.warmup.framework.annotation.RequestScope.class)) {
+            logger.fine("Scope detected from @RequestScope annotation on method: " + method.getName());
             return ScopeManager.ScopeType.REQUEST_SCOPE;
         }
         
         // Default to singleton for @Bean methods
+        logger.fine("Default scope (SINGLETON) used for method: " + method.getName());
         return ScopeManager.ScopeType.SINGLETON;
     }
     
@@ -512,11 +533,38 @@ public class ConfigurationProcessor {
                             boolean isPrimary = beanMethod.isAnnotationPresent(io.warmup.framework.annotation.Primary.class);
                             boolean isAlternative = beanMethod.isAnnotationPresent(io.warmup.framework.annotation.Alternative.class);
                             
+                            // 🔧 FIX: Use progressive annotation detection for better reliability
+                            if (!isPrimary) {
+                                isPrimary = AsmCoreUtils.hasAnnotationProgressive(beanMethod, io.warmup.framework.annotation.Primary.class);
+                            }
+                            if (!isAlternative) {
+                                isAlternative = AsmCoreUtils.hasAnnotationProgressive(beanMethod, io.warmup.framework.annotation.Alternative.class);
+                            }
+                            
                             // Apply annotations to the actual implementation class for PrimaryAlternativeResolver compatibility
                             if (isPrimary || isAlternative) {
                                 // Note: PrimaryAlternativeResolver has been enhanced to handle method annotations
                                 // through the classToMethodMap parameter, so no class modification is needed here
                                 logger.info("🔍 Found @Primary/@Alternative on @Bean method: " + beanMethod.getName() + " (primary: " + isPrimary + ", alternative: " + isAlternative + ")");
+                                
+                                // 🔧 CRITICAL FIX: Store the annotation info directly in the Dependency for immediate resolution
+                                if (isPrimary) {
+                                    io.warmup.framework.annotation.Primary primaryAnn = AsmCoreUtils.getAnnotationProgressive(beanMethod, io.warmup.framework.annotation.Primary.class);
+                                    if (primaryAnn != null) {
+                                        dependency.setPrimary(true);
+                                        dependency.setPrimaryPriority(primaryAnn.value());
+                                        logger.info("✅ @Primary annotation applied to Dependency with priority: " + primaryAnn.value());
+                                    }
+                                }
+                                
+                                if (isAlternative) {
+                                    io.warmup.framework.annotation.Alternative altAnn = AsmCoreUtils.getAnnotationProgressive(beanMethod, io.warmup.framework.annotation.Alternative.class);
+                                    if (altAnn != null) {
+                                        dependency.setAlternative(true);
+                                        dependency.setAlternativeProfile(altAnn.profile());
+                                        logger.info("✅ @Alternative annotation applied to Dependency with profile: " + altAnn.profile());
+                                    }
+                                }
                             }
                             
                             // 🔧 FIX: Usar ScopeType directamente para prototype beans + convertir Method a MethodMetadata

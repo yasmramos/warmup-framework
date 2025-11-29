@@ -60,6 +60,24 @@ public class Dependency {
     private boolean isAlternative = false;
     private String alternativeProfile = "";
 
+    // ✅ METHODS for setting @Primary and @Alternative annotations
+    public void setPrimary(boolean primary) {
+        this.isPrimary = primary;
+    }
+    
+    public void setPrimaryPriority(int priority) {
+        this.primaryPriority = priority;
+        this.priority = priority; // Also set the legacy priority field for compatibility
+    }
+    
+    public void setAlternative(boolean alternative) {
+        this.isAlternative = alternative;
+    }
+    
+    public void setAlternativeProfile(String profile) {
+        this.alternativeProfile = profile;
+    }
+
     public Dependency(Class<?> type, boolean singleton) {
         this.type = type;
         
