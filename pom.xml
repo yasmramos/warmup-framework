@@ -127,4 +127,5 @@
         </plugins>
     </build>
     <name>warmup-framework</name>
+    <description>A high-performance, lightweight dependency injection and IoC container with ultra-fast startup times, advanced bytecode generation, and intelligent caching mechanisms for modern Java applications.</description>
 </project>

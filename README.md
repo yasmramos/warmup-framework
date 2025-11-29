@@ -4,7 +4,9 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 
-A high-performance, lightweight dependency injection and inversion of control (IoC) container designed for modern Java applications. Warmup Framework provides lightning-fast startup times, advanced bytecode generation, and intelligent caching mechanisms while maintaining full compatibility with standard Java frameworks.
+**A high-performance, lightweight dependency injection and IoC container with O(1) bean resolution, sub-millisecond startup times, and intelligent caching mechanisms for modern Java applications.**
+
+Warmup Framework provides lightning-fast startup times, advanced bytecode generation, and intelligent caching mechanisms while maintaining full compatibility with standard Java frameworks and GraalVM native image support.
 
 ## 🚀 Key Features
 

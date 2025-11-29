@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-This guide will get you up and running with Warmup Framework in minutes.
+**Warmup Framework** is a ultra-fast, high-performance dependency injection container designed for modern Java applications. This guide will get you up and running with Warmup Framework in minutes, showcasing its lightning-fast startup times and intelligent bean management.
 
 ## 🚀 Basic Example
 
