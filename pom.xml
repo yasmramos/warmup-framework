@@ -112,7 +112,9 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>8</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <junit.version>5.12.2</junit.version>
         <mockito.version>5.17.0</mockito.version>
         <jackson.version>2.15.2</jackson.version>
