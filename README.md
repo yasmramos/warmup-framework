@@ -8,7 +8,7 @@
 
 Warmup Framework provides lightning-fast startup times, advanced bytecode generation, and intelligent caching mechanisms while maintaining full compatibility with standard Java frameworks and GraalVM native image support.
 
-> **GitHub Optimization**: See `GITHUB_ABOUT_CONFIG.md` for recommended About section configuration and topics for better discoverability.
+Warmup Framework is designed for high-performance Java applications requiring ultra-fast startup and efficient dependency resolution.
 
 ## 🚀 Key Features
 
@@ -493,8 +493,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ for the Java community**
-
 ## Quick Start Commands
 
 ```bash
@@ -515,41 +513,6 @@ java -cp "warmup-core/target/warmup-core-1.0-SNAPSHOT.jar" \
   io.warmup.framework.examples.QuickStartExample
 ```
 
-## 📈 GitHub Repository Optimization
+---
 
-### About Section Configuration
-
-For optimal discoverability on GitHub, configure the repository "About" section with:
-
-**Repository Description** (copy for GitHub About):
-```
-Ultra-fast Java DI container with O(1) bean resolution, sub-millisecond startup, and intelligent caching for modern applications.
-```
-
-**Recommended Topics** (add in repository settings):
-```
-java, dependency-injection, ioc-container, high-performance, lightweight, 
-fast-startup, jakarta-inject, bytecode-generation, microservices, spring-boot, 
-graalvm, aop, caching, benchmark, jakarta-ee, modern-java, sub-millisecond, 
-cloud-native, spring-alternative, reflectionless
-```
-
-### SEO Keywords for Better Discovery
-
-**Primary Keywords**:
-- Java dependency injection, high performance container, lightweight IoC
-- Fast startup, bytecode generation, GraalVM compatible DI
-
-**Search Queries Users Might Use**:
-- "Java DI container fast", "Spring alternative Java", "Fast startup Java container"
-- "Microservices Java DI", "O(1) bean resolution", "Reflectionless DI Java"
-
-### Repository Visibility Tips
-
-1. **Enable Repository Features**: Issues, Pull Requests, Releases
-2. **Add Repository Icon**: Upload logo for visual branding
-3. **Include Homepage URL**: Link to documentation or website
-4. **Configure Topics**: Use recommended tags from `GITHUB_TOPICS.txt`
-5. **Update Description**: Use concise, keyword-rich description
-
-For detailed configuration instructions, see `GITHUB_ABOUT_CONFIG.md`.
+**Built with ❤️ for the Java community**
