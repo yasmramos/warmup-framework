@@ -4,6 +4,8 @@ import javax.annotation.processing.*;
 import javax.lang.model.element.*;
 import javax.lang.model.type.TypeMirror;
 import javax.tools.Diagnostic;
+import javax.tools.JavaFileObject;
+import javax.lang.model.SourceVersion;
 import java.io.IOException;
 import java.util.*;
 
@@ -34,7 +36,7 @@ import java.util.*;
     "io.warmup.framework.annotation.Health",
     "io.warmup.framework.annotation.Lazy"
 })
-@SupportedSourceVersion(SourceVersion.RELEASE_17)
+@SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class MetadataProcessor extends AbstractProcessor {
 
     private static final String METADATA_PACKAGE = "io.warmup.framework.metadata";
@@ -77,8 +79,8 @@ public class MetadataProcessor extends AbstractProcessor {
      * Procesa clases anotadas con @Component, @Bean, @Service, etc.
      */
     private void processAnnotatedClasses(RoundEnvironment roundEnv) {
-        Set<? extends Element> components = roundEnv.getElementsAnnotatedWithAny(
-            getComponentAnnotations()
+        Set<? extends Element> components = roundEnv.getElementsAnnotatedWith(
+            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Component")
         );
         
         for (Element element : components) {
@@ -93,8 +95,8 @@ public class MetadataProcessor extends AbstractProcessor {
      * Procesa métodos anotados para metadata
      */
     private void processAnnotatedMethods(RoundEnvironment roundEnv) {
-        Set<? extends Element> annotatedMethods = roundEnv.getElementsAnnotatedWithAny(
-            getMethodAnnotations()
+        Set<? extends Element> annotatedMethods = roundEnv.getElementsAnnotatedWith(
+            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Bean")
         );
         
         for (Element element : annotatedMethods) {
@@ -109,8 +111,8 @@ public class MetadataProcessor extends AbstractProcessor {
      * Procesa campos anotados para metadata
      */
     private void processAnnotatedFields(RoundEnvironment roundEnv) {
-        Set<? extends Element> annotatedFields = roundEnv.getElementsAnnotatedWithAny(
-            getFieldAnnotations()
+        Set<? extends Element> annotatedFields = roundEnv.getElementsAnnotatedWith(
+            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Named")
         );
         
         for (Element element : annotatedFields) {
@@ -407,17 +409,7 @@ public class MetadataProcessor extends AbstractProcessor {
         // Generar ClassMetadata
         generateClassMetadata();
         
-        // Generar ConstructorMetadata  
-        generateConstructorMetadata();
-        
-        // Generar MethodMetadata
-        generateMethodMetadata();
-        
-        // Generar FieldMetadata
-        generateFieldMetadata();
-        
-        // Generar AnnotationMetadata
-        generateAnnotationMetadata();
+        // Metadatos adicionales se generan dinámicamente en generateClassMetadata()
     }
 
     /**
@@ -488,7 +480,7 @@ public class MetadataProcessor extends AbstractProcessor {
         
         // Escribir archivo
         JavaFileObject fileObject = filer.createSourceFile(METADATA_PACKAGE + ".GeneratedClassMetadata");
-        try (var writer = fileObject.openWriter()) {
+        try (java.io.Writer writer = fileObject.openWriter()) {
             writer.write(builder.toString());
         }
     }
@@ -535,41 +527,14 @@ public class MetadataProcessor extends AbstractProcessor {
         
         // Escribir archivo
         JavaFileObject fileObject = filer.createSourceFile(METADATA_PACKAGE + ".NativeTypeIndex");
-        try (var writer = fileObject.openWriter()) {
+        try (java.io.Writer writer = fileObject.openWriter()) {
             writer.write(builder.toString());
         }
     }
 
     // Métodos auxiliares
     
-    private Set<? extends TypeElement> getComponentAnnotations() {
-        return Set.of(
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Component"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Bean"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Service"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Repository")
-        );
-    }
-    
-    private Set<? extends TypeElement> getMethodAnnotations() {
-        return Set.of(
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Bean"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Profile"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Aspect"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Before"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.After"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Around"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Health")
-        );
-    }
-    
-    private Set<? extends TypeElement> getFieldAnnotations() {
-        return Set.of(
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Named"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Value"),
-            processingEnv.getElementUtils().getTypeElement("io.warmup.framework.annotation.Inject")
-        );
-    }
+    // Métodos auxiliares removidos - se usan directamente en los métodos process
 
     private String getPackageName(String className) {
         int lastDot = className.lastIndexOf('.');

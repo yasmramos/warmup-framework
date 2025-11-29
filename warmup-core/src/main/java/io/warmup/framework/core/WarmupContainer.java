@@ -187,11 +187,19 @@ public class WarmupContainer implements IContainer {
     public <T> void register(Class<T> type, boolean singleton) {
         containerCoordinator.register(type, singleton);
         
-        // ✅ AUTOMATICALLY DETECT AND TRACK @CONFIGURATION CLASSES
+        // ✅ AUTOMATICALLY DETECT, TRACK AND PROCESS @CONFIGURATION CLASSES
         if (type.isAnnotationPresent(Configuration.class)) {
             synchronized (registeredConfigurationClasses) {
                 registeredConfigurationClasses.add(type);
                 log.log(Level.INFO, "📋 Registered @Configuration class: {0}", type.getName());
+                
+                // 🚀 CRITICAL FIX: Process @Configuration class immediately
+                try {
+                    processConfigurationClass(type);
+                } catch (Exception e) {
+                    log.log(Level.SEVERE, "❌ Failed to process @Configuration class: " + type.getName(), e);
+                    throw new RuntimeException("Failed to process @Configuration class: " + type.getName(), e);
+                }
             }
         }
     }
@@ -276,6 +284,22 @@ public class WarmupContainer implements IContainer {
     @SuppressWarnings("unchecked")
     public <T> void registerNamed(String name, Class<T> type, Object instance, boolean singleton) {
         containerCoordinator.registerNamed(name, type, instance, singleton);
+        
+        // ✅ AUTOMATICALLY DETECT, TRACK AND PROCESS @CONFIGURATION CLASSES
+        if (type.isAnnotationPresent(Configuration.class)) {
+            synchronized (registeredConfigurationClasses) {
+                registeredConfigurationClasses.add(type);
+                log.log(Level.INFO, "📋 Registered @Configuration class via registerNamed: {0}", type.getName());
+                
+                // 🚀 CRITICAL FIX: Process @Configuration class immediately
+                try {
+                    processConfigurationClass(type);
+                } catch (Exception e) {
+                    log.log(Level.SEVERE, "❌ Failed to process @Configuration class via registerNamed: " + type.getName(), e);
+                    throw new RuntimeException("Failed to process @Configuration class via registerNamed: " + type.getName(), e);
+                }
+            }
+        }
     }
     
     /**
@@ -1186,8 +1210,40 @@ public class WarmupContainer implements IContainer {
     }
     
     /**
-     * ⚙️ Procesa todas las configuraciones del container
+     * 🎯 Process a single @Configuration class and its @Bean methods immediately
      */
+    private void processConfigurationClass(Class<?> configurationClass) throws Exception {
+        if (configurationClass == null) {
+            return;
+        }
+        
+        log.log(Level.INFO, "🔄 Processing @Configuration class: {0}", configurationClass.getName());
+        
+        try {
+            // Get or create ConfigurationProcessor
+            if (configurationProcessor == null) {
+                configurationProcessor = new ConfigurationProcessor(this);
+            }
+            
+            // Create a set with just this configuration class
+            Set<Class<?>> singleConfigurationSet = new HashSet<>();
+            singleConfigurationSet.add(configurationClass);
+            
+            // Process this specific configuration class
+            configurationProcessor.processConfigurations(singleConfigurationSet);
+            
+            log.log(Level.INFO, "✅ Successfully processed @Configuration class: {0}", configurationClass.getName());
+            
+        } catch (Exception e) {
+            log.log(Level.SEVERE, "❌ Failed to process @Configuration class: " + configurationClass.getName(), e);
+            // Re-throw WarmupException as-is, wrap others in RuntimeException
+            if (e instanceof io.warmup.framework.exception.WarmupException) {
+                throw e;
+            }
+            throw new RuntimeException("Failed to process @Configuration class: " + configurationClass.getName(), e);
+        }
+    }
+
     /**
      * 🎯 Process all registered @Configuration classes and their @Bean methods
      */
