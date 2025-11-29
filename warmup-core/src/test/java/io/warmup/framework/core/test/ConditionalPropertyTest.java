@@ -6,8 +6,8 @@ import io.warmup.framework.annotation.Configuration;
 import io.warmup.framework.config.PropertySource;
 import io.warmup.framework.core.ConditionEvaluator;
 import io.warmup.framework.core.Warmup;
-import io.warmup.framework.examples.services.CacheService;
-import io.warmup.framework.examples.services.EmailService;
+import io.warmup.framework.services.CacheService;
+import io.warmup.framework.services.EmailService;
 
 import java.util.Properties;
 
