@@ -58,7 +58,7 @@ public class ASMCacheManager {
             @Override
             public Thread newThread(Runnable r) {
                 Thread t = new Thread(r, "asm-cache-disk-" + counter.incrementAndGet());
-                // ✅ En testing, NO usar threads daemon para asegurar que completen
+                // En testing, NO usar threads daemon para asegurar que completen
                 t.setDaemon(!isTestEnvironment);
                 return t;
             }
@@ -69,7 +69,7 @@ public class ASMCacheManager {
     }
 
     private boolean detectTestEnvironment() {
-        // ✅ Método compatible con Java 8
+        // Método compatible con Java 8
         try {
             // Verificar por stack trace
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
@@ -168,7 +168,7 @@ public class ASMCacheManager {
     public byte[] getCachedBytecode(String className, String sourceHash) {
         stats.incrementRequests();
 
-        // ✅ 1. PRIMERO verificar cache en memoria CON EXPIRACIÓN
+        // 1. PRIMERO verificar cache en memoria CON EXPIRACIÓN
         CachedClass memoryCached = memoryCache.get(className);
         if (memoryCached != null && memoryCached.sourceHash.equals(sourceHash)) {
             if (!isExpired(memoryCached.timestamp)) {
@@ -181,12 +181,12 @@ public class ASMCacheManager {
             log.log(Level.FINE, "Cache expirado (memoria): {0}", className);
         }
 
-        // ✅ 2. LUEGO verificar cache en disco CON EXPIRACIÓN
+        // 2. LUEGO verificar cache en disco CON EXPIRACIÓN
         if (config.enableDiskCache) {
             try {
                 byte[] diskBytecode = loadFromDiskWithExpiration(className, sourceHash);
                 if (diskBytecode != null) {
-                    // ✅ Solo cachear en memoria si NO está expirado
+                    // Solo cachear en memoria si NO está expirado
                     memoryCache.put(className, new CachedClass(className, sourceHash, diskBytecode));
                     stats.incrementDiskHits();
                     log.log(Level.FINE, "Cache hit (disco): {0}", className);
@@ -314,7 +314,7 @@ public class ASMCacheManager {
             return null;
         }
 
-        // ✅ VERIFICAR EXPIRACIÓN en disco
+        // VERIFICAR EXPIRACIÓN en disco
         if (config.maxCacheAge > 0) {
             long lastModified = Files.getLastModifiedTime(cacheFile).toMillis();
             if (isExpired(lastModified)) {
@@ -353,7 +353,7 @@ public class ASMCacheManager {
     private void saveToDisk(String className, String sourceHash, byte[] bytecode) throws IOException {
         Path cacheFile = getCacheFilePath(className, sourceHash);
 
-        // ✅ Crear directorios intermedios si no existen
+        // Crear directorios intermedios si no existen
         Files.createDirectories(cacheFile.getParent());
 
         // Comprimir el bytecode si es necesario
@@ -387,7 +387,7 @@ public class ASMCacheManager {
                 }
             };
 
-            // ✅ En testing, ejecutar síncronamente para evitar race conditions
+            // En testing, ejecutar síncronamente para evitar race conditions
             if (isTestEnvironment) {
                 diskWriteTask.run();
             } else {
@@ -660,7 +660,7 @@ public class ASMCacheManager {
             log.log(Level.WARNING, "Error contando archivos de caché", e);
         }
 
-        // ✅ Debug: imprimir en testing
+        // Debug: imprimir en testing
         if (isTestEnvironment) {
             System.out.println("DEBUG: getDiskCacheFileCount() = " + count);
             try {
@@ -779,7 +779,7 @@ public class ASMCacheManager {
         System.out.println("  Disk cache files: " + getDiskCacheFileCount());
         System.out.println("  Disk cache size: " + formatBytes(getDiskCacheSize()));
 
-        System.out.println("\n📊 Statistics:");
+        System.out.println("\nStatistics:");
         System.out.println("  Total requests: " + stats.getTotalRequests());
         System.out.println("  Memory hits: " + stats.getMemoryHits()
                 + " (" + String.format("%.2f", stats.getMemoryHitRate()) + "%)");
@@ -799,15 +799,15 @@ public class ASMCacheManager {
 
         System.out.println("\n🏥 Health:");
         CacheHealth health = checkHealth();
-        System.out.println("  Status: " + (health.healthy ? "✅ HEALTHY" : "⚠️  ISSUES DETECTED"));
+        System.out.println("  Status: " + (health.healthy ? "HEALTHY" : "ISSUES DETECTED"));
 
         if (!health.errors.isEmpty()) {
-            System.out.println("\n  ❌ Errors:");
+            System.out.println("\n  Errors:");
             health.errors.forEach(e -> System.out.println("    - " + e));
         }
 
         if (!health.warnings.isEmpty()) {
-            System.out.println("\n  ⚠️  Warnings:");
+            System.out.println("\n  Warnings:");
             health.warnings.forEach(w -> System.out.println("    - " + w));
         }
 
@@ -1079,32 +1079,32 @@ public class ASMCacheManager {
     }
 
     /**
-     * 🚀 PHASE 3: O(1) Get Cache Size - Sin iteración O(n)
+     * PHASE 3: O(1) Get Cache Size - Sin iteración O(n)
      * 
      * @return tamaño actual del cache
      */
     public int getCacheSize() {
-        // 🚀 O(1) Direct access to memory cache size
+        // O(1) Direct access to memory cache size
         return memoryCache != null ? memoryCache.size() : 0;
     }
 
     /**
-     * 🚀 PHASE 3: O(1) Get Hit Rate - Sin iteración O(n)
+     * PHASE 3: O(1) Get Hit Rate - Sin iteración O(n)
      * 
      * @return tasa de aciertos del cache (0.0 - 1.0)
      */
     public double getHitRate() {
-        // 🚀 O(1) Direct access to hit rate from stats
+        // O(1) Direct access to hit rate from stats
         return stats.getHitRate();
     }
 
     /**
-     * 🚀 PHASE 3: O(1) Get Memory Usage Bytes - Sin iteración O(n)
+     * PHASE 3: O(1) Get Memory Usage Bytes - Sin iteración O(n)
      * 
      * @return uso de memoria estimado en bytes
      */
     public long getMemoryUsageBytes() {
-        // 🚀 O(1) Estimación directa basada en contadores
+        // O(1) Estimación directa basada en contadores
         long memoryBytes = 0;
         
         // Memoria base del ASMCacheManager
