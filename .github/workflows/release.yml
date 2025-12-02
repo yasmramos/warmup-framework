@@ -33,7 +33,7 @@ jobs:
       run: mvn verify -B
       
     - name: Upload JAR artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: warmup-framework-jars
         path: |
@@ -49,7 +49,7 @@ jobs:
       run: mvn javadoc:javadoc -B
       
     - name: Upload Javadoc
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: warmup-framework-javadoc
         path: target/site/apidocs/
