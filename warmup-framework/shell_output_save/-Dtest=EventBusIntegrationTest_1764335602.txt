@@ -1,0 +1,2375 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< io.warmup.framework:warmup-core >-------------------
+[INFO] Building warmup-core 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (default) @ warmup-core ---
+[INFO] argLine set to -javaagent:/home/minimax/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/workspace/warmup-framework/warmup-core/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ warmup-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.0:compile (default-compile) @ warmup-core ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 380 source files with javac [debug release 8] to target/classes
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/asm/AsmCoreUtils.java:[3539,62] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/asm/AsmConstructorCreator.java:[67,39] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/validation/CustomValidatorManager.java:[49,55] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[INFO] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/hotreload/HotReloadStatus.java: Some input files use unchecked or unsafe operations.
+[INFO] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/hotreload/HotReloadStatus.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ warmup-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.0:testCompile (default-testCompile) @ warmup-core ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 51 source files with javac [debug release 8] to target/test-classes
+[INFO] /workspace/warmup-framework/warmup-core/src/test/java/io/warmup/framework/startup/hotpath/HotPathOptimizationSystemTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /workspace/warmup-framework/warmup-core/src/test/java/io/warmup/framework/startup/hotpath/HotPathOptimizationSystemTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.5.2:test (default-test) @ warmup-core ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running io.warmup.framework.event.EventBusIntegrationTest
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:09 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔧 [DEBUG] Creando nueva instancia de EventBus...
+🔧 [DEBUG] EventBus creado: NO_NULL
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager loadFromDiskWithExpiration
+INFO: Intentando leer caché desde disco: /home/minimax/.warmup/asm-cache/c5/c6/io/warmup/framework/event/ExampleEventListener_JITSupplier-c5c6a053a49cbcebdaf90c3b091081f670ed258e7e093a8eb9aab544a8b129ec.cache
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager loadFromDiskWithExpiration
+INFO: Timestamp leído del archivo: 1,764,333,835,086
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager loadFromDiskWithExpiration
+INFO: MaxAge configurado: 604,800,000
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,333,835,086, currentTime=1,764,335,590,148, maxAge=604,800,000
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 1,755,062, MaxAge: 604,800,000, ¿Expirado?: false
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager loadFromDiskWithExpiration
+INFO: Archivo NO expirado. Age: 1,755,062 ms
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 24ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+WARNING: ⚠️ Critical phase exceeded target: 24ms > 2ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 27ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+
+=== STARTING TEST: testAsyncEventPublishing ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener@15923407
+[DEBUG] Found IEventListener: asyncListener
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+[DEBUG] TestEvent listeners at end: 1
+=== FINISHED TEST: testAsyncEventPublishing ===
+
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 57ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,335,590,151, currentTime=1,764,335,590,342, maxAge=604,800,000
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 192, MaxAge: 604,800,000, ¿Expirado?: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 2ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+
+=== STARTING TEST: testEventPriority ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener@51ec2df1
+[DEBUG] Found IEventListener: highPriority
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener@4f186450
+[DEBUG] Found IEventListener: lowPriority
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 3ms
+[DEBUG] TestEvent listeners at end: 0
+=== FINISHED TEST: testEventPriority ===
+
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,335,590,151, currentTime=1,764,335,590,573, maxAge=604,800,000
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 422, MaxAge: 604,800,000, ¿Expirado?: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+
+=== STARTING TEST: testEventStatistics ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@7435a578
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$538/0x00007fcb191432b8@6093d508
+[DEBUG] Found listener via toString pattern
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+[DEBUG] TestEvent listeners at end: 1
+=== FINISHED TEST: testEventStatistics ===
+
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,335,590,151, currentTime=1,764,335,590,904, maxAge=604,800,000
+Nov 28, 2025 1:13:10 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 753, MaxAge: 604,800,000, ¿Expirado?: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:10 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+
+=== STARTING TEST: testListenerFiltering ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@250b236d
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$541/0x00007fcb19143d88@61f3fbb8
+[DEBUG] Found listener via toString pattern
+Nov 28, 2025 1:13:10 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 28, 2025 1:13:10 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 3ms
+[DEBUG] TestEvent listeners at end: 1
+=== FINISHED TEST: testListenerFiltering ===
+
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,335,590,151, currentTime=1,764,335,591,129, maxAge=604,800,000
+Nov 28, 2025 1:13:11 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 979, MaxAge: 604,800,000, ¿Expirado?: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+
+=== STARTING TEST: testEventTypeFiltering ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+[DEBUG] Lambda fields: 1
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@10876a6
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$543/0x00007fcb19144610@71870da7
+[DEBUG] Found listener via toString pattern
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@10876a6
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$544/0x00007fcb19144848@4e25147a
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+[DEBUG] Found listener via toString pattern
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+[DEBUG] TestEvent listeners at end: 1
+=== FINISHED TEST: testEventTypeFiltering ===
+
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,335,590,151, currentTime=1,764,335,591,354, maxAge=604,800,000
+Nov 28, 2025 1:13:11 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 1,203, MaxAge: 604,800,000, ¿Expirado?: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+
+=== STARTING TEST: testBasicEventPublishing ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@5631962
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$546/0x00007fcb19144ec8@52a70627
+[DEBUG] Found listener via toString pattern
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@5631962
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$547/0x00007fcb19145100@4632cfc
+[DEBUG] Found listener via toString pattern
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+[DEBUG] TestEvent listeners at end: 2
+=== FINISHED TEST: testBasicEventPublishing ===
+
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,335,590,151, currentTime=1,764,335,591,576, maxAge=604,800,000
+Nov 28, 2025 1:13:11 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 1,425, MaxAge: 604,800,000, ¿Expirado?: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+
+=== STARTING TEST: testDeadLetterQueue ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener@5754de72
+[DEBUG] Found IEventListener: failingListener
+Error processing event: Intentional failure for testing
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+java.lang.RuntimeException: Intentional failure for testing
+	at io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener.onEvent(EventBusIntegrationTest.java:511)
+	at io.warmup.framework.event.EventBusIntegrationTest.lambda$testDeadLetterQueue$16(EventBusIntegrationTest.java:238)
+	at io.warmup.framework.event.EventBus$NamedEventListener.onEvent(EventBus.java:268)
+	at io.warmup.framework.event.EventBus.publishEvent(EventBus.java:217)
+	at io.warmup.framework.event.EventBusIntegrationTest.testDeadLetterQueue(EventBusIntegrationTest.java:242)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+[DEBUG] TestEvent listeners at end: 1
+=== FINISHED TEST: testDeadLetterQueue ===
+
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,335,590,151, currentTime=1,764,335,591,899, maxAge=604,800,000
+Nov 28, 2025 1:13:11 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 1,748, MaxAge: 604,800,000, ¿Expirado?: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:11 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+
+=== STARTING TEST: testConcurrentEventPublishing ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+[DEBUG] Lambda fields: 1
+Nov 28, 2025 1:13:11 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@2b8bd14b
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$551/0x00007fcb19145e00@5f13be1
+[DEBUG] Found listener via toString pattern
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@2b8bd14b
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$552/0x00007fcb19146038@25a73de1
+[DEBUG] Found listener via toString pattern
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@2b8bd14b
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$553/0x00007fcb19146270@771db12c
+[DEBUG] Found listener via toString pattern
+Nov 28, 2025 1:13:11 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+[DEBUG] TestEvent listeners at end: 3
+=== FINISHED TEST: testConcurrentEventPublishing ===
+
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: 🚀 Scanning package with optimizations: io.warmup.framework.event
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$3, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$2, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$LowPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver$1, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$HighPriorityListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FilteringEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$OtherTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$TestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.Event, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListener, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventPublisher, isComponent: true
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventStatistics, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.OrderPlacedEvent, isComponent: false
+[ASM DEBUG] Checking annotation: Lio/warmup/framework/annotation/Component; (visible: false)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Found @Component annotation!
+[ASM DEBUG] Processed class: io.warmup.framework.event.ExampleEventListener, isComponent: true
+Nov 28, 2025 1:13:12 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: isExpired: timestamp=1,764,335,590,151, currentTime=1,764,335,592,423, maxAge=604,800,000
+Nov 28, 2025 1:13:12 PM io.warmup.framework.cache.ASMCacheManager isExpired
+INFO: Age: 2,272, MaxAge: 604,800,000, ¿Expirado?: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$AsyncEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$EventCounterListener, isComponent: false
+[ASM DEBUG] Checking annotation: Ljava/lang/FunctionalInterface; (visible: true)
+[ASM DEBUG] COMPONENT_DESC is: Lio/warmup/framework/annotation/Component;
+[ASM DEBUG] Processed class: io.warmup.framework.event.IEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventListenerMethod, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.UserCreatedEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$FailingEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus$NamedEventListener, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBus, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusResolver, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.EventBusIntegrationTest$PriorityTestEvent, isComponent: false
+[ASM DEBUG] Processed class: io.warmup.framework.event.DeadLetterEvent, isComponent: false
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.PerformanceOptimizer scanPackage
+INFO: ✅ Package scan completed: io.warmup.framework.event
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 28, 2025 1:13:12 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 28, 2025 1:13:12 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 28, 2025 1:13:12 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 28, 2025 1:13:12 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: 🔍 [DEBUG] WarmupContainer.getEventBus() called
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] ContainerCoordinator.getEventBus() called
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Calling EventBusResolver.ensureEventBusRegistered()
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: ✅ [DEBUG] EventBusResolver.ensureEventBusRegistered() completed
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator getEventBus
+INFO: 🔍 [DEBUG] Getting EventBus directly from dependencies map
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.WarmupContainer getEventBus
+INFO: ✅ [DEBUG] WarmupContainer.getEventBus() returning: io.warmup.framework.event.EventBus@74971ed9
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+
+=== STARTING TEST: testEventUnsubscription ===
+[DEBUG] TestEvent listeners at start: 0
+[DEBUG] TestEvent listeners: None
+[DEBUG] Subscribing listener1
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 28, 2025 1:13:12 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+[DEBUG] Lambda fields: 1
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@58399d82
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$555/0x00007fcb191468f8@26f96b85
+[DEBUG] Found listener via toString pattern
+[DEBUG] Subscribing listener2
+Nov 28, 2025 1:13:12 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Subsystem initialization failed: java.lang.NullPointerException: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:12 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+[DEBUG] Lambda fields: 1
+[DEBUG] Field 0: arg$1 = io.warmup.framework.event.EventBusIntegrationTest@58399d82
+[DEBUG] Lambda toString: io.warmup.framework.event.EventBusIntegrationTest$$Lambda$556/0x00007fcb19146b30@17814b1c
+[DEBUG] Found listener via toString pattern
+[DEBUG] unregisterListener called for: listener1 on TestEvent
+[DEBUG] Current listeners for TestEvent: 2 listeners
+[DEBUG] Target listener name: listener1
+[DEBUG] Removing listener: listener1
+Nov 28, 2025 1:13:12 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 28, 2025 1:13:12 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+[DEBUG] Listener removed successfully: true
+[DEBUG] Remaining listeners for TestEvent: 1 listeners
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 1ms
+[DEBUG] TestEvent listeners at end: 1
+=== FINISHED TEST: testEventUnsubscription ===
+
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🚀 Starting graceful shutdown...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: 🔄 Executing ShutdownManager shutdown for destroy methods...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Nov 28, 2025 1:13:12 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: Cannot invoke "io.warmup.framework.core.WarmupContainer.getDependencies()" because "this.container" is null
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Nov 28, 2025 1:13:12 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: ✅ Container shutdown completed
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.055 s -- in io.warmup.framework.event.EventBusIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:report (report) @ warmup-core ---
+[INFO] Loading execution data file /workspace/warmup-framework/warmup-core/target/jacoco.exec
+[INFO] Analyzed bundle 'warmup-core' with 673 classes
+[WARNING] Classes in bundle 'warmup-core' do not match with execution data. For report generation the same class files must be used as at runtime.
+[WARNING] Execution data for class io/warmup/framework/hotreload/HotReloadStatus does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/cache/ValidationCache does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/ConfigDataAccessor does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathAnalyzer does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/CodeReorderingOptimizer$OptimizationType does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/CodeReorderingOptimizer does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/optimization/OptimizedReflectionUtil$AccessorCacheStatistics does not match.
+[WARNING] Execution data for class io/warmup/framework/asm/MethodHandleTypeSafeWrapper does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathOptimizationSystem does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/MemoryMappedConfigLoader does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathOptimizationSystem$OptimizationConfig does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/ExecutionPathTracker$MethodExecution does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/PreloadedConfigSystem$PreloadResult does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/ExecutionPathTracker$HotnessLevel does not match.
+[WARNING] Execution data for class io/warmup/framework/event/EventListenerMethod does not match.
+[WARNING] Execution data for class io/warmup/framework/examples/services/AuditService does not match.
+[WARNING] Execution data for class io/warmup/framework/core/Convert does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/CodeReorderingOptimizer$OptimizationAction does not match.
+[WARNING] Execution data for class io/warmup/framework/core/Warmup does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathOptimizationSystem$OptimizationStrategy does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/LazyValidator$1 does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/Priority does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/PreloadOptimizationMetrics does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/LazyValidator does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/ConstraintViolation does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/ExecutionPathTracker does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathOptimizationSystem$RiskTolerance does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/MemoryMappedConfigLoader$ConfigLoadingResult does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/ConfigMappingStats does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/OptimizedValidatorFactory$PerformanceMetrics does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathAnalyzer$Priority does not match.
+[WARNING] Execution data for class io/warmup/framework/hotreload/HotReloadAsmOptimizer does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathAnalyzer$ConfidenceLevel does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/PreloadOptimizationMetrics$SinglePreloadMetrics does not match.
+[WARNING] Execution data for class io/warmup/framework/asm/AsmFieldInjector$InjectFieldDetector$1 does not match.
+[WARNING] Execution data for class io/warmup/framework/hotreload/HotReloadEvent$EventType does not match.
+[WARNING] Execution data for class io/warmup/framework/hotreload/HotReloadEvent does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathAnalyzer$HotPathAnalysis does not match.
+[WARNING] Execution data for class io/warmup/framework/annotation/validation/CustomConstraintValidator does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/MappedConfigData does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/CustomValidatorManager$CustomValidatorInstance does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/ConfidenceLevel does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/PreloadOptimizationMetrics$OverallOptimizationStats does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathAnalyzer$OptimizationRecommendation does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathOptimizationSystem$HotPathOptimizationResult does not match.
+[WARNING] Execution data for class io/warmup/framework/asm/MethodHandleTypeSafeWrapper$TypeSafeMethodHandle does not match.
+[WARNING] Execution data for class io/warmup/framework/cache/CacheHealth does not match.
+[WARNING] Execution data for class io/warmup/framework/hotreload/HotReloadManager does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/OptimizedValidatorFactory$OptimizedValidatorConfig does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/CustomValidatorManager$1 does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotnessLevel does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/optimization/OptimizedReflectionUtil does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathAnalyzer$RecommendationType does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/OptimizedValidatorFactory does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/ExecutionPathTracker$ExecutionStats does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathOptimizationSystem$SystemState does not match.
+[WARNING] Execution data for class io/warmup/framework/asm/AsmFieldInjector$InjectFieldDetector does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/cache/ValidationCache$FieldMetadata does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/CodeReorderingOptimizer$CodeReorderingPlan does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/ExecutionPathTracker$MethodTracker does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/config/PreloadedConfigSystem does not match.
+[WARNING] Execution data for class io/warmup/framework/validation/cache/ValidationCache$CacheStatistics does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/CodeReorderingOptimizer$RiskLevel does not match.
+[WARNING] Execution data for class io/warmup/framework/asm/AsmFieldInjector does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/HotPathAnalyzer$PerformanceMetrics does not match.
+[WARNING] Execution data for class io/warmup/framework/startup/hotpath/CodeReorderingOptimizer$OptimizationResult does not match.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  38.306 s
+[INFO] Finished at: 2025-11-28T13:13:22Z
+[INFO] ------------------------------------------------------------------------

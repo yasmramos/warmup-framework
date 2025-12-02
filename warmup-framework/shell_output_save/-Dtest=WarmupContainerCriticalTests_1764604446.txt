@@ -1,0 +1,1615 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< io.warmup.framework:warmup-core >-------------------
+[INFO] Building warmup-core 1.0.0-alpha.1
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.2/maven-surefire-plugin-3.5.2.pom
+Progress (1): 4.1 kBProgress (1): 5.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.2/maven-surefire-plugin-3.5.2.pom (5.7 kB at 16 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.5.2/surefire-3.5.2.pom
+Progress (1): 4.1 kBProgress (1): 8.2 kBProgress (1): 12 kB Progress (1): 16 kBProgress (1): 20 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.5.2/surefire-3.5.2.pom (20 kB at 227 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.2/maven-surefire-plugin-3.5.2.jar
+Progress (1): 2.3/46 kBProgress (1): 5.0/46 kBProgress (1): 7.7/46 kBProgress (1): 11/46 kB Progress (1): 14/46 kBProgress (1): 16/46 kBProgress (1): 19/46 kBProgress (1): 22/46 kBProgress (1): 25/46 kBProgress (1): 27/46 kBProgress (1): 30/46 kBProgress (1): 33/46 kBProgress (1): 36/46 kBProgress (1): 40/46 kBProgress (1): 44/46 kBProgress (1): 46 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.5.2/maven-surefire-plugin-3.5.2.jar (46 kB at 463 kB/s)
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (default) @ warmup-core ---
+[INFO] argLine set to -javaagent:/home/minimax/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/workspace/warmup-framework/warmup-core/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ warmup-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.0:compile (default-compile) @ warmup-core ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 339 source files with javac [debug release 8] to target/classes
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/asm/AsmCoreUtils.java:[3539,62] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/asm/AsmConstructorCreator.java:[67,39] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/validation/CustomValidatorManager.java:[49,55] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[INFO] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/hotreload/HotReloadStatus.java: Some input files use unchecked or unsafe operations.
+[INFO] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/hotreload/HotReloadStatus.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ warmup-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.0:testCompile (default-testCompile) @ warmup-core ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 58 source files with javac [debug release 8] to target/test-classes
+[INFO] /workspace/warmup-framework/warmup-core/src/test/java/io/warmup/framework/event/EventBusTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /workspace/warmup-framework/warmup-core/src/test/java/io/warmup/framework/event/EventBusTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.5.2:test (default-test) @ warmup-core ---
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.2/surefire-api-3.5.2.pom
+Progress (1): 3.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.2/surefire-api-3.5.2.pom (3.5 kB at 29 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.2/surefire-logger-api-3.5.2.pom
+Progress (1): 3.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.2/surefire-logger-api-3.5.2.pom (3.3 kB at 23 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.2/surefire-shared-utils-3.5.2.pom
+Progress (1): 4.1 kBProgress (1): 4.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.2/surefire-shared-utils-3.5.2.pom (4.7 kB at 53 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.2/surefire-extensions-api-3.5.2.pom
+Progress (1): 3.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.2/surefire-extensions-api-3.5.2.pom (3.5 kB at 39 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.2/maven-surefire-common-3.5.2.pom
+Progress (1): 4.1 kBProgress (1): 7.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.2/maven-surefire-common-3.5.2.pom (7.8 kB at 59 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.2/surefire-booter-3.5.2.pom
+Progress (1): 4.1 kBProgress (1): 4.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.2/surefire-booter-3.5.2.pom (4.8 kB at 62 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.2/surefire-extensions-spi-3.5.2.pom
+Progress (1): 1.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.2/surefire-extensions-spi-3.5.2.pom (1.8 kB at 19 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.pom
+Progress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.pom (2.8 kB at 30 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver/1.4.1/maven-resolver-1.4.1.pom
+Progress (1): 4.1 kBProgress (1): 8.2 kBProgress (1): 12 kB Progress (1): 16 kBProgress (1): 18 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver/1.4.1/maven-resolver-1.4.1.pom (18 kB at 112 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.pom
+Progress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.pom (2.6 kB at 22 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.pom
+Progress (1): 4.1 kBProgress (1): 5.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.pom (5.4 kB at 78 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/42/maven-shared-components-42.pom
+Progress (1): 3.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/42/maven-shared-components-42.pom (3.8 kB at 30 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/42/maven-parent-42.pom
+Progress (1): 4.1 kBProgress (1): 8.2 kBProgress (1): 12 kB Progress (1): 16 kBProgress (1): 20 kBProgress (1): 25 kBProgress (1): 29 kBProgress (1): 33 kBProgress (1): 37 kBProgress (1): 41 kBProgress (1): 45 kBProgress (1): 49 kBProgress (1): 50 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/42/maven-parent-42.pom (50 kB at 753 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/32/apache-32.pom
+Progress (1): 4.1 kBProgress (1): 8.2 kBProgress (1): 12 kB Progress (1): 16 kBProgress (1): 20 kBProgress (1): 24 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/32/apache-32.pom (24 kB at 288 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.3.0/plexus-java-1.3.0.pom
+Progress (1): 4.1 kBProgress (1): 8.2 kBProgress (1): 12 kB Progress (1): 14 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.3.0/plexus-java-1.3.0.pom (14 kB at 200 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.1.0/qdox-2.1.0.pom
+Progress (1): 4.1 kBProgress (1): 8.2 kBProgress (1): 12 kB Progress (1): 16 kBProgress (1): 18 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.1.0/qdox-2.1.0.pom (18 kB at 160 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.2/surefire-api-3.5.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.2/surefire-logger-api-3.5.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.2/surefire-shared-utils-3.5.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.2/surefire-extensions-api-3.5.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.2/maven-surefire-common-3.5.2.jar
+Progress (1): 4.1/14 kBProgress (1): 7.7/14 kBProgress (1): 12/14 kB Progress (1): 14 kB   Progress (2): 14 kB | 2.3/171 kBProgress (2): 14 kB | 5.0/171 kBProgress (3): 14 kB | 5.0/171 kB | 2.3/311 kBProgress (3): 14 kB | 7.7/171 kB | 2.3/311 kBProgress (3): 14 kB | 7.7/171 kB | 5.0/311 kBProgress (3): 14 kB | 10/171 kB | 5.0/311 kB Progress (3): 14 kB | 10/171 kB | 7.7/311 kBProgress (3): 14 kB | 13/171 kB | 7.7/311 kBProgress (3): 14 kB | 13/171 kB | 10/311 kB Progress (3): 14 kB | 16/171 kB | 10/311 kBProgress (3): 14 kB | 16/171 kB | 13/311 kBProgress (3): 14 kB | 19/171 kB | 13/311 kBProgress (3): 14 kB | 19/171 kB | 16/311 kBProgress (3): 14 kB | 21/171 kB | 16/311 kBProgress (3): 14 kB | 21/171 kB | 19/311 kBProgress (3): 14 kB | 24/171 kB | 19/311 kBProgress (3): 14 kB | 24/171 kB | 21/311 kBProgress (3): 14 kB | 27/171 kB | 21/311 kBProgress (3): 14 kB | 27/171 kB | 24/311 kBProgress (3): 14 kB | 30/171 kB | 24/311 kBProgress (3): 14 kB | 30/171 kB | 27/311 kBProgress (3): 14 kB | 32/171 kB | 27/311 kBProgress (3): 14 kB | 32/171 kB | 30/311 kBProgress (3): 14 kB | 35/171 kB | 30/311 kBProgress (3): 14 kB | 35/171 kB | 33/311 kBProgress (3): 14 kB | 38/171 kB | 33/311 kBProgress (3): 14 kB | 38/171 kB | 36/311 kBProgress (3): 14 kB | 41/171 kB | 36/311 kBProgress (3): 14 kB | 41/171 kB | 38/311 kBProgress (3): 14 kB | 43/171 kB | 38/311 kBProgress (3): 14 kB | 43/171 kB | 41/311 kBProgress (3): 14 kB | 46/171 kB | 41/311 kBProgress (3): 14 kB | 46/171 kB | 44/311 kB                                           Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.5.2/surefire-logger-api-3.5.2.jar (14 kB at 162 kB/s)
+Progress (2): 49/171 kB | 44/311 kB                                   Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.2/surefire-booter-3.5.2.jar
+Progress (2): 49/171 kB | 46/311 kBProgress (2): 52/171 kB | 46/311 kBProgress (2): 52/171 kB | 49/311 kBProgress (2): 54/171 kB | 49/311 kBProgress (2): 54/171 kB | 52/311 kBProgress (2): 58/171 kB | 52/311 kBProgress (2): 58/171 kB | 55/311 kBProgress (2): 62/171 kB | 55/311 kBProgress (2): 62/171 kB | 59/311 kBProgress (2): 67/171 kB | 59/311 kBProgress (2): 67/171 kB | 63/311 kBProgress (2): 71/171 kB | 63/311 kBProgress (2): 71/171 kB | 67/311 kBProgress (2): 75/171 kB | 67/311 kBProgress (2): 75/171 kB | 71/311 kBProgress (2): 79/171 kB | 71/311 kBProgress (2): 79/171 kB | 75/311 kBProgress (2): 81/171 kB | 75/311 kBProgress (2): 81/171 kB | 79/311 kBProgress (2): 85/171 kB | 79/311 kBProgress (3): 85/171 kB | 79/311 kB | 0/2.8 MBProgress (3): 89/171 kB | 79/311 kB | 0/2.8 MBProgress (3): 89/171 kB | 83/311 kB | 0/2.8 MBProgress (3): 93/171 kB | 83/311 kB | 0/2.8 MBProgress (3): 93/171 kB | 87/311 kB | 0/2.8 MBProgress (3): 97/171 kB | 87/311 kB | 0/2.8 MBProgress (3): 97/171 kB | 92/311 kB | 0/2.8 MBProgress (3): 97/171 kB | 92/311 kB | 0/2.8 MBProgress (3): 101/171 kB | 92/311 kB | 0/2.8 MBProgress (3): 101/171 kB | 96/311 kB | 0/2.8 MBProgress (3): 106/171 kB | 96/311 kB | 0/2.8 MBProgress (3): 106/171 kB | 100/311 kB | 0/2.8 MBProgress (3): 110/171 kB | 100/311 kB | 0/2.8 MBProgress (3): 110/171 kB | 104/311 kB | 0/2.8 MBProgress (3): 114/171 kB | 104/311 kB | 0/2.8 MBProgress (3): 114/171 kB | 104/311 kB | 0/2.8 MBProgress (3): 114/171 kB | 108/311 kB | 0/2.8 MBProgress (3): 118/171 kB | 108/311 kB | 0/2.8 MBProgress (3): 118/171 kB | 112/311 kB | 0/2.8 MBProgress (3): 122/171 kB | 112/311 kB | 0/2.8 MBProgress (3): 122/171 kB | 116/311 kB | 0/2.8 MBProgress (3): 126/171 kB | 116/311 kB | 0/2.8 MBProgress (3): 126/171 kB | 120/311 kB | 0/2.8 MBProgress (3): 126/171 kB | 120/311 kB | 0.1/2.8 MBProgress (3): 126/171 kB | 122/311 kB | 0.1/2.8 MBProgress (3): 130/171 kB | 122/311 kB | 0.1/2.8 MBProgress (3): 130/171 kB | 126/311 kB | 0.1/2.8 MBProgress (3): 134/171 kB | 126/311 kB | 0.1/2.8 MBProgress (3): 134/171 kB | 131/311 kB | 0.1/2.8 MBProgress (3): 138/171 kB | 131/311 kB | 0.1/2.8 MBProgress (3): 138/171 kB | 135/311 kB | 0.1/2.8 MBProgress (3): 142/171 kB | 135/311 kB | 0.1/2.8 MBProgress (3): 142/171 kB | 135/311 kB | 0.1/2.8 MBProgress (3): 142/171 kB | 139/311 kB | 0.1/2.8 MBProgress (3): 147/171 kB | 139/311 kB | 0.1/2.8 MBProgress (3): 149/171 kB | 139/311 kB | 0.1/2.8 MBProgress (3): 149/171 kB | 143/311 kB | 0.1/2.8 MBProgress (3): 153/171 kB | 143/311 kB | 0.1/2.8 MBProgress (3): 153/171 kB | 147/311 kB | 0.1/2.8 MBProgress (3): 153/171 kB | 147/311 kB | 0.1/2.8 MBProgress (3): 157/171 kB | 147/311 kB | 0.1/2.8 MBProgress (3): 157/171 kB | 151/311 kB | 0.1/2.8 MBProgress (3): 161/171 kB | 151/311 kB | 0.1/2.8 MBProgress (3): 161/171 kB | 155/311 kB | 0.1/2.8 MBProgress (3): 161/171 kB | 155/311 kB | 0.1/2.8 MBProgress (3): 165/171 kB | 155/311 kB | 0.1/2.8 MBProgress (3): 169/171 kB | 155/311 kB | 0.1/2.8 MBProgress (3): 171 kB | 155/311 kB | 0.1/2.8 MB    Progress (4): 171 kB | 155/311 kB | 0.1/2.8 MB | 2.3/26 kBProgress (4): 171 kB | 155/311 kB | 0.1/2.8 MB | 5.1/26 kBProgress (4): 171 kB | 155/311 kB | 0.1/2.8 MB | 7.8/26 kBProgress (4): 171 kB | 155/311 kB | 0.1/2.8 MB | 11/26 kB Progress (4): 171 kB | 155/311 kB | 0.1/2.8 MB | 13/26 kBProgress (4): 171 kB | 155/311 kB | 0.1/2.8 MB | 16/26 kBProgress (4): 171 kB | 159/311 kB | 0.1/2.8 MB | 16/26 kBProgress (4): 171 kB | 159/311 kB | 0.1/2.8 MB | 16/26 kBProgress (4): 171 kB | 159/311 kB | 0.1/2.8 MB | 19/26 kBProgress (4): 171 kB | 163/311 kB | 0.1/2.8 MB | 19/26 kBProgress (4): 171 kB | 163/311 kB | 0.1/2.8 MB | 22/26 kBProgress (4): 171 kB | 167/311 kB | 0.1/2.8 MB | 22/26 kBProgress (4): 171 kB | 167/311 kB | 0.1/2.8 MB | 22/26 kBProgress (4): 171 kB | 167/311 kB | 0.1/2.8 MB | 24/26 kBProgress (4): 171 kB | 172/311 kB | 0.1/2.8 MB | 24/26 kBProgress (4): 171 kB | 174/311 kB | 0.1/2.8 MB | 24/26 kBProgress (4): 171 kB | 174/311 kB | 0.1/2.8 MB | 26 kB   Progress (4): 171 kB | 178/311 kB | 0.1/2.8 MB | 26 kBProgress (4): 171 kB | 178/311 kB | 0.1/2.8 MB | 26 kBProgress (4): 171 kB | 182/311 kB | 0.1/2.8 MB | 26 kBProgress (4): 171 kB | 186/311 kB | 0.1/2.8 MB | 26 kBProgress (4): 171 kB | 186/311 kB | 0.1/2.8 MB | 26 kBProgress (4): 171 kB | 190/311 kB | 0.1/2.8 MB | 26 kBProgress (4): 171 kB | 194/311 kB | 0.1/2.8 MB | 26 kBProgress (4): 171 kB | 194/311 kB | 0.2/2.8 MB | 26 kBProgress (4): 171 kB | 198/311 kB | 0.2/2.8 MB | 26 kBProgress (4): 171 kB | 202/311 kB | 0.2/2.8 MB | 26 kBProgress (4): 171 kB | 202/311 kB | 0.2/2.8 MB | 26 kBProgress (4): 171 kB | 206/311 kB | 0.2/2.8 MB | 26 kBProgress (4): 171 kB | 210/311 kB | 0.2/2.8 MB | 26 kBProgress (5): 171 kB | 210/311 kB | 0.2/2.8 MB | 26 kB | 4.1/118 kBProgress (5): 171 kB | 215/311 kB | 0.2/2.8 MB | 26 kB | 4.1/118 kBProgress (5): 171 kB | 215/311 kB | 0.2/2.8 MB | 26 kB | 7.7/118 kBProgress (5): 171 kB | 215/311 kB | 0.2/2.8 MB | 26 kB | 7.7/118 kBProgress (5): 171 kB | 219/311 kB | 0.2/2.8 MB | 26 kB | 7.7/118 kBProgress (5): 171 kB | 219/311 kB | 0.2/2.8 MB | 26 kB | 12/118 kB Progress (5): 171 kB | 219/311 kB | 0.2/2.8 MB | 26 kB | 16/118 kBProgress (5): 171 kB | 219/311 kB | 0.2/2.8 MB | 26 kB | 16/118 kBProgress (5): 171 kB | 223/311 kB | 0.2/2.8 MB | 26 kB | 16/118 kBProgress (5): 171 kB | 223/311 kB | 0.2/2.8 MB | 26 kB | 20/118 kBProgress (5): 171 kB | 227/311 kB | 0.2/2.8 MB | 26 kB | 20/118 kBProgress (5): 171 kB | 231/311 kB | 0.2/2.8 MB | 26 kB | 20/118 kBProgress (5): 171 kB | 235/311 kB | 0.2/2.8 MB | 26 kB | 20/118 kBProgress (5): 171 kB | 235/311 kB | 0.2/2.8 MB | 26 kB | 20/118 kBProgress (5): 171 kB | 235/311 kB | 0.2/2.8 MB | 26 kB | 24/118 kBProgress (5): 171 kB | 239/311 kB | 0.2/2.8 MB | 26 kB | 24/118 kBProgress (5): 171 kB | 239/311 kB | 0.2/2.8 MB | 26 kB | 28/118 kBProgress (5): 171 kB | 239/311 kB | 0.2/2.8 MB | 26 kB | 32/118 kBProgress (5): 171 kB | 239/311 kB | 0.2/2.8 MB | 26 kB | 36/118 kBProgress (5): 171 kB | 239/311 kB | 0.2/2.8 MB | 26 kB | 36/118 kBProgress (5): 171 kB | 243/311 kB | 0.2/2.8 MB | 26 kB | 36/118 kBProgress (5): 171 kB | 247/311 kB | 0.2/2.8 MB | 26 kB | 36/118 kBProgress (5): 171 kB | 251/311 kB | 0.2/2.8 MB | 26 kB | 36/118 kBProgress (5): 171 kB | 251/311 kB | 0.2/2.8 MB | 26 kB | 40/118 kBProgress (5): 171 kB | 255/311 kB | 0.2/2.8 MB | 26 kB | 40/118 kBProgress (5): 171 kB | 255/311 kB | 0.2/2.8 MB | 26 kB | 45/118 kBProgress (5): 171 kB | 255/311 kB | 0.2/2.8 MB | 26 kB | 49/118 kBProgress (5): 171 kB | 255/311 kB | 0.2/2.8 MB | 26 kB | 49/118 kBProgress (5): 171 kB | 255/311 kB | 0.2/2.8 MB | 26 kB | 53/118 kBProgress (5): 171 kB | 259/311 kB | 0.2/2.8 MB | 26 kB | 53/118 kBProgress (5): 171 kB | 263/311 kB | 0.2/2.8 MB | 26 kB | 53/118 kBProgress (5): 171 kB | 267/311 kB | 0.2/2.8 MB | 26 kB | 53/118 kBProgress (5): 171 kB | 271/311 kB | 0.2/2.8 MB | 26 kB | 53/118 kBProgress (5): 171 kB | 271/311 kB | 0.2/2.8 MB | 26 kB | 57/118 kBProgress (5): 171 kB | 271/311 kB | 0.2/2.8 MB | 26 kB | 61/118 kBProgress (5): 171 kB | 271/311 kB | 0.2/2.8 MB | 26 kB | 65/118 kBProgress (5): 171 kB | 271/311 kB | 0.3/2.8 MB | 26 kB | 65/118 kBProgress (5): 171 kB | 276/311 kB | 0.3/2.8 MB | 26 kB | 65/118 kBProgress (5): 171 kB | 276/311 kB | 0.3/2.8 MB | 26 kB | 69/118 kBProgress (5): 171 kB | 280/311 kB | 0.3/2.8 MB | 26 kB | 69/118 kBProgress (5): 171 kB | 284/311 kB | 0.3/2.8 MB | 26 kB | 69/118 kBProgress (5): 171 kB | 288/311 kB | 0.3/2.8 MB | 26 kB | 69/118 kBProgress (5): 171 kB | 288/311 kB | 0.3/2.8 MB | 26 kB | 69/118 kBProgress (5): 171 kB | 292/311 kB | 0.3/2.8 MB | 26 kB | 69/118 kBProgress (5): 171 kB | 292/311 kB | 0.3/2.8 MB | 26 kB | 73/118 kBProgress (5): 171 kB | 296/311 kB | 0.3/2.8 MB | 26 kB | 73/118 kBProgress (5): 171 kB | 296/311 kB | 0.3/2.8 MB | 26 kB | 77/118 kBProgress (5): 171 kB | 296/311 kB | 0.3/2.8 MB | 26 kB | 81/118 kBProgress (5): 171 kB | 296/311 kB | 0.3/2.8 MB | 26 kB | 86/118 kBProgress (5): 171 kB | 296/311 kB | 0.3/2.8 MB | 26 kB | 86/118 kBProgress (5): 171 kB | 300/311 kB | 0.3/2.8 MB | 26 kB | 86/118 kBProgress (5): 171 kB | 304/311 kB | 0.3/2.8 MB | 26 kB | 86/118 kBProgress (5): 171 kB | 308/311 kB | 0.3/2.8 MB | 26 kB | 86/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 86/118 kB    Progress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 90/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 94/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 94/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 98/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 102/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 102/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 106/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 110/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 114/118 kBProgress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 118 kB    Progress (5): 171 kB | 311 kB | 0.3/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.5/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.5/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.5/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.5/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.5/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.5/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.6/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.6/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.6/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.6/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.6/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.6/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.7/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.7/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.7/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.7/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.7/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.7/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.8/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.8/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.8/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.8/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.8/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.8/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.9/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.9/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.9/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.9/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.9/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 0.9/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.0/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.0/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.0/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.0/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.0/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.0/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.1/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.1/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.1/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.1/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.1/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.1/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.2/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.2/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.2/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.2/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.2/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.2/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.3/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.3/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.3/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.3/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.3/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.3/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.3/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.4/2.8 MB | 26 kB | 118 kBProgress (5): 171 kB | 311 kB | 1.4/2.8 MB | 26 kB | 118 kB                                                           Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.5.2/surefire-booter-3.5.2.jar (118 kB at 731 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.2/surefire-extensions-spi-3.5.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.5.2/surefire-extensions-api-3.5.2.jar (26 kB at 157 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.5.2/maven-surefire-common-3.5.2.jar (311 kB at 1.8 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.5.2/surefire-api-3.5.2.jar (171 kB at 866 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.jar
+Progress (2): 1.4/2.8 MB | 4.1/8.2 kBProgress (2): 1.4/2.8 MB | 7.7/8.2 kBProgress (2): 1.4/2.8 MB | 8.2 kB    Progress (2): 1.4/2.8 MB | 8.2 kBProgress (2): 1.4/2.8 MB | 8.2 kBProgress (2): 1.5/2.8 MB | 8.2 kBProgress (2): 1.5/2.8 MB | 8.2 kBProgress (2): 1.5/2.8 MB | 8.2 kBProgress (2): 1.5/2.8 MB | 8.2 kBProgress (2): 1.5/2.8 MB | 8.2 kBProgress (2): 1.5/2.8 MB | 8.2 kBProgress (2): 1.6/2.8 MB | 8.2 kBProgress (2): 1.6/2.8 MB | 8.2 kBProgress (2): 1.6/2.8 MB | 8.2 kBProgress (2): 1.6/2.8 MB | 8.2 kBProgress (2): 1.6/2.8 MB | 8.2 kBProgress (2): 1.6/2.8 MB | 8.2 kBProgress (2): 1.7/2.8 MB | 8.2 kBProgress (2): 1.7/2.8 MB | 8.2 kBProgress (2): 1.7/2.8 MB | 8.2 kBProgress (2): 1.7/2.8 MB | 8.2 kBProgress (2): 1.7/2.8 MB | 8.2 kBProgress (2): 1.7/2.8 MB | 8.2 kBProgress (2): 1.8/2.8 MB | 8.2 kBProgress (2): 1.8/2.8 MB | 8.2 kBProgress (2): 1.8/2.8 MB | 8.2 kBProgress (2): 1.8/2.8 MB | 8.2 kBProgress (2): 1.8/2.8 MB | 8.2 kBProgress (2): 1.8/2.8 MB | 8.2 kBProgress (2): 1.8/2.8 MB | 8.2 kBProgress (2): 1.9/2.8 MB | 8.2 kBProgress (2): 1.9/2.8 MB | 8.2 kBProgress (2): 1.9/2.8 MB | 8.2 kBProgress (2): 1.9/2.8 MB | 8.2 kBProgress (2): 1.9/2.8 MB | 8.2 kBProgress (2): 1.9/2.8 MB | 8.2 kBProgress (2): 2.0/2.8 MB | 8.2 kBProgress (2): 2.0/2.8 MB | 8.2 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.5.2/surefire-extensions-spi-3.5.2.jar (8.2 kB at 35 kB/s)
+Progress (1): 2.0/2.8 MB                        Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.3.0/plexus-java-1.3.0.jar
+Progress (1): 2.0/2.8 MBProgress (1): 2.0/2.8 MBProgress (1): 2.0/2.8 MBProgress (1): 2.1/2.8 MBProgress (1): 2.1/2.8 MBProgress (1): 2.1/2.8 MBProgress (1): 2.1/2.8 MBProgress (1): 2.1/2.8 MBProgress (1): 2.1/2.8 MBProgress (1): 2.2/2.8 MBProgress (1): 2.2/2.8 MBProgress (1): 2.2/2.8 MBProgress (1): 2.2/2.8 MBProgress (1): 2.2/2.8 MBProgress (1): 2.2/2.8 MBProgress (1): 2.3/2.8 MBProgress (1): 2.3/2.8 MBProgress (1): 2.3/2.8 MBProgress (1): 2.3/2.8 MBProgress (1): 2.3/2.8 MBProgress (1): 2.3/2.8 MBProgress (1): 2.4/2.8 MBProgress (1): 2.4/2.8 MBProgress (1): 2.4/2.8 MBProgress (2): 2.4/2.8 MB | 3.8/58 kBProgress (2): 2.4/2.8 MB | 7.9/58 kBProgress (2): 2.4/2.8 MB | 7.9/58 kBProgress (2): 2.4/2.8 MB | 12/58 kB Progress (2): 2.4/2.8 MB | 16/58 kBProgress (2): 2.4/2.8 MB | 16/58 kBProgress (2): 2.4/2.8 MB | 20/58 kBProgress (2): 2.4/2.8 MB | 24/58 kBProgress (2): 2.4/2.8 MB | 28/58 kBProgress (2): 2.4/2.8 MB | 28/58 kBProgress (2): 2.4/2.8 MB | 32/58 kBProgress (2): 2.4/2.8 MB | 36/58 kBProgress (2): 2.4/2.8 MB | 41/58 kBProgress (2): 2.5/2.8 MB | 41/58 kBProgress (2): 2.5/2.8 MB | 45/58 kBProgress (2): 2.5/2.8 MB | 45/58 kBProgress (2): 2.5/2.8 MB | 49/58 kBProgress (2): 2.5/2.8 MB | 53/58 kBProgress (2): 2.5/2.8 MB | 57/58 kBProgress (2): 2.5/2.8 MB | 58 kB   Progress (2): 2.5/2.8 MB | 58 kBProgress (2): 2.5/2.8 MB | 58 kBProgress (2): 2.5/2.8 MB | 58 kBProgress (2): 2.5/2.8 MB | 58 kBProgress (2): 2.6/2.8 MB | 58 kBProgress (2): 2.6/2.8 MB | 58 kBProgress (2): 2.6/2.8 MB | 58 kBProgress (2): 2.6/2.8 MB | 58 kBProgress (2): 2.6/2.8 MB | 58 kBProgress (2): 2.6/2.8 MB | 58 kBProgress (2): 2.7/2.8 MB | 58 kBProgress (2): 2.7/2.8 MB | 58 kBProgress (2): 2.7/2.8 MB | 58 kBProgress (2): 2.7/2.8 MB | 58 kBProgress (2): 2.7/2.8 MB | 58 kBProgress (2): 2.7/2.8 MB | 58 kBProgress (2): 2.8/2.8 MB | 58 kBProgress (2): 2.8/2.8 MB | 58 kBProgress (2): 2.8/2.8 MB | 58 kBProgress (2): 2.8/2.8 MB | 58 kBProgress (2): 2.8/2.8 MB | 58 kBProgress (2): 2.8 MB | 58 kB    Progress (3): 2.8 MB | 58 kB | 4.1/149 kBProgress (3): 2.8 MB | 58 kB | 7.7/149 kBProgress (3): 2.8 MB | 58 kB | 12/149 kB Progress (3): 2.8 MB | 58 kB | 16/149 kBProgress (3): 2.8 MB | 58 kB | 20/149 kBProgress (3): 2.8 MB | 58 kB | 24/149 kBProgress (3): 2.8 MB | 58 kB | 28/149 kBProgress (3): 2.8 MB | 58 kB | 32/149 kBProgress (3): 2.8 MB | 58 kB | 36/149 kBProgress (3): 2.8 MB | 58 kB | 40/149 kBProgress (3): 2.8 MB | 58 kB | 45/149 kBProgress (3): 2.8 MB | 58 kB | 49/149 kBProgress (3): 2.8 MB | 58 kB | 53/149 kBProgress (3): 2.8 MB | 58 kB | 57/149 kBProgress (3): 2.8 MB | 58 kB | 61/149 kBProgress (3): 2.8 MB | 58 kB | 65/149 kBProgress (3): 2.8 MB | 58 kB | 69/149 kBProgress (3): 2.8 MB | 58 kB | 73/149 kBProgress (3): 2.8 MB | 58 kB | 77/149 kBProgress (3): 2.8 MB | 58 kB | 81/149 kBProgress (3): 2.8 MB | 58 kB | 86/149 kBProgress (3): 2.8 MB | 58 kB | 90/149 kBProgress (3): 2.8 MB | 58 kB | 94/149 kBProgress (3): 2.8 MB | 58 kB | 98/149 kBProgress (3): 2.8 MB | 58 kB | 102/149 kBProgress (3): 2.8 MB | 58 kB | 106/149 kBProgress (3): 2.8 MB | 58 kB | 110/149 kBProgress (3): 2.8 MB | 58 kB | 114/149 kBProgress (3): 2.8 MB | 58 kB | 118/149 kBProgress (3): 2.8 MB | 58 kB | 122/149 kBProgress (3): 2.8 MB | 58 kB | 127/149 kBProgress (3): 2.8 MB | 58 kB | 131/149 kBProgress (3): 2.8 MB | 58 kB | 135/149 kBProgress (3): 2.8 MB | 58 kB | 139/149 kBProgress (3): 2.8 MB | 58 kB | 143/149 kBProgress (3): 2.8 MB | 58 kB | 147/149 kBProgress (3): 2.8 MB | 58 kB | 149 kB    Progress (4): 2.8 MB | 58 kB | 149 kB | 4.1/57 kBProgress (4): 2.8 MB | 58 kB | 149 kB | 7.7/57 kBProgress (4): 2.8 MB | 58 kB | 149 kB | 12/57 kB Progress (4): 2.8 MB | 58 kB | 149 kB | 16/57 kBProgress (4): 2.8 MB | 58 kB | 149 kB | 20/57 kBProgress (4): 2.8 MB | 58 kB | 149 kB | 24/57 kBProgress (4): 2.8 MB | 58 kB | 149 kB | 28/57 kBProgress (4): 2.8 MB | 58 kB | 149 kB | 32/57 kBProgress (4): 2.8 MB | 58 kB | 149 kB | 36/57 kB                                                Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.4.0/maven-common-artifact-filters-3.4.0.jar (58 kB at 203 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.1.0/qdox-2.1.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.5.2/surefire-shared-utils-3.5.2.jar (2.8 MB at 9.2 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.jar
+Progress (2): 149 kB | 40/57 kBProgress (2): 149 kB | 45/57 kBProgress (2): 149 kB | 49/57 kBProgress (2): 149 kB | 53/57 kBProgress (2): 149 kB | 57/57 kBProgress (2): 149 kB | 57 kB                               Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-api/1.4.1/maven-resolver-api-1.4.1.jar (149 kB at 441 kB/s)
+Progress (2): 57 kB | 4.1/348 kBProgress (2): 57 kB | 7.7/348 kBProgress (2): 57 kB | 12/348 kB Progress (2): 57 kB | 16/348 kBProgress (2): 57 kB | 20/348 kBProgress (2): 57 kB | 24/348 kBProgress (2): 57 kB | 28/348 kBProgress (2): 57 kB | 32/348 kBProgress (3): 57 kB | 32/348 kB | 2.7/168 kBProgress (3): 57 kB | 36/348 kB | 2.7/168 kBProgress (3): 57 kB | 40/348 kB | 2.7/168 kBProgress (3): 57 kB | 45/348 kB | 2.7/168 kBProgress (3): 57 kB | 45/348 kB | 5.5/168 kBProgress (3): 57 kB | 49/348 kB | 5.5/168 kBProgress (3): 57 kB | 49/348 kB | 8.2/168 kBProgress (3): 57 kB | 53/348 kB | 8.2/168 kBProgress (3): 57 kB | 57/348 kB | 8.2/168 kBProgress (3): 57 kB | 61/348 kB | 8.2/168 kBProgress (3): 57 kB | 65/348 kB | 8.2/168 kBProgress (3): 57 kB | 69/348 kB | 8.2/168 kBProgress (3): 57 kB | 73/348 kB | 8.2/168 kBProgress (3): 57 kB | 77/348 kB | 8.2/168 kBProgress (3): 57 kB | 81/348 kB | 8.2/168 kBProgress (3): 57 kB | 86/348 kB | 8.2/168 kBProgress (3): 57 kB | 90/348 kB | 8.2/168 kBProgress (3): 57 kB | 94/348 kB | 8.2/168 kBProgress (3): 57 kB | 98/348 kB | 8.2/168 kBProgress (3): 57 kB | 102/348 kB | 8.2/168 kBProgress (3): 57 kB | 106/348 kB | 8.2/168 kBProgress (3): 57 kB | 110/348 kB | 8.2/168 kBProgress (3): 57 kB | 114/348 kB | 8.2/168 kBProgress (3): 57 kB | 118/348 kB | 8.2/168 kBProgress (3): 57 kB | 122/348 kB | 8.2/168 kBProgress (3): 57 kB | 127/348 kB | 8.2/168 kBProgress (3): 57 kB | 131/348 kB | 8.2/168 kBProgress (3): 57 kB | 135/348 kB | 8.2/168 kBProgress (3): 57 kB | 139/348 kB | 8.2/168 kBProgress (3): 57 kB | 143/348 kB | 8.2/168 kBProgress (3): 57 kB | 147/348 kB | 8.2/168 kBProgress (3): 57 kB | 151/348 kB | 8.2/168 kBProgress (3): 57 kB | 155/348 kB | 8.2/168 kBProgress (3): 57 kB | 159/348 kB | 8.2/168 kBProgress (3): 57 kB | 163/348 kB | 8.2/168 kBProgress (3): 57 kB | 167/348 kB | 8.2/168 kBProgress (3): 57 kB | 171/348 kB | 8.2/168 kBProgress (3): 57 kB | 176/348 kB | 8.2/168 kBProgress (3): 57 kB | 180/348 kB | 8.2/168 kBProgress (3): 57 kB | 184/348 kB | 8.2/168 kBProgress (3): 57 kB | 188/348 kB | 8.2/168 kBProgress (3): 57 kB | 192/348 kB | 8.2/168 kBProgress (3): 57 kB | 196/348 kB | 8.2/168 kBProgress (3): 57 kB | 200/348 kB | 8.2/168 kBProgress (3): 57 kB | 204/348 kB | 8.2/168 kBProgress (3): 57 kB | 208/348 kB | 8.2/168 kBProgress (3): 57 kB | 212/348 kB | 8.2/168 kBProgress (3): 57 kB | 217/348 kB | 8.2/168 kBProgress (3): 57 kB | 221/348 kB | 8.2/168 kBProgress (3): 57 kB | 225/348 kB | 8.2/168 kBProgress (3): 57 kB | 229/348 kB | 8.2/168 kBProgress (3): 57 kB | 233/348 kB | 8.2/168 kBProgress (3): 57 kB | 236/348 kB | 8.2/168 kBProgress (3): 57 kB | 240/348 kB | 8.2/168 kBProgress (4): 57 kB | 240/348 kB | 8.2/168 kB | 3.7/169 kBProgress (4): 57 kB | 244/348 kB | 8.2/168 kB | 3.7/169 kBProgress (4): 57 kB | 248/348 kB | 8.2/168 kB | 3.7/169 kBProgress (4): 57 kB | 252/348 kB | 8.2/168 kB | 3.7/169 kBProgress (4): 57 kB | 256/348 kB | 8.2/168 kB | 3.7/169 kBProgress (4): 57 kB | 260/348 kB | 8.2/168 kB | 3.7/169 kBProgress (4): 57 kB | 264/348 kB | 8.2/168 kB | 3.7/169 kBProgress (4): 57 kB | 268/348 kB | 8.2/168 kB | 3.7/169 kBProgress (4): 57 kB | 268/348 kB | 11/168 kB | 3.7/169 kB Progress (4): 57 kB | 268/348 kB | 14/168 kB | 3.7/169 kBProgress (4): 57 kB | 272/348 kB | 14/168 kB | 3.7/169 kBProgress (4): 57 kB | 272/348 kB | 16/168 kB | 3.7/169 kBProgress (4): 57 kB | 277/348 kB | 16/168 kB | 3.7/169 kBProgress (4): 57 kB | 281/348 kB | 16/168 kB | 3.7/169 kBProgress (4): 57 kB | 285/348 kB | 16/168 kB | 3.7/169 kBProgress (4): 57 kB | 285/348 kB | 19/168 kB | 3.7/169 kBProgress (4): 57 kB | 285/348 kB | 22/168 kB | 3.7/169 kBProgress (4): 57 kB | 285/348 kB | 25/168 kB | 3.7/169 kBProgress (4): 57 kB | 285/348 kB | 25/168 kB | 7.8/169 kBProgress (4): 57 kB | 285/348 kB | 25/168 kB | 12/169 kB Progress (4): 57 kB | 285/348 kB | 25/168 kB | 16/169 kBProgress (4): 57 kB | 285/348 kB | 29/168 kB | 16/169 kBProgress (4): 57 kB | 285/348 kB | 29/168 kB | 20/169 kBProgress (4): 57 kB | 289/348 kB | 29/168 kB | 20/169 kBProgress (4): 57 kB | 293/348 kB | 29/168 kB | 20/169 kBProgress (4): 57 kB | 297/348 kB | 29/168 kB | 20/169 kBProgress (4): 57 kB | 297/348 kB | 33/168 kB | 20/169 kBProgress (4): 57 kB | 301/348 kB | 33/168 kB | 20/169 kBProgress (4): 57 kB | 301/348 kB | 33/168 kB | 24/169 kBProgress (4): 57 kB | 301/348 kB | 33/168 kB | 28/169 kBProgress (4): 57 kB | 301/348 kB | 37/168 kB | 28/169 kBProgress (4): 57 kB | 301/348 kB | 37/168 kB | 32/169 kBProgress (4): 57 kB | 301/348 kB | 37/168 kB | 37/169 kBProgress (4): 57 kB | 305/348 kB | 37/168 kB | 37/169 kBProgress (4): 57 kB | 305/348 kB | 41/168 kB | 37/169 kBProgress (4): 57 kB | 309/348 kB | 41/168 kB | 37/169 kBProgress (4): 57 kB | 309/348 kB | 45/168 kB | 37/169 kBProgress (4): 57 kB | 309/348 kB | 49/168 kB | 37/169 kBProgress (4): 57 kB | 309/348 kB | 49/168 kB | 41/169 kBProgress (4): 57 kB | 309/348 kB | 49/168 kB | 45/169 kBProgress (4): 57 kB | 313/348 kB | 49/168 kB | 45/169 kBProgress (4): 57 kB | 313/348 kB | 49/168 kB | 49/169 kBProgress (4): 57 kB | 317/348 kB | 49/168 kB | 49/169 kBProgress (4): 57 kB | 317/348 kB | 49/168 kB | 53/169 kBProgress (4): 57 kB | 317/348 kB | 53/168 kB | 53/169 kBProgress (4): 57 kB | 322/348 kB | 53/168 kB | 53/169 kBProgress (4): 57 kB | 326/348 kB | 53/168 kB | 53/169 kBProgress (4): 57 kB | 326/348 kB | 57/168 kB | 53/169 kBProgress (4): 57 kB | 326/348 kB | 61/168 kB | 53/169 kBProgress (4): 57 kB | 326/348 kB | 61/168 kB | 57/169 kBProgress (4): 57 kB | 326/348 kB | 61/168 kB | 61/169 kBProgress (4): 57 kB | 326/348 kB | 61/168 kB | 65/169 kBProgress (4): 57 kB | 326/348 kB | 66/168 kB | 65/169 kBProgress (4): 57 kB | 326/348 kB | 66/168 kB | 69/169 kBProgress (4): 57 kB | 330/348 kB | 66/168 kB | 69/169 kBProgress (4): 57 kB | 334/348 kB | 66/168 kB | 69/169 kBProgress (4): 57 kB | 338/348 kB | 66/168 kB | 69/169 kBProgress (4): 57 kB | 338/348 kB | 70/168 kB | 69/169 kBProgress (4): 57 kB | 342/348 kB | 70/168 kB | 69/169 kBProgress (4): 57 kB | 342/348 kB | 74/168 kB | 69/169 kBProgress (4): 57 kB | 346/348 kB | 74/168 kB | 69/169 kBProgress (4): 57 kB | 346/348 kB | 74/168 kB | 73/169 kBProgress (4): 57 kB | 346/348 kB | 78/168 kB | 73/169 kBProgress (4): 57 kB | 346/348 kB | 78/168 kB | 77/169 kBProgress (4): 57 kB | 348 kB | 78/168 kB | 77/169 kB    Progress (4): 57 kB | 348 kB | 78/168 kB | 82/169 kBProgress (4): 57 kB | 348 kB | 78/168 kB | 86/169 kBProgress (4): 57 kB | 348 kB | 82/168 kB | 86/169 kBProgress (4): 57 kB | 348 kB | 86/168 kB | 86/169 kBProgress (4): 57 kB | 348 kB | 90/168 kB | 86/169 kBProgress (4): 57 kB | 348 kB | 90/168 kB | 90/169 kBProgress (4): 57 kB | 348 kB | 92/168 kB | 90/169 kBProgress (4): 57 kB | 348 kB | 92/168 kB | 94/169 kBProgress (4): 57 kB | 348 kB | 92/168 kB | 98/169 kBProgress (4): 57 kB | 348 kB | 92/168 kB | 102/169 kBProgress (4): 57 kB | 348 kB | 96/168 kB | 102/169 kBProgress (4): 57 kB | 348 kB | 100/168 kB | 102/169 kBProgress (4): 57 kB | 348 kB | 105/168 kB | 102/169 kBProgress (4): 57 kB | 348 kB | 105/168 kB | 106/169 kBProgress (4): 57 kB | 348 kB | 105/168 kB | 110/169 kBProgress (4): 57 kB | 348 kB | 109/168 kB | 110/169 kBProgress (4): 57 kB | 348 kB | 109/168 kB | 114/169 kBProgress (4): 57 kB | 348 kB | 109/168 kB | 118/169 kBProgress (4): 57 kB | 348 kB | 113/168 kB | 118/169 kBProgress (4): 57 kB | 348 kB | 117/168 kB | 118/169 kBProgress (4): 57 kB | 348 kB | 117/168 kB | 123/169 kBProgress (4): 57 kB | 348 kB | 121/168 kB | 123/169 kBProgress (4): 57 kB | 348 kB | 121/168 kB | 127/169 kBProgress (4): 57 kB | 348 kB | 121/168 kB | 131/169 kBProgress (4): 57 kB | 348 kB | 121/168 kB | 135/169 kBProgress (4): 57 kB | 348 kB | 125/168 kB | 135/169 kBProgress (4): 57 kB | 348 kB | 129/168 kB | 135/169 kBProgress (4): 57 kB | 348 kB | 133/168 kB | 135/169 kBProgress (4): 57 kB | 348 kB | 133/168 kB | 139/169 kBProgress (4): 57 kB | 348 kB | 133/168 kB | 143/169 kBProgress (4): 57 kB | 348 kB | 137/168 kB | 143/169 kBProgress (4): 57 kB | 348 kB | 137/168 kB | 147/169 kBProgress (4): 57 kB | 348 kB | 137/168 kB | 151/169 kBProgress (4): 57 kB | 348 kB | 141/168 kB | 151/169 kBProgress (4): 57 kB | 348 kB | 143/168 kB | 151/169 kBProgress (4): 57 kB | 348 kB | 148/168 kB | 151/169 kBProgress (4): 57 kB | 348 kB | 148/168 kB | 155/169 kBProgress (4): 57 kB | 348 kB | 152/168 kB | 155/169 kBProgress (4): 57 kB | 348 kB | 152/168 kB | 159/169 kBProgress (4): 57 kB | 348 kB | 152/168 kB | 163/169 kBProgress (4): 57 kB | 348 kB | 152/168 kB | 168/169 kBProgress (4): 57 kB | 348 kB | 156/168 kB | 168/169 kBProgress (4): 57 kB | 348 kB | 156/168 kB | 169 kB    Progress (4): 57 kB | 348 kB | 160/168 kB | 169 kBProgress (4): 57 kB | 348 kB | 164/168 kB | 169 kBProgress (4): 57 kB | 348 kB | 168 kB | 169 kB                                                  Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.3.0/plexus-java-1.3.0.jar (57 kB at 155 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.jar (169 kB at 404 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/resolver/maven-resolver-util/1.4.1/maven-resolver-util-1.4.1.jar (168 kB at 397 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.1.0/qdox-2.1.0.jar (348 kB at 767 kB/s)
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.2/surefire-junit-platform-3.5.2.pom
+Progress (1): 4.1 kBProgress (1): 5.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.2/surefire-junit-platform-3.5.2.pom (5.7 kB at 70 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.2/surefire-providers-3.5.2.pom
+Progress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.2/surefire-providers-3.5.2.pom (2.6 kB at 30 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.2/common-java5-3.5.2.pom
+Progress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.2/common-java5-3.5.2.pom (2.8 kB at 33 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom
+Progress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom (3.2 kB at 31 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom
+Progress (1): 4.1 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom (5.6 kB at 73 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom
+Progress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom (1.7 kB at 20 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom
+Progress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom (2.8 kB at 33 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom
+Progress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom (3.0 kB at 36 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.2/surefire-junit-platform-3.5.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.2/common-java5-3.5.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar
+Progress (1): 4.1/7.7 kBProgress (1): 7.7 kB    Progress (2): 7.7 kB | 4.1/27 kBProgress (2): 7.7 kB | 7.7/27 kBProgress (2): 7.7 kB | 12/27 kB Progress (2): 7.7 kB | 16/27 kBProgress (2): 7.7 kB | 20/27 kBProgress (2): 7.7 kB | 24/27 kBProgress (2): 7.7 kB | 27 kB   Progress (3): 7.7 kB | 27 kB | 3.7/18 kBProgress (3): 7.7 kB | 27 kB | 7.8/18 kBProgress (3): 7.7 kB | 27 kB | 12/18 kB Progress (3): 7.7 kB | 27 kB | 16/18 kBProgress (3): 7.7 kB | 27 kB | 18 kB   Progress (4): 7.7 kB | 27 kB | 18 kB | 3.8/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 7.9/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 12/189 kB Progress (4): 7.7 kB | 27 kB | 18 kB | 16/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 20/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 24/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 28/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 32/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 36/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 41/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 45/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 49/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 53/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 57/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 61/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 65/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 69/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 73/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 77/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 82/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 86/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 90/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 94/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 98/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 102/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 106/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 110/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 114/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 118/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 122/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 127/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 131/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 135/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 139/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 143/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 147/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 151/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 155/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 159/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 163/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 168/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 172/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 176/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 179/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 183/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 188/189 kBProgress (4): 7.7 kB | 27 kB | 18 kB | 189 kB                                                 Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar (7.7 kB at 113 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar
+Progress (4): 27 kB | 18 kB | 189 kB | 3.7/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 7.8/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 12/103 kB Progress (4): 27 kB | 18 kB | 189 kB | 16/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 20/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 24/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 28/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 32/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 36/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 41/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 45/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 49/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 53/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 57/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 61/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 65/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 69/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 73/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 77/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 82/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 86/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 90/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 94/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 98/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 102/103 kBProgress (4): 27 kB | 18 kB | 189 kB | 103 kB                                                 Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.2/common-java5-3.5.2.jar (18 kB at 187 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar (0 B at 0 B/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.2/surefire-junit-platform-3.5.2.jar (27 kB at 247 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar (189 kB at 1.6 MB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar (103 kB at 873 kB/s)
+Progress (1): 4.1/169 kBProgress (1): 7.7/169 kBProgress (1): 12/169 kB Progress (1): 16/169 kBProgress (1): 20/169 kBProgress (1): 24/169 kBProgress (1): 28/169 kBProgress (1): 32/169 kBProgress (1): 36/169 kBProgress (1): 40/169 kBProgress (1): 45/169 kBProgress (1): 49/169 kBProgress (1): 53/169 kBProgress (1): 57/169 kBProgress (1): 61/169 kBProgress (1): 65/169 kBProgress (1): 69/169 kBProgress (1): 73/169 kBProgress (1): 77/169 kBProgress (1): 81/169 kBProgress (1): 86/169 kBProgress (1): 90/169 kBProgress (1): 94/169 kBProgress (1): 98/169 kBProgress (1): 102/169 kBProgress (1): 106/169 kBProgress (1): 110/169 kBProgress (1): 114/169 kBProgress (1): 118/169 kBProgress (1): 122/169 kBProgress (1): 127/169 kBProgress (1): 131/169 kBProgress (1): 135/169 kBProgress (1): 139/169 kBProgress (1): 143/169 kBProgress (1): 147/169 kBProgress (1): 151/169 kBProgress (1): 155/169 kBProgress (1): 159/169 kBProgress (1): 163/169 kBProgress (1): 167/169 kBProgress (1): 169 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar (169 kB at 838 kB/s)
+Downloading from central-https: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom
+Progress (1): 3.0 kB                    Downloaded from central-https: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom (3.0 kB at 40 kB/s)
+Downloading from central-https: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar
+Progress (1): 4.1/208 kBProgress (1): 7.7/208 kBProgress (1): 12/208 kB Progress (1): 16/208 kBProgress (1): 20/208 kBProgress (1): 24/208 kBProgress (1): 28/208 kBProgress (1): 32/208 kBProgress (1): 36/208 kBProgress (1): 40/208 kBProgress (1): 45/208 kBProgress (1): 49/208 kBProgress (1): 53/208 kBProgress (1): 57/208 kBProgress (1): 61/208 kBProgress (1): 65/208 kBProgress (1): 69/208 kBProgress (1): 73/208 kBProgress (1): 77/208 kBProgress (1): 81/208 kBProgress (1): 86/208 kBProgress (1): 90/208 kBProgress (1): 94/208 kBProgress (1): 98/208 kBProgress (1): 102/208 kBProgress (1): 106/208 kBProgress (1): 110/208 kBProgress (1): 114/208 kBProgress (1): 118/208 kBProgress (1): 122/208 kBProgress (1): 127/208 kBProgress (1): 131/208 kBProgress (1): 135/208 kBProgress (1): 139/208 kBProgress (1): 143/208 kBProgress (1): 147/208 kBProgress (1): 151/208 kBProgress (1): 155/208 kBProgress (1): 159/208 kBProgress (1): 163/208 kBProgress (1): 167/208 kBProgress (1): 172/208 kBProgress (1): 176/208 kBProgress (1): 180/208 kBProgress (1): 183/208 kBProgress (1): 188/208 kBProgress (1): 192/208 kBProgress (1): 196/208 kBProgress (1): 200/208 kBProgress (1): 204/208 kBProgress (1): 208 kB                        Downloaded from central-https: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar (208 kB at 2.2 MB/s)
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running io.warmup.framework.core.test.critical.WarmupContainerCriticalTests
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testEmptyProfiles
+INFO: 🧪 Test: Configuración de perfiles vacíos
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Dec 01, 2025 3:54:05 PM io.warmup.framework.cache.ASMCacheManager initializeCacheDirectory
+INFO: Directorio de caché creado: /home/minimax/.warmup/asm-cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔧 [DEBUG] Creando nueva instancia de EventBus...
+🔧 [DEBUG] EventBus creado: NO_NULL
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator setActiveProfiles
+INFO: Active profiles set to: []
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests lambda$testEmptyProfiles$7
+INFO: 📊 Has development profile when no profiles set: false
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testEmptyProfiles
+INFO: ✅ Test passed: Configuración de perfiles vacíos manejada
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testBeanRetrievalAfterShutdown
+INFO: 🧪 Test: Intentar obtener bean después de shutdown
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: service -> Class (scope: null)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 9ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+WARNING: ⚠️ Critical phase exceeded target: 9ms > 2ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 14ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Starting graceful shutdown...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+
+=== Warmup Container Metrics Report ===
+Uptime: 00:00:00
+Dependencies: 0 | Aspects: 0 | Active Instances: 0
+Requests: 0 total, 0 success, 0 failed (100.00% success rate)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 13ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager stopHealthMonitoring
+INFO: Stopping health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+WARNING: Normal shutdown transitions failed, forcing shutdown state
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Container shutdown completed
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer get
+WARNING: Container is shutdown, rejecting dependency resolution for: TestService
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testBeanRetrievalAfterShutdown
+INFO: ✅ Test passed: Error handling después de shutdown funciona
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testBeanRegistrationAfterShutdown
+INFO: 🧪 Test: Intentar registrar bean después de shutdown
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Starting graceful shutdown...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+
+=== Warmup Container Metrics Report ===
+Uptime: 00:00:00
+Dependencies: 0 | Aspects: 0 | Active Instances: 0
+Requests: 0 total, 0 success, 0 failed (100.00% success rate)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager stopHealthMonitoring
+INFO: Stopping health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 4ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+WARNING: Normal shutdown transitions failed, forcing shutdown state
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Container shutdown completed
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: service -> Class (scope: null)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerWithProfilesOnly
+INFO: 🧪 Test: WarmupContainer constructor con perfiles solamente
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [test, production]
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with profiles: [test, production]
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: profiles-service -> Class (scope: null)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator get
+INFO: ContainerCoordinator.get(io.warmup.framework.core.test.WarmupContainerTest$TestService) returning instance: io.warmup.framework.core.test.WarmupContainerTest$TestService@18dac12f
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerWithProfilesOnly
+INFO: ✅ Test passed: Constructor con perfiles funciona
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerInitialState
+INFO: 🧪 Test: Validación de estado inicial del container
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerInitialState
+INFO: 📊 Container running state: false
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerInitialState
+INFO: ✅ Test passed: Validación de estado inicial funciona
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testPropertyAccessAfterShutdown
+INFO: 🧪 Test: Intentar acceder propiedades después de shutdown
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Starting graceful shutdown...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+
+=== Warmup Container Metrics Report ===
+Uptime: 00:00:00
+Dependencies: 0 | Aspects: 0 | Active Instances: 0
+Requests: 1 total, 1 success, 0 failed (100.00% success rate)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager stopHealthMonitoring
+INFO: Stopping health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 3ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+WARNING: Normal shutdown transitions failed, forcing shutdown state
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Container shutdown completed
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerStateAfterStart
+INFO: 🧪 Test: Validación de estado después de start
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerStateAfterStart
+INFO: 📊 Container running state after start: false
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Starting graceful shutdown...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+
+=== Warmup Container Metrics Report ===
+Uptime: 00:00:00
+Dependencies: 0 | Aspects: 0 | Active Instances: 0
+Requests: 0 total, 0 success, 0 failed (100.00% success rate)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager stopHealthMonitoring
+INFO: Stopping health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 76ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+WARNING: Normal shutdown transitions failed, forcing shutdown state
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Container shutdown completed
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerStateAfterStart
+INFO: ✅ Test passed: Validación de estado después de start funciona
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testProfileConfiguration
+INFO: 🧪 Test: Configuración y validación de perfiles
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator setActiveProfiles
+INFO: Active profiles set to: [development, test]
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testProfileConfiguration
+INFO: 📊 Development profile active: false
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testProfileConfiguration
+INFO: 📊 Test profile active: false
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testProfileConfiguration
+INFO: ✅ Test passed: Configuración de perfiles funciona
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testNonExistentNamedBean
+INFO: 🧪 Test: Obtener bean por nombre que no existe
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry getNamed
+SEVERE: Named dependency not found: non-existent of type Class
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testNonExistentNamedBean
+INFO: ✅ Test passed: Manejo de beans nombrados no existentes funciona
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testMultipleBeanRegistrationsSameType
+INFO: 🧪 Test: Múltiples beans del mismo tipo con nombres diferentes
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: first -> Class (scope: null)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: second -> Class (scope: null)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testMultipleBeanRegistrationsSameType
+INFO: ✅ Test passed: Múltiples beans del mismo tipo funcionan
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testWarmupFactoryCreation
+INFO: 🧪 Test: Creación de container vía Warmup.create()
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testWarmupFactoryCreation
+INFO: ✅ Test passed: Creación vía Warmup.create() funciona
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testBasicStatistics
+INFO: 🧪 Test: Obtención de estadísticas básicas
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: stats-service -> Class (scope: null)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testBasicStatistics
+INFO: 📊 Dependency stats size: 5
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testBasicStatistics
+INFO: 📊 Performance metrics size: 22
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testBasicStatistics
+INFO: ✅ Test passed: Estadísticas básicas funcionan
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerWithCustomNameAndVersion
+INFO: 🧪 Test: WarmupContainer constructor con configuración personalizada
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with custom config: MyApp v1.0.0 [production]
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: service -> Class (scope: null)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator get
+INFO: ContainerCoordinator.get(io.warmup.framework.core.test.WarmupContainerTest$TestService) returning instance: io.warmup.framework.core.test.WarmupContainerTest$TestService@1488a861
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Starting graceful shutdown...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Iniciando shutdown del manager (Modo: GRACEFUL, Timeout: 30,000ms)
+DependencyRegistry no disponible, retornando lista vacía
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.ShutdownManager shutdown
+INFO: Shutdown completado (sin componentes ni @PreDestroy)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: 🚀 Starting shutdown phases...
+Dec 01, 2025 3:54:05 PM io.warmup.framework.metrics.MetricsManager stopMetricsCollection
+INFO: Stopping metrics collection
+
+=== Warmup Container Metrics Report ===
+Uptime: 00:00:00
+Dependencies: 0 | Aspects: 0 | Active Instances: 0
+Requests: 1 total, 1 success, 0 failed (100.00% success rate)
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager stopHealthMonitoring
+INFO: Stopping health monitoring
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Dec 01, 2025 3:54:05 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Dec 01, 2025 3:54:05 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StartupPhasesManager stopBackgroundServices
+WARNING: Error stopping background services: null
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StartupPhasesManager executeShutdown
+INFO: ✅ Shutdown phases completed
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+WARNING: Normal shutdown transitions failed, forcing shutdown state
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.CoreContainer clearCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ManagerFactory clearCaches
+INFO: 🧹 ManagerFactory caches cleared
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.PerformanceOptimizer clearCaches
+INFO: 🧹 PerformanceOptimizer caches cleared
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.JITEngine clearCache
+INFO: 🧹 JIT cache cleared
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator clearPerformanceCaches
+INFO: 🧹 All performance caches cleared
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator shutdown
+INFO: Container shutdown completed
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerWithCustomNameAndVersion
+INFO: ✅ Test passed: Constructor personalizado funciona correctamente
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testPhasedStartupViaConstructor
+INFO: 🧪 Test: WarmupContainer constructor con phased startup habilitado
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [development, test]
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator <init>
+INFO: 🚀 ContainerCoordinator initialized with optimized architecture
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with profiles: [test, development], phased startup: true
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Phased startup is enabled
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testPhasedStartupViaConstructor
+INFO: 📊 Phased startup enabled: true
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator setActiveProfiles
+INFO: Active profiles set to: [test, development]
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testPhasedStartupViaConstructor
+INFO: 📊 Profile test active: false
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testPhasedStartupViaConstructor
+INFO: 📊 Profile development active: false
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testPhasedStartupViaConstructor
+INFO: ✅ Test passed: Phased startup via constructor inicializado
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testNullPropertyValues
+INFO: 🧪 Test: Gestión de propiedades con valores nulos
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testNonExistentBean
+INFO: 🧪 Test: Obtener bean que no existe
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testNonExistentBean
+INFO: ✅ Test passed: Manejo de beans no existentes funciona
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests setUp
+INFO: 🔧 Configurando test crítico de WarmupContainer
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerWithNameAndVersion
+INFO: 🧪 Test: WarmupContainer constructor con nombre y versión
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized: TestApp v2.0.0
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: service -> Class (scope: null)
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.optimized.ContainerCoordinator get
+INFO: ContainerCoordinator.get(io.warmup.framework.core.test.WarmupContainerTest$TestService) returning instance: io.warmup.framework.core.test.WarmupContainerTest$TestService@15be68b
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests testContainerWithNameAndVersion
+INFO: ✅ Test passed: Constructor nombre+versión funciona
+Dec 01, 2025 3:54:06 PM io.warmup.framework.core.test.critical.WarmupContainerCriticalTests tearDown
+INFO: 🧹 Limpieza después de test crítico
+[ERROR] Tests run: 17, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.908 s <<< FAILURE! -- in io.warmup.framework.core.test.critical.WarmupContainerCriticalTests
+[ERROR] io.warmup.framework.core.test.critical.WarmupContainerCriticalTests.testBeanRegistrationAfterShutdown -- Time elapsed: 0.018 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Debe lanzar IllegalStateException al registrar bean después de shutdown ==> Expected java.lang.IllegalStateException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:39)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3153)
+	at io.warmup.framework.core.test.critical.WarmupContainerCriticalTests.testBeanRegistrationAfterShutdown(WarmupContainerCriticalTests.java:227)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+
+[ERROR] io.warmup.framework.core.test.critical.WarmupContainerCriticalTests.testPropertyAccessAfterShutdown -- Time elapsed: 0.008 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Debe lanzar IllegalStateException al acceder propiedad después de shutdown ==> Expected java.lang.IllegalStateException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:39)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3153)
+	at io.warmup.framework.core.test.critical.WarmupContainerCriticalTests.testPropertyAccessAfterShutdown(WarmupContainerCriticalTests.java:207)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+
+[ERROR] io.warmup.framework.core.test.critical.WarmupContainerCriticalTests.testNullPropertyValues -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.NullPointerException
+	at java.base/java.util.concurrent.ConcurrentHashMap.putVal(ConcurrentHashMap.java:1011)
+	at java.base/java.util.concurrent.ConcurrentHashMap.put(ConcurrentHashMap.java:1006)
+	at java.base/java.util.Properties.put(Properties.java:1340)
+	at java.base/java.util.Properties.setProperty(Properties.java:228)
+	at java.base/java.lang.System.setProperty(System.java:911)
+	at io.warmup.framework.core.optimized.ContainerCoordinator.setProperty(ContainerCoordinator.java:635)
+	at io.warmup.framework.core.WarmupContainer.setProperty(WarmupContainer.java:984)
+	at io.warmup.framework.core.test.critical.WarmupContainerCriticalTests.testNullPropertyValues(WarmupContainerCriticalTests.java:324)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   WarmupContainerCriticalTests.testBeanRegistrationAfterShutdown:227 Debe lanzar IllegalStateException al registrar bean después de shutdown ==> Expected java.lang.IllegalStateException to be thrown, but nothing was thrown.
+[ERROR]   WarmupContainerCriticalTests.testPropertyAccessAfterShutdown:207 Debe lanzar IllegalStateException al acceder propiedad después de shutdown ==> Expected java.lang.IllegalStateException to be thrown, but nothing was thrown.
+[ERROR] Errors: 
+[ERROR]   WarmupContainerCriticalTests.testNullPropertyValues:324 » NullPointer
+[INFO] 
+[ERROR] Tests run: 17, Failures: 2, Errors: 1, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.648 s
+[INFO] Finished at: 2025-12-01T15:54:06Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project warmup-core: There are test failures.
+[ERROR] 
+[ERROR] See /workspace/warmup-framework/warmup-core/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

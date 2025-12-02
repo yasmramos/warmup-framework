@@ -1,0 +1,1791 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< io.warmup.framework:warmup-core >-------------------
+[INFO] Building warmup-core 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (default) @ warmup-core ---
+[INFO] argLine set to -javaagent:/home/minimax/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/workspace/warmup-framework/warmup-core/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ warmup-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.0:compile (default-compile) @ warmup-core ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 340 source files with javac [debug release 8] to target/classes
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/asm/AsmCoreUtils.java:[3539,62] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/asm/AsmConstructorCreator.java:[67,39] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/validation/CustomValidatorManager.java:[49,55] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[INFO] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/hotreload/HotReloadStatus.java: Some input files use unchecked or unsafe operations.
+[INFO] /workspace/warmup-framework/warmup-core/src/main/java/io/warmup/framework/hotreload/HotReloadStatus.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ warmup-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.0:testCompile (default-testCompile) @ warmup-core ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 51 source files with javac [debug release 8] to target/test-classes
+[INFO] /workspace/warmup-framework/warmup-core/src/test/java/io/warmup/framework/startup/hotpath/HotPathOptimizationSystemTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /workspace/warmup-framework/warmup-core/src/test/java/io/warmup/framework/startup/hotpath/HotPathOptimizationSystemTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.5.2:test (default-test) @ warmup-core ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running io.warmup.framework.test.configuration.ConfigurationBeanTest
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.ProfileManager initializeProfiles
+WARNING: PropertySource es NULL en el momento de cargar perfiles desde propiedades
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.ProfileManager initializeProfiles
+INFO: Perfiles activos: [default]
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: NULL
+🔍 [DEBUG] Resolviendo EventBus...
+🔧 [DEBUG] Creando nueva instancia de EventBus...
+🔧 [DEBUG] EventBus creado: NO_NULL
+🔍 [DEBUG] EventBus resuelto: NO_NULL
+🔍 [DEBUG] Registrando EventBus en DependencyRegistry...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventBus con instancia: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventBus
+🔍 [DEBUG] Register EventBus completado sin excepción aparente
+🔍 [DEBUG] Registrando EventPublisher...
+🔍 [DEBUG] DependencyRegistry.register(INSTANCE) llamado para: io.warmup.framework.event.EventPublisher con instancia: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Obteniendo @Profile annotation para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] @Profile annotation resultado: NULL
+🔍 [DEBUG] Sin @Profile annotation - procediendo con registro
+🔍 [DEBUG] Verificando dependencia existente...
+🔍 [DEBUG] Dependencia existente: NULL
+🔍 [DEBUG] Verificando constructores inyectables para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Has injectable constructors: false
+🔍 [DEBUG] Should be singleton: true
+🔍 [DEBUG] Creando nuevo Dependency...
+🔍 [DEBUG] Dependency creado exitosamente
+🔍 [DEBUG] Agregando a dependencies map...
+🔍 [DEBUG] Agregado a dependencies map
+🔍 [DEBUG] Registrando implementaciones de interfaces...
+🔍 [DEBUG] Registro de interfaces completado
+✅ [DEBUG] register() completado exitosamente para: io.warmup.framework.event.EventPublisher
+🔍 [DEBUG] Register EventPublisher completado
+✅ [DEBUG] EventBus y EventPublisher registrados exitosamente
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 12ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+WARNING: ⚠️ Critical phase exceeded target: 12ms > 2ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 15ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: singletonConfig -> Class (scope: null)
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$SingletonConfig
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Active profiles: [default]
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ❌ No implementations found for interface: Class, checking direct dependency
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+WARNING: ❌ [DEBUG] getBestImplementation failed for io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 59ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 3ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: requestScopeConfig -> Class (scope: null)
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$RequestScopeConfig
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Active profiles: [default]
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ❌ No implementations found for interface: Class, checking direct dependency
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 4ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+WARNING: ❌ [DEBUG] getBestImplementation failed for io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 2ms
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:34 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: lifecycleConfig -> Class (scope: null)
+Nov 29, 2025 2:36:34 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:34 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$LifecycleConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 3ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 79ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+WARNING: ⚠️ Critical phase exceeded target: 79ms > 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 81ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: prototypeConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$PrototypeConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Active profiles: [default]
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ❌ No implementations found for interface: Class, checking direct dependency
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+WARNING: ❌ [DEBUG] getBestImplementation failed for io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: testConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Active profiles: [default]
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ❌ No implementations found for interface: Class, checking direct dependency
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+WARNING: ❌ [DEBUG] getBestImplementation failed for io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: mixedConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$MixedConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: componentService -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Active profiles: [default]
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔍 Found 1 implementations for interface: Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔍 1 implementaciones compatibles con perfiles activos de 1 total para interfaz Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] PrimaryAlternativeResolver.resolveBestImplementationWithMethodMetadata called
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] Interface type: TestService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] Number of implementations: 1
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] classToMethodMetadataMap: 0 entries
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+WARNING: ❌ No MethodMetadata found in classToMethodMetadataMap for class: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 classToMethodMetadataMap size: 0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 Available classes in MethodMetadata map: none
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔧 [FALLBACK] Checking annotations directly on class: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [CLASSIFICATION] Class ComponentService: isPrimary=false, isAlternative=false, priority=0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [FINAL-DEBUG] Total @Primary candidates: 0, @Alternative candidates: 0, regular candidates: 1
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ✅ Resolved best dependency for Class: Class (scope: singleton)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: BestDependency for Class: hasInstance=true, instanceCreated=true, scope=singleton
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔄 Using existing instance for Class (created during @Bean processing, SINGLETON scope)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ✅ Best dependency getInstance returned: Class for Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator get
+INFO: ContainerCoordinator.get(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) returning instance: io.warmup.framework.test.configuration.ConfigurationBeanTest$ComponentService@444548a0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator get
+INFO: ContainerCoordinator.get(io.warmup.framework.test.configuration.ConfigurationBeanTest$ComponentService) returning instance: io.warmup.framework.test.configuration.ConfigurationBeanTest$ComponentService@444548a0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: applicationScopeConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$ApplicationScopeConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 3ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Active profiles: [default]
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔍 Found 1 implementations for interface: Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔍 1 implementaciones compatibles con perfiles activos de 1 total para interfaz Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] PrimaryAlternativeResolver.resolveBestImplementationWithMethodMetadata called
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] Interface type: TestService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] Number of implementations: 1
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] classToMethodMetadataMap: 0 entries
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+WARNING: ❌ No MethodMetadata found in classToMethodMetadataMap for class: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 classToMethodMetadataMap size: 0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 Available classes in MethodMetadata map: none
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔧 [FALLBACK] Checking annotations directly on class: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [CLASSIFICATION] Class ComponentService: isPrimary=false, isAlternative=false, priority=0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [FINAL-DEBUG] Total @Primary candidates: 0, @Alternative candidates: 0, regular candidates: 1
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ✅ Resolved best dependency for Class: Class (scope: singleton)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: BestDependency for Class: hasInstance=true, instanceCreated=true, scope=singleton
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔄 Using existing instance for Class (created during @Bean processing, SINGLETON scope)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ✅ Best dependency getInstance returned: Class for Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator get
+INFO: ContainerCoordinator.get(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) returning instance: io.warmup.framework.test.configuration.ConfigurationBeanTest$ComponentService@444548a0
+✅ @ApplicationScope @Bean method works correctly, resolved type: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 7ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: invalidConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$InvalidConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: sessionScopeConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$SessionScopeConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Active profiles: [default]
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔍 Found 1 implementations for interface: Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔍 1 implementaciones compatibles con perfiles activos de 1 total para interfaz Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] PrimaryAlternativeResolver.resolveBestImplementationWithMethodMetadata called
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] Interface type: TestService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] Number of implementations: 1
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] classToMethodMetadataMap: 0 entries
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+WARNING: ❌ No MethodMetadata found in classToMethodMetadataMap for class: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 classToMethodMetadataMap size: 0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 Available classes in MethodMetadata map: none
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔧 [FALLBACK] Checking annotations directly on class: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [CLASSIFICATION] Class ComponentService: isPrimary=false, isAlternative=false, priority=0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [FINAL-DEBUG] Total @Primary candidates: 0, @Alternative candidates: 0, regular candidates: 1
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ✅ Resolved best dependency for Class: Class (scope: singleton)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: BestDependency for Class: hasInstance=true, instanceCreated=true, scope=singleton
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔄 Using existing instance for Class (created during @Bean processing, SINGLETON scope)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ✅ Best dependency getInstance returned: Class for Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator get
+INFO: ContainerCoordinator.get(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) returning instance: io.warmup.framework.test.configuration.ConfigurationBeanTest$ComponentService@444548a0
+✅ @SessionScope @Bean method processed successfully, resolved type: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 73ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+WARNING: ⚠️ Critical phase exceeded target: 73ms > 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 74ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: dependencyConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$DependencyConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestRepository) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestRepository
+Active profiles: [default]
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ❌ No implementations found for interface: Class, checking direct dependency
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+WARNING: ❌ [DEBUG] getBestImplementation failed for io.warmup.framework.test.configuration.ConfigurationBeanTest$TestRepository: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestRepository
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: missingMethodConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$MissingMethodConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 2ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: circularConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$CircularConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 1ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: namedConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$NamedConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getNamed
+SEVERE: Named dependency not found: customService of type Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator preWarmCriticalCaches
+INFO: Pre-warmed 5 critical classes in ASM cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator createCacheManager
+INFO: ASMCacheManager created with optimized configuration
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer <init>
+INFO: 🚀 CoreContainer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.JITEngine <init>
+INFO: 🚀 JITEngine initialized with ASM optimization
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager <init>
+INFO: 🚀 StartupPhasesManager initialized with 2 threads
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.PerformanceOptimizer <init>
+INFO: 🚀 PerformanceOptimizer initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StateManager <init>
+INFO: 🚀 StateManager initialized
+🔍 [DEBUG] ensureEventBusRegistered() INICIADO
+🔍 [DEBUG] - dependencyRegistry: NO_NULL
+🔍 [DEBUG] - container: NULL
+🔍 [DEBUG] Checking si EventBus ya está registrado en dependencies map...
+🔍 [DEBUG] getDependency(EventBus.class) resultado: EXISTS
+🔍 [DEBUG] EventBus ya registrado en dependencies, saliendo...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🚀 NativeWarmupContainerOptimized initialized with decoupled architecture
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 📦 Using ContainerCoordinator for core operations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer <init>
+INFO: 🎯 Delegating to specialized components
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: 🚀 Starting phased startup execution...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: 🎯 Executing critical phase (target: < 2ms)...
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.CoreContainer:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.CoreContainer
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coreContainer -> Class
+🔧 [FIX] Named bean registration for io.warmup.framework.core.optimized.ContainerCoordinator:
+🔧 [FIX] - Has injectable constructors: false
+🔧 [FIX] - Should be singleton: true
+🔧 [FIX] Existing Dependency already has instance: io.warmup.framework.core.optimized.ContainerCoordinator
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBean
+INFO: Named bean registered: coordinator -> Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: Initializing NativeDependencyRegistry with O(1) optimizations and zero reflection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry initialize
+INFO: NativeDependencyRegistry initialized successfully - 100% reflection-free
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler initialize
+INFO: Initializing AOP Handler
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager initialize
+INFO: Initializing MetricsManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager initialize
+INFO: Initializing HealthCheckManager with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: container
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager registerHealthCheck
+INFO: Health check registrado: dependencyRegistry
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeCriticalPhase
+INFO: ✅ Critical phase completed in 0ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhaseAsync
+INFO: 🚀 Starting background phase (non-blocking)...
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executePhasedStartup
+INFO: ✅ Phased startup completed in 76ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager warmupEventSystem
+INFO: Warming up event system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.EventManager initialize
+INFO: EventManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager warmupMetrics
+INFO: Warming up metrics system
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AsyncHandler initialize
+INFO: AsyncHandler initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.AopHandler warmupAspects
+INFO: Warming up AOP aspects
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ModuleManager initialize
+INFO: ModuleManager initialized with O(1) optimizations
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry warmupCache
+INFO: Warming up native dependency registry cache
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.ShutdownManager initialize
+INFO: ShutdownManager initialized
+Nov 29, 2025 2:36:35 PM io.warmup.framework.metrics.MetricsManager startMetricsCollection
+INFO: Starting metrics collection
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager startHealthMonitoring
+INFO: Starting health monitoring
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+SEVERE: [container] DOWN - WarmupContainer is null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.health.HealthCheckManager logHealthResult
+INFO: [dependencyRegistry] UP - DependencyRegistry is healthy
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager startBackgroundServices
+WARNING: Error starting background services: null
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.StartupPhasesManager executeBackgroundPhase
+INFO: ✅ Background phase completed in 77ms
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry registerBeanWithScope
+INFO: Named bean registered with scope: primaryAltConfig -> Class (scope: null)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.WarmupContainer registerNamed
+INFO: 📋 Registered @Configuration class via registerNamed: io.warmup.framework.test.configuration.ConfigurationBeanTest$PrimaryAltConfig
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.CoreContainer getInstance
+INFO: 🔍 [DEBUG] Calling dependencyRegistry.getBestImplementation(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) for interface
+NativeDependencyRegistry.getBestImplementation() called with interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Active profiles: [default]
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔍 Found 1 implementations for interface: Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔍 1 implementaciones compatibles con perfiles activos de 1 total para interfaz Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] PrimaryAlternativeResolver.resolveBestImplementationWithMethodMetadata called
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] Interface type: TestService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] Number of implementations: 1
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [DEBUG] classToMethodMetadataMap: 0 entries
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+WARNING: ❌ No MethodMetadata found in classToMethodMetadataMap for class: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 classToMethodMetadataMap size: 0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 Available classes in MethodMetadata map: none
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔧 [FALLBACK] Checking annotations directly on class: ComponentService
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [CLASSIFICATION] Class ComponentService: isPrimary=false, isAlternative=false, priority=0
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.PrimaryAlternativeResolver resolveBestImplementationWithMethodMetadata
+INFO: 🔍 [FINAL-DEBUG] Total @Primary candidates: 0, @Alternative candidates: 0, regular candidates: 1
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ✅ Resolved best dependency for Class: Class (scope: singleton)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: BestDependency for Class: hasInstance=true, instanceCreated=true, scope=singleton
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: 🔄 Using existing instance for Class (created during @Bean processing, SINGLETON scope)
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.DependencyRegistry getBestImplementation
+INFO: ✅ Best dependency getInstance returned: Class for Class
+Nov 29, 2025 2:36:35 PM io.warmup.framework.core.optimized.ContainerCoordinator get
+INFO: ContainerCoordinator.get(io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService) returning instance: io.warmup.framework.test.configuration.ConfigurationBeanTest$ComponentService@444548a0
+[ERROR] Tests run: 14, Failures: 3, Errors: 7, Skipped: 0, Time elapsed: 1.371 s <<< FAILURE! -- in io.warmup.framework.test.configuration.ConfigurationBeanTest
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testSingletonScope -- Time elapsed: 0.705 s <<< ERROR!
+java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:178)
+	at io.warmup.framework.core.optimized.ContainerCoordinator.get(ContainerCoordinator.java:261)
+	at io.warmup.framework.core.WarmupContainer.get(WarmupContainer.java:163)
+	at io.warmup.framework.core.WarmupContainer.getBean(WarmupContainer.java:461)
+	at io.warmup.framework.core.Warmup.getBean(Warmup.java:289)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testSingletonScope(ConfigurationBeanTest.java:80)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.DependencyRegistry.getBestImplementation(DependencyRegistry.java:1304)
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:170)
+	... 8 more
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testRequestScope -- Time elapsed: 0.082 s <<< ERROR!
+java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:178)
+	at io.warmup.framework.core.optimized.ContainerCoordinator.get(ContainerCoordinator.java:261)
+	at io.warmup.framework.core.WarmupContainer.get(WarmupContainer.java:163)
+	at io.warmup.framework.core.WarmupContainer.getBean(WarmupContainer.java:461)
+	at io.warmup.framework.core.Warmup.getBean(Warmup.java:289)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testRequestScope(ConfigurationBeanTest.java:167)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.DependencyRegistry.getBestImplementation(DependencyRegistry.java:1304)
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:170)
+	... 8 more
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testBeanLifecycle -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.IllegalArgumentException: No dependency registered for: io.warmup.framework.test.configuration.ConfigurationBeanTest$LifecycleService
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:184)
+	at io.warmup.framework.core.optimized.ContainerCoordinator.get(ContainerCoordinator.java:261)
+	at io.warmup.framework.core.WarmupContainer.get(WarmupContainer.java:163)
+	at io.warmup.framework.core.WarmupContainer.getBean(WarmupContainer.java:461)
+	at io.warmup.framework.core.Warmup.getBean(Warmup.java:289)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testBeanLifecycle(ConfigurationBeanTest.java:230)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testPrototypeScope -- Time elapsed: 0.102 s <<< ERROR!
+java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:178)
+	at io.warmup.framework.core.optimized.ContainerCoordinator.get(ContainerCoordinator.java:261)
+	at io.warmup.framework.core.WarmupContainer.get(WarmupContainer.java:163)
+	at io.warmup.framework.core.WarmupContainer.getBean(WarmupContainer.java:461)
+	at io.warmup.framework.core.Warmup.getBean(Warmup.java:289)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testPrototypeScope(ConfigurationBeanTest.java:93)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.DependencyRegistry.getBestImplementation(DependencyRegistry.java:1304)
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:170)
+	... 8 more
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testBasicConfigurationBean -- Time elapsed: 0.010 s <<< ERROR!
+java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:178)
+	at io.warmup.framework.core.optimized.ContainerCoordinator.get(ContainerCoordinator.java:261)
+	at io.warmup.framework.core.WarmupContainer.get(WarmupContainer.java:163)
+	at io.warmup.framework.core.WarmupContainer.getBean(WarmupContainer.java:461)
+	at io.warmup.framework.core.Warmup.getBean(Warmup.java:289)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testBasicConfigurationBean(ConfigurationBeanTest.java:55)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.DependencyRegistry.getBestImplementation(DependencyRegistry.java:1304)
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:170)
+	... 8 more
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testApplicationScope -- Time elapsed: 0.086 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Service should be either ApplicationScopedTestService or a @Primary implementation ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testApplicationScope(ConfigurationBeanTest.java:218)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testConfigurationError -- Time elapsed: 0.012 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.Exception to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testConfigurationError(ConfigurationBeanTest.java:249)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testInterBeanDependencies -- Time elapsed: 0.078 s <<< ERROR!
+java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestRepository
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:178)
+	at io.warmup.framework.core.optimized.ContainerCoordinator.get(ContainerCoordinator.java:261)
+	at io.warmup.framework.core.WarmupContainer.get(WarmupContainer.java:163)
+	at io.warmup.framework.core.WarmupContainer.getBean(WarmupContainer.java:461)
+	at io.warmup.framework.core.Warmup.getBean(Warmup.java:289)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testInterBeanDependencies(ConfigurationBeanTest.java:108)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.IllegalArgumentException: No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestRepository
+	at io.warmup.framework.core.DependencyRegistry.getBestImplementation(DependencyRegistry.java:1304)
+	at io.warmup.framework.core.optimized.CoreContainer.getInstance(CoreContainer.java:170)
+	... 8 more
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testNamedBean -- Time elapsed: 0.005 s <<< ERROR!
+java.lang.RuntimeException: No se pudo obtener bean con nombre: customService y tipo: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+	at io.warmup.framework.core.DependencyRegistry.getBean(DependencyRegistry.java:1105)
+	at io.warmup.framework.core.optimized.ContainerCoordinator.getNamed(ContainerCoordinator.java:455)
+	at io.warmup.framework.core.WarmupContainer.getNamed(WarmupContainer.java:294)
+	at io.warmup.framework.core.WarmupContainer.getBean(WarmupContainer.java:469)
+	at io.warmup.framework.core.Warmup.getBean(Warmup.java:296)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testNamedBean(ConfigurationBeanTest.java:65)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.IllegalArgumentException: Named dependency not registered: 'customService' of type: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+Available named dependencies: [io.warmup.framework.test.configuration.ConfigurationBeanTest$SingletonConfig:singletonConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$MissingMethodConfig:missingMethodConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$NamedConfig:namedConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$RequestScopeConfig:requestScopeConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$SessionScopeConfig:sessionScopeConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$MixedConfig:mixedConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$DependencyConfig:dependencyConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$TestConfig:testConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$CircularConfig:circularConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$InvalidConfig:invalidConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$ComponentService:componentService, io.warmup.framework.test.configuration.ConfigurationBeanTest$ApplicationScopeConfig:applicationScopeConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$LifecycleConfig:lifecycleConfig, io.warmup.framework.test.configuration.ConfigurationBeanTest$PrototypeConfig:prototypeConfig]
+	at io.warmup.framework.core.DependencyRegistry.getNamed(DependencyRegistry.java:870)
+	at io.warmup.framework.core.DependencyRegistry.getNamed(DependencyRegistry.java:787)
+	at io.warmup.framework.core.DependencyRegistry.getBean(DependencyRegistry.java:1102)
+	... 8 more
+
+[ERROR] io.warmup.framework.test.configuration.ConfigurationBeanTest.testPrimaryAlternativeIntegration -- Time elapsed: 0.083 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at io.warmup.framework.test.configuration.ConfigurationBeanTest.testPrimaryAlternativeIntegration(ConfigurationBeanTest.java:133)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ConfigurationBeanTest.testApplicationScope:218 Service should be either ApplicationScopedTestService or a @Primary implementation ==> expected: <true> but was: <false>
+[ERROR]   ConfigurationBeanTest.testConfigurationError:249 Expected java.lang.Exception to be thrown, but nothing was thrown.
+[ERROR]   ConfigurationBeanTest.testPrimaryAlternativeIntegration:133 expected: <true> but was: <false>
+[ERROR] Errors: 
+[ERROR]   ConfigurationBeanTest.testBasicConfigurationBean:55 » IllegalArgument No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+[ERROR]   ConfigurationBeanTest.testBeanLifecycle:230 » IllegalArgument No dependency registered for: io.warmup.framework.test.configuration.ConfigurationBeanTest$LifecycleService
+[ERROR]   ConfigurationBeanTest.testInterBeanDependencies:108 » IllegalArgument No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestRepository
+[ERROR]   ConfigurationBeanTest.testNamedBean:65 » Runtime No se pudo obtener bean con nombre: customService y tipo: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+[ERROR]   ConfigurationBeanTest.testPrototypeScope:93 » IllegalArgument No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+[ERROR]   ConfigurationBeanTest.testRequestScope:167 » IllegalArgument No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+[ERROR]   ConfigurationBeanTest.testSingletonScope:80 » IllegalArgument No implementation found for interface: io.warmup.framework.test.configuration.ConfigurationBeanTest$TestService
+[INFO] 
+[ERROR] Tests run: 14, Failures: 3, Errors: 7, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.281 s
+[INFO] Finished at: 2025-11-29T14:36:35Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project warmup-core: There are test failures.
+[ERROR] 
+[ERROR] See /workspace/warmup-framework/warmup-core/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
