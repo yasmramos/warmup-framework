@@ -816,6 +816,7 @@
 # ==============================================================================
 **/.cache/
 **/cache/
+!**warmup-core/src/main/java/io/warmup/framework/cache/
 **/build/
 **/dist/
 **/out/
