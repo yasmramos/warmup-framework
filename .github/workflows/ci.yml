@@ -24,6 +24,13 @@ jobs:
         java-version: ${{ matrix.java-version }}
         distribution: 'temurin'
         
+    - name: Verify Java version
+      run: |
+        java -version
+        echo "JAVA_HOME: $JAVA_HOME"
+        echo "Maven version:"
+        mvn -version
+        
     - name: Cache Maven dependencies
       uses: actions/cache@v3
       with:
@@ -62,6 +69,13 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+        
+    - name: Verify Java version
+      run: |
+        java -version
+        echo "JAVA_HOME: $JAVA_HOME"
+        echo "Maven version:"
+        mvn -version
         
     - name: Run benchmarks
       run: mvn clean test -Pbenchmark -B
