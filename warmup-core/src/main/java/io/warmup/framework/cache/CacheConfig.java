@@ -1,250 +1,104 @@
 package io.warmup.framework.cache;
 
-import java.io.Serializable;
+import java.io.File;
 
-/**
- * Configuración para el sistema de cache del framework Warmup.
- * Utiliza el patrón Builder para configuración fluida.
- * 
- * @author MiniMax Agent
- * @since 2.0
- */
-public class CacheConfig implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
-    
-    // Configuraciones por defecto
-    public static final int DEFAULT_MAX_MEMORY_SIZE = 1000;
-    public static final long DEFAULT_MAX_AGE = 300000; // 5 minutos
-    public static final boolean DEFAULT_COMPRESSION = true;
-    public static final boolean DEFAULT_PERSISTENCE = false;
-    public static final int DEFAULT_MAX_ENTRIES = 10000;
-    
-    // Configuraciones
-    private int maxMemorySize = DEFAULT_MAX_MEMORY_SIZE;
-    private long maxAge = DEFAULT_MAX_AGE;
-    private boolean compressionEnabled = DEFAULT_COMPRESSION;
-    private boolean persistenceEnabled = DEFAULT_PERSISTENCE;
-    private int maxEntries = DEFAULT_MAX_ENTRIES;
-    private String cacheName = "WarmupCache";
-    private boolean enableStatistics = true;
-    private boolean enableMetrics = true;
-    
-    /**
-     * Constructor público para compatibilidad
-     */
-    public CacheConfig() {}
-    
-    /**
-     * Constructor con nombre específico
-     */
-    public CacheConfig(String cacheName) {
-        this.cacheName = cacheName;
-    }
-    
-    /**
-     * Crea una nueva instancia de CacheConfig con configuración por defecto
-     */
-    public static CacheConfig create() {
+public class CacheConfig {
+
+    private static final String DEFAULT_CACHE_DIR = System.getProperty("user.home")
+            + File.separator + ".warmup" + File.separator + "asm-cache";
+    String cacheDirectory = DEFAULT_CACHE_DIR;
+    boolean enableDiskCache = true;
+    boolean compressCache = true;
+    long maxCacheAge = 7 * 24 * 60 * 60 * 1000L;
+    int maxMemoryCacheSize = 1000;
+    int maxDiskCacheSizeMB = 500;
+    int diskIOThreads = 2;
+    public boolean asyncDiskWrites = true;
+
+    public static CacheConfig defaultConfig() {
         return new CacheConfig();
     }
-    
-    /**
-     * Crea una nueva instancia de CacheConfig con nombre específico
-     */
-    public static CacheConfig create(String cacheName) {
-        return new CacheConfig(cacheName);
+
+    public CacheConfig withCacheDirectory(String directory) {
+        this.cacheDirectory = directory;
+        return this;
     }
-    
-    /**
-     * Establece el tamaño máximo de memoria en bytes
-     */
-    public CacheConfig withMaxMemorySize(int maxMemorySize) {
-        if (maxMemorySize <= 0) {
-            throw new IllegalArgumentException("El tamaño de memoria debe ser mayor que 0");
+
+    public CacheConfig withDiskCache(boolean enabled) {
+        this.enableDiskCache = enabled;
+        return this;
+    }
+
+    public CacheConfig withCompression(boolean enabled) {
+        this.compressCache = enabled;
+        return this;
+    }
+
+    public CacheConfig withMaxAge(long milliseconds) {
+        this.maxCacheAge = milliseconds;
+        return this;
+    }
+
+    public CacheConfig withMaxMemorySize(int entries) {
+        if (entries <= 0) {
+            throw new IllegalArgumentException("Max memory size must be positive");
         }
-        this.maxMemorySize = maxMemorySize;
+        this.maxMemoryCacheSize = entries;
         return this;
     }
-    
-    /**
-     * Establece la edad máxima en milisegundos antes de que una entrada expire
-     */
-    public CacheConfig withMaxAge(long maxAge) {
-        if (maxAge <= 0) {
-            throw new IllegalArgumentException("La edad máxima debe ser mayor que 0");
+
+    public CacheConfig withMaxDiskSize(int megabytes) {
+        if (megabytes < 0) {
+            throw new IllegalArgumentException("Max disk size cannot be negative");
         }
-        this.maxAge = maxAge;
+        this.maxDiskCacheSizeMB = megabytes;
         return this;
     }
-    
-    /**
-     * Habilita o deshabilita la compresión del cache
-     */
-    public CacheConfig withCompression(boolean compressionEnabled) {
-        this.compressionEnabled = compressionEnabled;
-        return this;
-    }
-    
-    /**
-     * Habilita o deshabilita la persistencia del cache
-     */
-    public CacheConfig withPersistence(boolean persistenceEnabled) {
-        this.persistenceEnabled = persistenceEnabled;
-        return this;
-    }
-    
-    /**
-     * Establece el número máximo de entradas en el cache
-     */
-    public CacheConfig withMaxEntries(int maxEntries) {
-        if (maxEntries <= 0) {
-            throw new IllegalArgumentException("El número máximo de entradas debe ser mayor que 0");
+
+    public CacheConfig withDiskIOThreads(int threads) {
+        if (threads <= 0 || threads > 10) {
+            throw new IllegalArgumentException("Disk IO threads must be between 1 and 10");
         }
-        this.maxEntries = maxEntries;
+        this.diskIOThreads = threads;
         return this;
     }
-    
-    /**
-     * Establece el nombre del cache
-     */
-    public CacheConfig withCacheName(String cacheName) {
-        if (cacheName == null || cacheName.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre del cache no puede estar vacío");
-        }
-        this.cacheName = cacheName;
+
+    public CacheConfig withAsyncDiskWrites(boolean async) {
+        this.asyncDiskWrites = async;
         return this;
     }
-    
-    /**
-     * Habilita o deshabilita las estadísticas del cache
-     */
-    public CacheConfig withStatistics(boolean enableStatistics) {
-        this.enableStatistics = enableStatistics;
-        return this;
+
+    public String getCacheDirectory() {
+        return cacheDirectory;
     }
-    
-    /**
-     * Habilita o deshabilita las métricas del cache
-     */
-    public CacheConfig withMetrics(boolean enableMetrics) {
-        this.enableMetrics = enableMetrics;
-        return this;
+
+    public boolean isEnableDiskCache() {
+        return enableDiskCache;
     }
-    
-    // Getters
-    
-    public int getMaxMemorySize() {
-        return maxMemorySize;
+
+    public boolean isCompressCache() {
+        return compressCache;
     }
-    
-    public long getMaxAge() {
-        return maxAge;
-    }
-    
-    public boolean isCompressionEnabled() {
-        return compressionEnabled;
-    }
-    
-    public boolean isPersistenceEnabled() {
-        return persistenceEnabled;
-    }
-    
-    public int getMaxEntries() {
-        return maxEntries;
-    }
-    
-    public String getCacheName() {
-        return cacheName;
-    }
-    
-    public boolean isStatisticsEnabled() {
-        return enableStatistics;
-    }
-    
-    public boolean isMetricsEnabled() {
-        return enableMetrics;
-    }
-    
-    // Métodos de compatibilidad para API existente
-    public int getMaxMemoryCacheSize() {
-        return maxMemorySize;
-    }
-    
+
     public long getMaxCacheAge() {
-        return maxAge;
+        return maxCacheAge;
+    }
+
+    public int getMaxMemoryCacheSize() {
+        return maxMemoryCacheSize;
+    }
+
+    public int getMaxDiskCacheSizeMB() {
+        return maxDiskCacheSizeMB;
+    }
+
+    public int getDiskIOThreads() {
+        return diskIOThreads;
+    }
+
+    public boolean isAsyncDiskWrites() {
+        return asyncDiskWrites;
     }
     
-    /**
-     * Crea una copia de la configuración
-     */
-    public CacheConfig copy() {
-        CacheConfig copy = new CacheConfig(this.cacheName);
-        copy.maxMemorySize = this.maxMemorySize;
-        copy.maxAge = this.maxAge;
-        copy.compressionEnabled = this.compressionEnabled;
-        copy.persistenceEnabled = this.persistenceEnabled;
-        copy.maxEntries = this.maxEntries;
-        copy.enableStatistics = this.enableStatistics;
-        copy.enableMetrics = this.enableMetrics;
-        return copy;
-    }
     
-    /**
-     * Valida que la configuración sea válida
-     */
-    public boolean isValid() {
-        return maxMemorySize > 0 && 
-               maxAge > 0 && 
-               maxEntries > 0 && 
-               cacheName != null && 
-               !cacheName.trim().isEmpty();
-    }
-    
-    /**
-     * Obtiene una representación en string de la configuración
-     */
-    @Override
-    public String toString() {
-        return String.format(
-            "CacheConfig{name='%s', maxMemorySize=%d, maxAge=%d, maxEntries=%d, compression=%s, persistence=%s, statistics=%s, metrics=%s}",
-            cacheName, maxMemorySize, maxAge, maxEntries, 
-            compressionEnabled, persistenceEnabled, enableStatistics, enableMetrics
-        );
-    }
-    
-    /**
-     * Valida si esta configuración es igual a otra
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        
-        CacheConfig that = (CacheConfig) obj;
-        return maxMemorySize == that.maxMemorySize &&
-               maxAge == that.maxAge &&
-               compressionEnabled == that.compressionEnabled &&
-               persistenceEnabled == that.persistenceEnabled &&
-               maxEntries == that.maxEntries &&
-               enableStatistics == that.enableStatistics &&
-               enableMetrics == that.enableMetrics &&
-               cacheName.equals(that.cacheName);
-    }
-    
-    /**
-     * Genera hashcode para la configuración
-     */
-    @Override
-    public int hashCode() {
-        int result = maxMemorySize;
-        result = 31 * result + (int) (maxAge ^ (maxAge >>> 32));
-        result = 31 * result + (compressionEnabled ? 1 : 0);
-        result = 31 * result + (persistenceEnabled ? 1 : 0);
-        result = 31 * result + maxEntries;
-        result = 31 * result + (enableStatistics ? 1 : 0);
-        result = 31 * result + (enableMetrics ? 1 : 0);
-        result = 31 * result + cacheName.hashCode();
-        return result;
-    }
 }
