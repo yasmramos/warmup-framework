@@ -60,7 +60,6 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>8</maven.compiler.release>
         <exec.mainClass>io.warmup.examples.WarmupExamples</exec.mainClass>
         <jmh.version>1.37</jmh.version>
     </properties>
