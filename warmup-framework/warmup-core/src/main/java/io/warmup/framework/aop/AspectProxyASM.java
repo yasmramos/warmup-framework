@@ -69,13 +69,10 @@ public final class AspectProxyASM {
     private static <T> Class<? extends T> generateSubclass(Class<T> base) {
         String internalName = AsmCoreUtils.getClassName(base).replace('.', '/');
         
-        // Generar nombre único para el proxy evitando conflictos con clases anidadas de Java
-        // Usar una combinación de hash del nombre y timestamp para mayor uniqueness
-        long timestamp = System.currentTimeMillis();
-        String combinedHash = base.getName() + ":" + timestamp;
-        String classHash = String.valueOf(Math.abs(combinedHash.hashCode())).substring(Math.max(0, String.valueOf(Math.abs(combinedHash.hashCode())).length() - 6));
+        // Generar nombre para el proxy evitando conflictos con clases anidadas de Java
+        String classHash = String.valueOf(Math.abs(base.getName().hashCode() + 12345)).substring(Math.max(0, String.valueOf(Math.abs(base.getName().hashCode() + 12345)).length() - 6));
         String subName;
-        System.out.println("[PROXY ASM] Generating proxy for: " + base.getName() + " with hash: " + classHash + " at time: " + timestamp);
+        System.out.println("[PROXY ASM] Generating proxy for: " + base.getName() + " with hash: " + classHash);
         if (internalName.contains("$")) {
             // Es clase interna - evitar la estructura $ completamente
             // Extraer el nombre simple y generar un nombre seguro
@@ -109,10 +106,7 @@ public final class AspectProxyASM {
         generateConstructor(cw, base, subName);
 
         // métodos
-        List<Method> overridableMethods = collectOverridable(base);
-        log.log(Level.INFO, "🔥 DEBUG: Generando proxy para {0} métodos de clase: {1}", new Object[]{overridableMethods.size(), base.getSimpleName()});
-        for (Method m : overridableMethods) {
-            log.log(Level.INFO, "   🔥 Generando método proxy: {0}", m.getName());
+        for (Method m : collectOverridable(base)) {
             generateMethod(cw, m, subName, internalName);
         }
 
@@ -120,12 +114,8 @@ public final class AspectProxyASM {
         byte[] bytecode = cw.toByteArray();
 
         // cargar
-        ClassLoader parent = base.getClassLoader();
-        if (parent == null) {
-            parent = ClassLoader.getSystemClassLoader();
-        }
-        ByteArrayClassLoader loader = new ByteArrayClassLoader(parent);
-        return (Class<? extends T>) loader.defineClass(subName.replace('/', '.'), bytecode);
+        return (Class<? extends T>) new ByteArrayClassLoader(base.getClassLoader())
+                .defineClass(subName.replace('/', '.'), bytecode);
     }
 
     private static void generateConstructor(ClassWriter cw, Class<?> base, String subName) {
@@ -238,7 +228,6 @@ public final class AspectProxyASM {
         mv.visitVarInsn(ASTORE, methodVar);
 
         // 4º handler.invokeWithAspects(target, method, args)
-        log.log(Level.INFO, "🔥 DEBUG: Generando llamada AOP para método: {0}", m.getName());
         mv.visitVarInsn(ALOAD, handlerVar);
         mv.visitVarInsn(ALOAD, targetVar);
         mv.visitVarInsn(ALOAD, methodVar);
@@ -247,7 +236,6 @@ public final class AspectProxyASM {
                 Type.getInternalName(AopHandler.class),
                 "invokeWithAspects",
                 "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;", false);
-        log.log(Level.INFO, "   🔥 Llamada AOP generada para: {0}", m.getName());
 
         // 5º unbox / return
         Class<?> ret = AsmCoreUtils.getReturnType(m);
@@ -255,7 +243,9 @@ public final class AspectProxyASM {
             mv.visitInsn(POP);
             mv.visitInsn(RETURN);
         } else {
+            // 🔥 FIX: Handle CompletableFuture return types specially
             if (ret == java.util.concurrent.CompletableFuture.class) {
+                // Cast to CompletableFuture to satisfy bytecode verifier
                 mv.visitTypeInsn(CHECKCAST, Type.getInternalName(java.util.concurrent.CompletableFuture.class));
                 mv.visitInsn(ARETURN);
             } else {
@@ -366,14 +356,11 @@ public final class AspectProxyASM {
         Set<String> seen = new HashSet<>();
         
         // ✅ ASM DIRECTO: Obtener métodos usando ASM sin conversión
-        io.warmup.framework.asm.AsmCoreUtils.AsmMethodInfo[] asmMethods = AsmCoreUtils.getDeclaredMethods(c.getName());
-        log.log(Level.INFO, "🔥 DEBUG: ASM encontró {0} métodos para clase: {1}", new Object[]{asmMethods.length, c.getSimpleName()});
+        List<io.warmup.framework.asm.AsmCoreUtils.AsmMethodInfo> asmMethods = AsmCoreUtils.findMethods(c.getName(), "*");
         
         for (io.warmup.framework.asm.AsmCoreUtils.AsmMethodInfo asmMethod : asmMethods) {
-            log.log(Level.INFO, "   🔥 ASM método: {0} - {1}", new Object[]{asmMethod.name, asmMethod.descriptor});
             // Verificar modifiers usando flags de ASM
             if (asmMethod.isFinal || asmMethod.isStatic) {
-                log.log(Level.INFO, "      🔥 Filtrado por ser final o static");
                 continue;
             }
             
@@ -386,33 +373,12 @@ public final class AspectProxyASM {
                     for (int i = 0; i < asmMethod.parameterTypes.length; i++) {
                         paramTypes[i] = AsmCoreUtils.getClassFromDescriptor(asmMethod.parameterTypes[i]);
                     }
-                    log.log(Level.INFO, "      🔥 Intentando getDeclaredMethod: {0} en clase: {1}", new Object[]{asmMethod.name, c.getName()});
                     Method method = c.getDeclaredMethod(asmMethod.name, paramTypes);
-                    log.log(Level.INFO, "      ✅ Método encontrado y agregado: {0}", method.getName());
                     list.add(method);
                 } catch (NoSuchMethodException e) {
-                    log.log(Level.WARNING, "      ❌ getDeclaredMethod falló, intentando getMethod: {0}", asmMethod.name);
-                    try {
-                        // Para clases internas, intentar con getMethod
-                        Class<?>[] paramTypes = new Class<?>[asmMethod.parameterTypes.length];
-                        for (int i = 0; i < asmMethod.parameterTypes.length; i++) {
-                            paramTypes[i] = AsmCoreUtils.getClassFromDescriptor(asmMethod.parameterTypes[i]);
-                        }
-                        Method method = c.getMethod(asmMethod.name, paramTypes);
-                        log.log(Level.INFO, "      ✅ Método encontrado con getMethod y agregado: {0}", method.getName());
-                        list.add(method);
-                    } catch (NoSuchMethodException e2) {
-                        log.log(Level.WARNING, "      ❌ Ambos métodos fallaron para: {0}", asmMethod.name);
-                        // Continuar si no se puede encontrar el método
-                        continue;
-                    }
-                } catch (Exception e) {
-                    log.log(Level.WARNING, "      ❌ Exception para: {0} - {1}", new Object[]{asmMethod.name, e.getMessage()});
                     // Continuar si no se puede encontrar el método
                     continue;
                 }
-            } else {
-                log.log(Level.INFO, "      🔥 Firma ya vista, omitiendo: {0}", signature);
             }
         }
         return list;
@@ -420,26 +386,10 @@ public final class AspectProxyASM {
 
     private static <T> T newInstance(Class<? extends T> clazz, T target, AopHandler handler)
             throws Exception {
-        // ✅ FIX: Usar el mismo class loader que cargó la clase generada
-        T inst = createInstanceWithCorrectClassLoader(clazz);
+        T inst = AsmCoreUtils.newInstance(clazz);
         setStaticField(clazz, HANDLER_FIELD, handler);
         setField(inst, TARGET_FIELD, target);
         return inst;
-    }
-    
-    /**
-     * ✅ FIX: Crear instancia usando el class loader correcto que cargó la clase generada
-     */
-    @SuppressWarnings("unchecked")
-    private static <T> T createInstanceWithCorrectClassLoader(Class<? extends T> clazz) {
-        try {
-            // Usar el class loader de la clase para encontrar el constructor y crear la instancia
-            java.lang.reflect.Constructor<?> constructor = clazz.getDeclaredConstructor(Object.class, AopHandler.class);
-            constructor.setAccessible(true);
-            return (T) constructor.newInstance(null, null); // target y handler se establecen después
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to create instance with correct class loader: " + clazz.getName(), e);
-        }
     }
 
     private static void setField(Object instance, String fieldName, Object value) {
@@ -452,12 +402,10 @@ public final class AspectProxyASM {
 
     private static void setStaticField(Class<?> clazz, String fieldName, Object value) {
         try {
-            // ✅ FIX: Para campos estáticos, usar reflexión directa en lugar de AsmCoreUtils
-            java.lang.reflect.Field field = clazz.getDeclaredField(fieldName);
-            field.setAccessible(true);
-            field.set(null, value); // null para campos estáticos (se establece en la clase, no en una instancia)
+            // For static fields, we need to set it on the class instance
+            AsmCoreUtils.setFieldValue(clazz, fieldName, value);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to set static field: " + fieldName + " on class: " + clazz.getName(), e);
+            throw new RuntimeException("Failed to set static field: " + fieldName, e);
         }
     }
 
@@ -483,13 +431,10 @@ public final class AspectProxyASM {
     private static Class<?> generateSubclassForObject(Class<?> base) {
         String internalName = AsmCoreUtils.getClassName(base).replace('.', '/');
         
-        // Generar nombre único para el proxy evitando conflictos con clases anidadas de Java
-        // Usar una combinación de hash del nombre y timestamp para mayor uniqueness
-        long timestamp = System.currentTimeMillis();
-        String combinedHash = base.getName() + ":" + timestamp;
-        String classHash = String.valueOf(Math.abs(combinedHash.hashCode())).substring(Math.max(0, String.valueOf(Math.abs(combinedHash.hashCode())).length() - 6));
+        // Generar nombre para el proxy evitando conflictos con clases anidadas de Java
+        String classHash = String.valueOf(Math.abs(base.getName().hashCode() + 12345)).substring(Math.max(0, String.valueOf(Math.abs(base.getName().hashCode() + 12345)).length() - 6));
         String subName;
-        System.out.println("[PROXY ASM] Generating proxy for: " + base.getName() + " with hash: " + classHash + " at time: " + timestamp);
+        System.out.println("[PROXY ASM] Generating proxy for: " + base.getName() + " with hash: " + classHash);
         if (internalName.contains("$")) {
             // Es clase interna - evitar la estructura $ completamente
             // Extraer el nombre simple y generar un nombre seguro
@@ -539,12 +484,7 @@ public final class AspectProxyASM {
         byte[] classBytes = cw.toByteArray();
         // Convert internal name (with /) to fully qualified name (with .) for defineClass
         String fullyQualifiedName = subName.replace('/', '.');
-        ClassLoader parent = base.getClassLoader();
-        if (parent == null) {
-            parent = ClassLoader.getSystemClassLoader();
-        }
-        ByteArrayClassLoader loader = new ByteArrayClassLoader(parent);
-        return (Class<?>) loader.defineClass(fullyQualifiedName, classBytes);
+        return (Class<?>) new ByteArrayClassLoader(base.getClassLoader()).defineClass(fullyQualifiedName, classBytes);
     }
 
     /**
@@ -553,39 +493,12 @@ public final class AspectProxyASM {
     @SuppressWarnings("unchecked")
     private static Object newInstanceForObject(Class<?> clazz, Object target, AopHandler handler) {
         try {
-            // ✅ FIX: Usar el class loader correcto que cargó la clase generada
             Constructor<?> ctor = clazz.getDeclaredConstructor(Object.class, AopHandler.class);
             return ctor.newInstance(target, handler);
         } catch (Exception e) {
-            log.log(Level.SEVERE, "Cannot create instance for " + clazz + " - ClassLoader: " + clazz.getClassLoader(), e);
+            log.log(Level.SEVERE, "Cannot create instance for " + clazz, e);
             return target;
         }
-    }
-
-    /**
-     * ✅ Crea un ClassLoader apropiado para la clase que se va a proxificar
-     * Especialmente importante para clases estáticas anidadas
-     */
-    private static ByteArrayClassLoader createClassLoaderForProxy(Class<?> base) {
-        // Para clases estáticas anidadas (que contienen $), usar el class loader de la clase enclosing
-        if (base.getName().contains("$")) {
-            try {
-                // Obtener la clase enclosing y usar su class loader
-                Class<?> enclosingClass = base.getDeclaringClass();
-                ClassLoader enclosingClassLoader = enclosingClass.getClassLoader();
-                log.log(Level.FINE, "Usando class loader de clase enclosing para {0}: {1}", 
-                    new Object[]{base.getSimpleName(), enclosingClassLoader});
-                return new ByteArrayClassLoader(enclosingClassLoader);
-            } catch (Exception e) {
-                log.log(Level.WARNING, "No se pudo obtener class loader de clase enclosing para {0}, usando class loader de la clase base", base.getSimpleName());
-                // Fallback al class loader original
-            }
-        }
-        
-        // Para clases normales, usar el class loader de la clase base
-        log.log(Level.FINE, "Usando class loader de clase base para {0}: {1}", 
-            new Object[]{base.getSimpleName(), base.getClassLoader()});
-        return new ByteArrayClassLoader(base.getClassLoader());
     }
 
     /* ---------- ClassLoader simple ---------- */

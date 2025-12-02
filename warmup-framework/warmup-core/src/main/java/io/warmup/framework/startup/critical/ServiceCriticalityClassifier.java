@@ -170,7 +170,7 @@ public class ServiceCriticalityClassifier {
      */
     private ServiceCriticality classifyByStartupAnnotations(Class<?> clazz) {
         // @PostConstruct - sugiere que es importante
-        if (clazz.isAnnotationPresent(jakarta.annotation.PostConstruct.class)) {
+        if (clazz.isAnnotationPresent(javax.annotation.PostConstruct.class)) {
             return ServiceCriticality.MEDIUM;
         }
         

@@ -86,9 +86,9 @@ public class AdvancedHotReloadManager {
         // Crear manager básico
         this.basicManager = new HotReloadManager(container, eventBus);
         
-        // Inicializar componentes avanzados
+        // Inicializar componentes avanzados (usar placeholders por ahora)
         this.stateManager = new StatePreservationManager();
-        this.methodReloader = new MethodHotReloader(stateManager);
+        this.methodReloader = new MethodHotReloader();
         this.changeDetector = new BytecodeChangeDetector();
         this.dashboard = new HotReloadDashboard();
         

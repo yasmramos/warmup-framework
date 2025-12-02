@@ -154,19 +154,10 @@ public class CoreContainer implements IContainer {
                 }
             }
             if (dependency != null && dependency.isInstanceCreated() && dependency.shouldCacheInstance()) {
-                // ✅ FIX: Check if this type has @Inject fields that need injection
-                boolean hasInjectFields = hasInjectFields(type);
-                
                 Object cachedInstance = dependency.getCachedInstance();
-                if (cachedInstance != null && !hasInjectFields) {
-                    // Only use cached instance if it doesn't have @Inject fields
+                if (cachedInstance != null) {
                     success = true;
                     return (T) cachedInstance;
-                } else if (cachedInstance != null && hasInjectFields) {
-                    java.util.logging.Logger.getLogger(CoreContainer.class.getName()).info(
-                        "🔧 [FIX] Skipping cached instance for " + type.getSimpleName() + " due to @Inject fields - creating new instance"
-                    );
-                    // For types with @Inject fields, always create a new instance to ensure proper injection
                 }
             }
             
@@ -475,28 +466,6 @@ public class CoreContainer implements IContainer {
     public Set<Object> getAspects() {
         // Basic implementation - would need proper AspectManager
         return new HashSet<>();
-    }
-    
-    /**
-     * ✅ FIX: Check if a type has @Inject fields that require dependency injection
-     */
-    private boolean hasInjectFields(Class<?> type) {
-        try {
-            // Check for @Inject fields in the class hierarchy
-            Class<?> current = type;
-            while (current != null && current != Object.class) {
-                for (java.lang.reflect.Field field : current.getDeclaredFields()) {
-                    if (field.isAnnotationPresent(io.warmup.framework.annotation.Inject.class)) {
-                        return true; // Found @Inject field
-                    }
-                }
-                current = current.getSuperclass();
-            }
-            return false;
-        } catch (Exception e) {
-            // If we can't check fields, assume injection is needed
-            return true;
-        }
     }
     
     /**

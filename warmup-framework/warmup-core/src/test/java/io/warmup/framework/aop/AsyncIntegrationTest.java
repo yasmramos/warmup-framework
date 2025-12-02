@@ -3,10 +3,7 @@ package io.warmup.framework.aop;
 import io.warmup.framework.annotation.Async;
 import io.warmup.framework.annotation.Component;
 import io.warmup.framework.core.Warmup;
-import io.warmup.framework.asm.AsmCoreUtils;
-import io.warmup.framework.core.optimized.ManagerFactory;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -29,31 +26,10 @@ public class AsyncIntegrationTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        // 🚀 SETUP FRESH: Asegurar contexto completamente nuevo para cada test
         warmup = Warmup.create();
-
-        // 🔍 Solo escanear el paquete específico del test para evitar interferencias
         warmup.scanPackages("io.warmup.framework.aop");
         warmup.getContainer().start();
-
-        // ✅ AUTOMATIC AOP: Registrar bean manualmente - AOP se aplica automáticamente
-        // 🎯 Crear nueva instancia para evitar estado compartido
-        AsyncTestService serviceInstance = new AsyncTestService();
-        warmup.registerBean("asyncTestService", AsyncTestService.class, serviceInstance);
-
-        // 🎯 Obtener el bean decorado con AOP
         testService = warmup.getBean(AsyncTestService.class);
-
-        // ✅ AOP proxy generado automáticamente por Warmup framework
-        System.out.println("🔍 [DEBUG] AOP Setup Complete - testService class: " + testService.getClass().getName());
-    }
-
-    @AfterEach
-    void tearDown() throws Exception {
-        // 🧹 LIMPIAR ESTADO: Cerrar correctamente Warmup para evitar interferencia entre tests
-        if (warmup != null) {
-            warmup.stop();
-        }
     }
 
     @Test
@@ -121,8 +97,6 @@ public class AsyncIntegrationTest {
     @Test
     @DisplayName("Test @Async method with exception handling - PROPAGATE")
     void testAsyncMethodExceptionPropagate() {
-        System.out.println("🔍 DEBUG: testAsyncMethodExceptionPropagate - bean class: " + testService.getClass().getSimpleName());
-
         // When - Execute async method that throws exception
         CompletableFuture<String> result = testService.asyncMethodWithException();
 
@@ -135,8 +109,6 @@ public class AsyncIntegrationTest {
     @Test
     @DisplayName("Test @Async method with exception handling - IGNORE")
     void testAsyncMethodExceptionIgnore() {
-        System.out.println("🔍 DEBUG: testAsyncMethodExceptionIgnore - bean class: " + testService.getClass().getSimpleName());
-
         // When - Execute async method that throws exception with IGNORE handling
         CompletableFuture<String> result = testService.asyncMethodWithExceptionIgnore();
 

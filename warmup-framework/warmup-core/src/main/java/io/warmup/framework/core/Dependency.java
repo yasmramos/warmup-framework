@@ -363,14 +363,6 @@ public class Dependency {
         }
         
         try {
-            // ✅ CRITICAL FIX: Aplicar AOP real usando AopHandler del container
-            if (container != null && container instanceof WarmupContainer) {
-                Object aopHandlerObj = ((WarmupContainer) container).getAopHandler();
-                if (aopHandlerObj instanceof AopHandler) {
-                    AopHandler aopHandler = (AopHandler) aopHandlerObj;
-                    return (T) aopHandler.applyAopIfNeeded(instance, (Class<T>) instance.getClass());
-                }
-            }
             return instance;
         } catch (Exception e) {
             // Log the error but don't fail the instance creation

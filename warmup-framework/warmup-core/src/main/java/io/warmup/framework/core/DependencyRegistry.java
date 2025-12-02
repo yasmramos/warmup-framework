@@ -560,22 +560,6 @@ public class DependencyRegistry {
             Dependency dependency = new Dependency(type, shouldBeSingleton, instance);
             dependencies.put(type, dependency);
         }
-        
-        // ✅ NUEVA LÓGICA: Registrar implementaciones de interfaces para resolución automática
-        // Esto permite que cuando un bean implemente interfaces, se pueda inyectar por interfaz
-        Class<?>[] interfaces = type.getInterfaces();
-        for (Class<?> iface : interfaces) {
-            Set<Dependency> ifaceImplementations = interfaceImplementations.computeIfAbsent(iface, k -> ConcurrentHashMap.newKeySet());
-            // Solo registrar si no existe ya una implementación para esta interfaz
-            if (ifaceImplementations.stream().noneMatch(dep -> dep.getType().equals(type))) {
-                Dependency dependency = dependencies.get(type);
-                if (dependency != null) {
-                    ifaceImplementations.add(dependency);
-                    log.log(Level.FINE, "Registered interface implementation: {0} implements {1}", 
-                            new Object[]{MetadataRegistry.getSimpleName(type), MetadataRegistry.getSimpleName(iface)});
-                }
-            }
-        }
 
         log.log(Level.INFO, "Named bean registered: {0} -> {1}", new Object[]{name, MetadataRegistry.getSimpleName(type)});
     }
@@ -601,10 +585,6 @@ public class DependencyRegistry {
             throw new IllegalArgumentException("Instance cannot be null");
         }
 
-        // ✅ CRITICAL FIX: Aplicar AOP automáticamente a la instancia antes del registro
-        @SuppressWarnings("unchecked")
-        Object finalInstance = applyAopIfNeeded((Object)instance, (Class<Object>)type);
-
         // 🔧 FIX: Calcular shouldBeSingleton basado en explicitScope
         boolean shouldBeSingleton;
         if (explicitScope == ScopeManager.ScopeType.PROTOTYPE) {
@@ -623,12 +603,12 @@ public class DependencyRegistry {
         // - Explicit scope: " + explicitScope + "
         // - Should be singleton: " + shouldBeSingleton
 
-        Dependency dependency = new Dependency(type, shouldBeSingleton, finalInstance);
+        Dependency dependency = new Dependency(type, shouldBeSingleton, instance);
         dependencies.put(type, dependency);
         registerInterfaceImplementations(type, dependency);
 
         // ✅ ALSO REGISTER in namedBeans and namedBeanTypes
-        namedBeans.put(name, finalInstance);
+        namedBeans.put(name, instance);
         namedBeanTypes.put(name, type);
 
         // ✅ CRITICAL FIX: Also register in namedDependencies for getNamed() lookup using concrete type
@@ -2036,43 +2016,5 @@ public class DependencyRegistry {
             return getBean(type);
         }
         return getBean(type);
-    }
-
-    /**
-     * ✅ NUEVO: Método para aplicar AOP a instancias durante el registro manual
-     * Este método replica la lógica de Dependency.applyAopSafely()
-     */
-    @SuppressWarnings("unchecked")
-    private <T> T applyAopIfNeeded(T instance, Class<T> type) {
-        if (instance == null) {
-            return null;
-        }
-        
-        // 🔍 DEBUG: Log when applyAopIfNeeded is called
-
-        
-        try {
-            // ✅ CRITICAL FIX: Obtener AopHandler usando ManagerFactory con container como dependencia
-            // porque container puede ser null durante el registro, pero AopHandler puede manejarlo
-            AopHandler aopHandler = ManagerFactory.getManager(AopHandler.class, container);
-            if (aopHandler != null) {
-                log.log(Level.INFO, "🔍 [DEBUG] AopHandler encontrado, aplicando AOP a: {0}", type.getSimpleName());
-                T decoratedInstance = (T) aopHandler.applyAopIfNeeded(instance, type);
-                if (decoratedInstance != instance) {
-                    log.log(Level.INFO, "✅ AOP aplicado automáticamente al bean registrado manualmente: {0}", type.getSimpleName());
-                    return decoratedInstance;
-                } else {
-                    log.log(Level.INFO, "⚠️ AOP NO aplicado - devuelve misma instancia para: {0}", type.getSimpleName());
-                }
-            } else {
-                log.log(Level.WARNING, "❌ AopHandler es NULL - no se puede aplicar AOP a: {0}", type.getSimpleName());
-            }
-            return instance;
-        } catch (Exception e) {
-            // Log the error but don't fail the registration
-            log.log(Level.WARNING, "⚠️ Failed to apply AOP to manually registered bean {0}: {1}", 
-                    new Object[]{type.getSimpleName(), e.getMessage()});
-            return instance; // Return original instance if AOP fails
-        }
     }
 }

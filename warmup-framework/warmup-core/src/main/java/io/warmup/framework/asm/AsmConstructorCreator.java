@@ -64,7 +64,7 @@ public final class AsmConstructorCreator {
      * Crea una instancia sin parámetros (constructor por defecto)
      */
     public static <T> T newInstanceNoArgs(String className) {
-        return newInstance(className);
+        return newInstance(className, new Class<?>[0]);
     }
     
     /**

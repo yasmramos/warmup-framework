@@ -5,8 +5,6 @@ import io.warmup.framework.metadata.MetadataRegistry;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * BeanRegistry NATIVO - Eliminación completa de reflexión para compilación nativa.
@@ -20,12 +18,9 @@ import java.util.logging.Logger;
  */
 public class BeanRegistry {
 
-    private static final Logger log = Logger.getLogger(BeanRegistry.class.getName());
-
     private final Map<String, Object> namedBeans = new ConcurrentHashMap<>();
     private final Map<String, Class<?>> namedBeanTypes = new ConcurrentHashMap<>();
     private final Map<Class<?>, Set<String>> typeToNames = new ConcurrentHashMap<>();
-    private WarmupContainer container; // Para aplicar AOP automáticamente
 
     // 🚀 OPTIMIZACIÓN O(1) - Contadores atómicos y caches con TTL para métodos de hot path
     /**
@@ -62,21 +57,10 @@ public class BeanRegistry {
         MetadataRegistry.initialize();
     }
 
-    /**
-     * Establece el container para aplicar AOP automáticamente
-     */
-    public void setContainer(WarmupContainer container) {
-        this.container = container;
-    }
-
     public void registerBean(String name, Class<?> type, Object instance) {
         validateParameters(name, type, instance);
 
-        // ✅ CRITICAL FIX: Aplicar AOP automáticamente si el container está disponible
-        @SuppressWarnings("unchecked")
-        Object finalInstance = applyAopIfNeeded((Object)instance, (Class<Object>)type);
-
-        namedBeans.put(name, finalInstance);
+        namedBeans.put(name, instance);
         namedBeanTypes.put(name, type);
         typeToNames.computeIfAbsent(type, k -> ConcurrentHashMap.newKeySet()).add(name);
         
@@ -85,38 +69,6 @@ public class BeanRegistry {
         
         // 🚀 OPTIMIZACIÓN O(1): Invalidar caches TTL
         invalidateCaches();
-    }
-
-    /**
-     * ✅ NUEVO: Método para aplicar AOP a un bean durante el registro
-     * Este método replica la lógica de Dependency.applyAopSafely()
-     */
-    @SuppressWarnings("unchecked")
-    private <T> T applyAopIfNeeded(T instance, Class<T> type) {
-        if (instance == null) {
-            return null;
-        }
-        
-        try {
-            // ✅ CRITICAL FIX: Aplicar AOP usando AopHandler del container
-            if (container != null) {
-                Object aopHandlerObj = container.getAopHandler();
-                if (aopHandlerObj instanceof AopHandler) {
-                    AopHandler aopHandler = (AopHandler) aopHandlerObj;
-                    T decoratedInstance = (T) aopHandler.applyAopIfNeeded(instance, type);
-                    if (decoratedInstance != instance) {
-                        log.log(Level.INFO, "✅ AOP aplicado automáticamente al bean: {0}", type.getSimpleName());
-                        return decoratedInstance;
-                    }
-                }
-            }
-            return instance;
-        } catch (Exception e) {
-            // Log the error but don't fail the registration
-            log.log(Level.WARNING, "⚠️ Failed to apply AOP to bean {0}: {1}", 
-                    new Object[]{type.getSimpleName(), e.getMessage()});
-            return instance; // Return original instance if AOP fails
-        }
     }
 
     /**

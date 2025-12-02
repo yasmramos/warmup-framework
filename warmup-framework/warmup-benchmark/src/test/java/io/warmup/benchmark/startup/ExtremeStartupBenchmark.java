@@ -7,8 +7,7 @@ import io.warmup.framework.startup.BackgroundStartupPhase;
 import io.warmup.framework.startup.ParallelSubsystemInitializer;
 
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.results.format.ResultFormatType;
-import org.openjdk.jmh.results.format.ResultFormatOptions;
+// import org.openjdk.jmh.results.format.ResultFormatOptions; // Not needed for basic benchmark
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -76,20 +75,23 @@ public class ExtremeStartupBenchmark {
         long startTime = System.nanoTime();
         
         try {
-            // 🚀 FASE 1: INICIALIZACIÓN CRÍTICA (< 2ms)
-            executeCriticalPhase(startTime);
+            // 🚀 USAR EL NUEVO MÉTODO ESTÁTICO CON STARTUP EXTREMO
+            container = WarmupContainer.createWithExtremeStartup();
             
-            // ⚡ FASE 2: INFRAESTRUCTURA PARALELA
-            executeParallelInfrastructure();
+            // 📊 OBTENER MÉTRICAS DE STARTUP EXTREMO
+            java.util.Map<String, Object> extremeMetrics = container.getExtremeStartupMetrics();
             
-            // 🦥 FASE 3: LAZY LOADING EXTREMO
-            executeZeroStartupCost();
+            // Validar que todas las optimizaciones extremas están activas
+            if (extremeMetrics.containsKey("allExtremeOptimizationsActive")) {
+                boolean allActive = (Boolean) extremeMetrics.get("allExtremeOptimizationsActive");
+                int activeCount = (Integer) extremeMetrics.get("activeOptimizationsCount");
+                
+                log.log(Level.INFO, "🚀 Optimizaciones extremas activas: {0}/12 ({1})", 
+                        new Object[]{activeCount, allActive ? "TODAS ACTIVAS" : "PARCIALES"});
+            }
             
-            // 🔥 FASE 4: OPTIMIZACIONES ADICIONALES
-            executeAdditionalOptimizations(startTime);
-            
-            // 📊 VERIFICACIÓN DE RESULTADO
-            validateStartupTime(startTime);
+            // Verificar tiempo de startup
+            validateStartupTime(startTime, extremeMetrics);
             
         } catch (Exception e) {
             log.log(Level.SEVERE, "❌ Error en startup extremo: {0}", e.getMessage());
@@ -98,117 +100,9 @@ public class ExtremeStartupBenchmark {
     }
 
     /**
-     * 🎯 FASE CRÍTICA: Solo componentes esenciales para < 2ms
+     * 📊 Validar que el startup esté dentro del objetivo con métricas extremas
      */
-    private void executeCriticalPhase(long startTime) {
-        log.log(Level.FINE, "🎯 Iniciando fase crítica...");
-        
-        // Crear container con solo componentes críticos
-        container = new WarmupContainer();
-        
-        // Inicializar fase crítica
-        criticalPhase = new CriticalStartupPhase(container);
-        criticalPhase.initializeEssentialContainerComponents();
-        criticalPhase.initializeCoreDependencyRegistry();
-        criticalPhase.initializeCoreConfiguration();
-        criticalPhase.initializeCriticalJitOptimizations();
-        criticalPhase.initializeCriticalComponents();
-        
-        long criticalTime = System.nanoTime() - startTime;
-        log.log(Level.FINE, "✅ Fase crítica completada en {0}ms", criticalTime / 1_000_000);
-        
-        if (criticalTime / 1_000_000 > 2) {
-            log.log(Level.WARNING, "⚠️ Fase crítica excedió 2ms: {0}ms", criticalTime / 1_000_000);
-        }
-    }
-
-    /**
-     * ⚡ FASE PARALELA: Usar todos los cores disponibles
-     */
-    private void executeParallelInfrastructure() throws Exception {
-        log.log(Level.FINE, "⚡ Iniciando infraestructura paralela...");
-        
-        parallelInitializer = new ParallelSubsystemInitializer(container);
-        
-        // Ejecutar inicialización paralela de todos los subsistemas
-        parallelInitializer.initializeAllSubsystemsParallel().join();
-        
-        log.log(Level.FINE, "✅ Infraestructura paralela completada");
-    }
-
-    /**
-     * 🦥 FASE ZERO COST: Lazy loading extremo
-     */
-    private void executeZeroStartupCost() throws Exception {
-        log.log(Level.FINE, "🦥 Iniciando zero cost startup...");
-        
-        zeroStartupLoader = new ZeroStartupBeanLoader(container);
-        
-        // Ejecutar zero cost startup (sin crear beans)
-        ZeroStartupBeanLoader.ZeroStartupResult result = 
-            zeroStartupLoader.executeZeroCostStartup().join();
-        
-        log.log(Level.FINE, "✅ Zero cost startup completado: {0}", result);
-    }
-
-    /**
-     * 🔥 OPTIMIZACIONES ADICIONALES: Placeholder para optimizaciones extremas
-     */
-    private void executeAdditionalOptimizations(long startTime) {
-        log.log(Level.FINE, "🔥 Iniciando optimizaciones adicionales...");
-        
-        try {
-            // 💾 Simulación de PageFaultPreloader
-            simulateMemoryPrefault();
-            
-            // 🔄 Simulación de UnsafeMemoryManager
-            simulateUnsafeOperations();
-            
-            // 🗺️ Simulación de MemoryMappedConfigLoader
-            simulateMemoryMappedConfig();
-            
-        } catch (Exception e) {
-            log.log(Level.WARNING, "⚠️ Error en optimizaciones adicionales: {0}", e.getMessage());
-        }
-        
-        log.log(Level.FINE, "✅ Optimizaciones adicionales completadas");
-    }
-
-    /**
-     * 💾 Simular page fault preloader
-     */
-    private void simulateMemoryPrefault() {
-        // Pre-cargar páginas de memoria para evitar page faults durante runtime
-        byte[] buffer = new byte[1024 * 1024]; // 1MB buffer
-        // Tocar todas las páginas para forzar loading
-        for (int i = 0; i < buffer.length; i += 4096) { // 4KB pages
-            buffer[i] = 1;
-        }
-        log.log(Level.FINE, "✅ Memory pre-fault simulado (1MB)");
-    }
-
-    /**
-     * 🔄 Simular operaciones unsafe (placeholder)
-     */
-    private void simulateUnsafeOperations() {
-        // Placeholder para UnsafeMemoryManager
-        // En implementación real usaría sun.misc.Unsafe
-        log.log(Level.FINE, "✅ Unsafe operations simuladas");
-    }
-
-    /**
-     * 🗺️ Simular configuración mapeada en memoria
-     */
-    private void simulateMemoryMappedConfig() {
-        // Placeholder para MemoryMappedConfigLoader
-        // En implementación real mapearía archivos de config en memoria
-        log.log(Level.FINE, "✅ Memory-mapped config simulado");
-    }
-
-    /**
-     * 📊 Validar que el startup esté dentro del objetivo
-     */
-    private void validateStartupTime(long startTime) {
+    private void validateStartupTime(long startTime, java.util.Map<String, Object> extremeMetrics) {
         long totalTime = System.nanoTime() - startTime;
         long totalTimeMs = totalTime / 1_000_000;
         
@@ -217,9 +111,27 @@ public class ExtremeStartupBenchmark {
         // Verificar objetivo sub-10ms
         if (totalTimeMs <= 10) {
             log.log(Level.INFO, "🎯 OBJETIVO ALCANZADO: < 10ms startup! (🚀 {0}x mejor que baseline)", 
-                    73.553 / totalTimeMs);
+                    Math.max(1, 73.553 / totalTimeMs));
         } else {
             log.log(Level.WARNING, "⚠️ Objetivo no alcanzado: {0}ms > 10ms", totalTimeMs);
+        }
+        
+        // Log de métricas adicionales del sistema extremo
+        if (extremeMetrics.containsKey("totalStartupTime")) {
+            Long systemStartupTime = (Long) extremeMetrics.get("totalStartupTime");
+            if (systemStartupTime != null) {
+                log.log(Level.INFO, "📊 Tiempo de startup del sistema: {0}ms", systemStartupTime);
+            }
+        }
+        
+        // Estado de las optimizaciones extremas
+        if (extremeMetrics.containsKey("extremeOptimizationsActive")) {
+            @SuppressWarnings("unchecked")
+            java.util.Map<String, Boolean> optimizations = 
+                (java.util.Map<String, Boolean>) extremeMetrics.get("extremeOptimizationsActive");
+            
+            long activeCount = optimizations.values().stream().filter(Boolean::booleanValue).count();
+            log.log(Level.INFO, "🔧 Optimizaciones extremas: {0}/12 activas", activeCount);
         }
     }
 

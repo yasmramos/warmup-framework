@@ -46,7 +46,7 @@ public class CustomValidatorManager {
             CustomValidatorInstance instance = new CustomValidatorInstance(validator, constraint.parameters());
             
             // Initialize validator with parameters if it supports it
-            validator.initialize((Object[]) constraint.parameters());
+            validator.initialize(constraint.parameters());
             
             // Store in both registries for consistency
             customValidators.put(constraint, instance);

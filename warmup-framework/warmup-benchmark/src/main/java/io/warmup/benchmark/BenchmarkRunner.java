@@ -1,8 +1,5 @@
 package io.warmup.benchmark;
 
-import io.warmup.benchmark.startup.BaselineStartupBenchmark;
-import io.warmup.benchmark.startup.ExtremeStartupBenchmark;
-import io.warmup.benchmark.startup.SimpleStartupBenchmark;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -11,225 +8,307 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.VerboseMode;
 
 import java.io.File;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
- * 🏃‍♂️ BENCHMARK RUNNER PRINCIPAL
+ * Comprehensive Benchmark Runner for Warmup Framework
  * 
- * Ejecuta todos los benchmarks del framework Warmup de manera organizada:
- * 
- * 📊 BENCHMARKS DISPONIBLES:
- * 1. BaselineStartupBenchmark - Rendimiento baseline sin optimizaciones extremas
- * 2. ExtremeStartupBenchmark - Rendimiento con todas las optimizaciones activas
- * 
- * 🎯 OBJETIVO:
- * Comparar startup times baseline vs optimizado para medir mejoras
- * 
- * 🚀 EJECUCIÓN:
- * java -cp target/classes:target/dependency/* io.warmup.benchmark.BenchmarkRunner
+ * This runner executes all benchmark suites and provides organized results
+ * with detailed performance analysis and comparisons.
  * 
  * @author MiniMax Agent
+ * @version 1.0.0
  */
 public class BenchmarkRunner {
     
-    private static final Logger log = Logger.getLogger(BenchmarkRunner.class.getName());
-    
     private static final String RESULTS_DIR = "benchmark-results";
-    private static final String BASELINE_RESULTS = "baseline-startup-results.json";
-    private static final String EXTREME_RESULTS = "extreme-startup-results.json";
-    private static final String COMPARISON_RESULTS = "startup-comparison-results.json";
+    private static final DateTimeFormatter TIMESTAMP_FORMAT = 
+        DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
     
-    public static void main(String[] args) {
-        try {
-            log.log(Level.INFO, "🚀 INICIANDO BENCHMARKS DEL FRAMEWORK WARMUP");
-            log.log(Level.INFO, "================================================");
-            
-            // Crear directorio de resultados
-            createResultsDirectory();
-            
-            // Ejecutar todos los benchmarks
-            runAllBenchmarks();
-            
-            // Generar reporte final
-            generateFinalReport();
-            
-            log.log(Level.INFO, "✅ TODOS LOS BENCHMARKS COMPLETADOS EXITOSAMENTE");
-            log.log(Level.INFO, "📊 Resultados disponibles en: {0}", RESULTS_DIR);
-            
-        } catch (Exception e) {
-            log.log(Level.SEVERE, "❌ Error ejecutando benchmarks: {0}", e.getMessage());
-            e.printStackTrace();
-            System.exit(1);
+    public static void main(String[] args) throws RunnerException {
+        System.out.println("================================================================================");
+        System.out.println("WARMUP FRAMEWORK BENCHMARK SUITE");
+        System.out.println("Comprehensive Performance Analysis & O(1) Optimization Validation");
+        System.out.println("================================================================================");
+        System.out.println("Timestamp: " + LocalDateTime.now().format(TIMESTAMP_FORMAT));
+        System.out.println();
+        
+        // Ensure results directory exists
+        new File(RESULTS_DIR).mkdirs();
+        
+        // Determine benchmark mode from arguments
+        BenchmarkMode mode = parseBenchmarkMode(args);
+        
+        switch (mode) {
+            case ALL:
+                runAllBenchmarks();
+                break;
+            case FRAMEWORK_COMPARISON:
+                runFrameworkComparisonBenchmarks();
+                break;
+            case AOP_OPTIMIZATION:
+                runAOPOptimizationBenchmarks();
+                break;
+            case CONTAINER_OPTIMIZATION:
+                runContainerOptimizationBenchmarks();
+                break;
+            case STARTUP_BENCHMARKS:
+                runStartupBenchmarks();
+                break;
+            case QUICK:
+                runQuickBenchmarks();
+                break;
+            default:
+                runAllBenchmarks();
+                break;
         }
     }
     
     /**
-     * 🏁 Ejecutar todos los benchmarks de manera organizada
+     * Run all benchmark suites (comprehensive analysis)
      */
     private static void runAllBenchmarks() throws RunnerException {
+        System.out.println("🚀 Running ALL Benchmark Suites...");
+        System.out.println("Duration: ~15-20 minutes");
+        System.out.println();
         
-        // 🧪 0. BENCHMARK SIMPLE (sin WarmupContainer, para verificar que el sistema funciona)
-        runSimpleBenchmark();
+        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMAT);
+        String resultsFile = RESULTS_DIR + "/warmup_framework_complete_" + timestamp + ".json";
         
-        // 📊 1. BENCHMARK BASELINE (sin optimizaciones extremas)
-        runBaselineBenchmark();
+        Options opt = new OptionsBuilder()
+            .include(".*") // Include all benchmarks
+            .exclude(".*Hot.*") // Exclude hot path tests (integration tests)
+            .warmupIterations(5)
+            .measurementIterations(10)
+            .forks(2)
+            .threads(1)
+            .jvmArgs("-Xms512m", "-Xmx1024m", "-XX:+UseG1GC")
+            .resultFormat(ResultFormatType.JSON)
+            .result(resultsFile)
+            .verbosity(VerboseMode.EXTRA)
+            .build();
         
-        // 🚀 2. BENCHMARK EXTREMO (con todas las optimizaciones)
-        runExtremeStartupBenchmark();
+        new Runner(opt).run();
         
-        // 📈 3. ANÁLISIS COMPARATIVO
-        runComparisonAnalysis();
+        printSummary(resultsFile);
     }
     
     /**
-     * 📊 Ejecutar benchmark baseline
+     * Run framework comparison benchmarks (Warmup vs Traditional DI)
      */
-    private static void runBaselineBenchmark() throws RunnerException {
-        log.log(Level.INFO, "📊 INICIANDO BENCHMARK BASELINE");
-        log.log(Level.INFO, "Configuración: WarmupContainer estándar SIN optimizaciones extremas");
+    private static void runFrameworkComparisonBenchmarks() throws RunnerException {
+        System.out.println("📊 Running Framework Comparison Benchmarks...");
+        System.out.println("Comparing Warmup Framework vs Spring, Guice, Dagger");
+        System.out.println("Duration: ~8-12 minutes");
+        System.out.println();
         
-        Options baselineOptions = new OptionsBuilder()
-                .include(BaselineStartupBenchmark.class.getSimpleName())
-                .result(RESULTS_DIR + "/" + BASELINE_RESULTS)
-                .resultFormat(ResultFormatType.JSON)
-                .verbosity(VerboseMode.NORMAL)
-                .build();
+        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMAT);
+        String resultsFile = RESULTS_DIR + "/framework_comparison_" + timestamp + ".json";
         
-        new Runner(baselineOptions).run();
+        Options opt = new OptionsBuilder()
+            .include(".*Framework.*|.*ProductionFramework.*|.*WarmupOnly.*")
+            .warmupIterations(3)
+            .measurementIterations(8)
+            .forks(2)
+            .threads(1)
+            .jvmArgs("-Xms512m", "-Xmx1024m", "-XX:+UseG1GC")
+            .resultFormat(ResultFormatType.JSON)
+            .result(resultsFile)
+            .verbosity(VerboseMode.EXTRA)
+            .build();
         
-        log.log(Level.INFO, "✅ Benchmark baseline completado: {0}", BASELINE_RESULTS);
+        new Runner(opt).run();
+        
+        printSummary(resultsFile);
     }
     
     /**
-     * 🧪 Ejecutar benchmark simple (sin WarmupContainer)
+     * Run AOP optimization benchmarks (O(1) vs O(n) analysis)
      */
-    private static void runSimpleBenchmark() throws RunnerException {
-        log.log(Level.INFO, "🧪 INICIANDO BENCHMARK SIMPLE");
-        log.log(Level.INFO, "Configuración: Test básico SIN WarmupContainer para verificar funcionamiento");
+    private static void runAOPOptimizationBenchmarks() throws RunnerException {
+        System.out.println("⚡ Running AOP Optimization Benchmarks...");
+        System.out.println("Validating O(1) vs O(n) performance improvements");
+        System.out.println("Duration: ~5-8 minutes");
+        System.out.println();
         
-        Options simpleOptions = new OptionsBuilder()
-                .include(SimpleStartupBenchmark.class.getSimpleName())
-                .result(RESULTS_DIR + "/simple-startup-results.json")
-                .resultFormat(ResultFormatType.JSON)
-                .verbosity(VerboseMode.NORMAL)
-                .build();
+        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMAT);
+        String resultsFile = RESULTS_DIR + "/aop_optimization_" + timestamp + ".json";
         
-        new Runner(simpleOptions).run();
+        Options opt = new OptionsBuilder()
+            .include(".*AOP.*|.*AspectManager.*|.*EventIndexEngine.*")
+            .warmupIterations(2)
+            .measurementIterations(6)
+            .forks(2)
+            .threads(1)
+            .jvmArgs("-Xms256m", "-Xmx512m")
+            .resultFormat(ResultFormatType.JSON)
+            .result(resultsFile)
+            .verbosity(VerboseMode.EXTRA)
+            .build();
         
-        log.log(Level.INFO, "✅ Benchmark simple completado: simple-startup-results.json");
+        new Runner(opt).run();
+        
+        printSummary(resultsFile);
     }
     
     /**
-     * 🚀 Ejecutar benchmark extremo
+     * Run Container optimization benchmarks
      */
-    private static void runExtremeStartupBenchmark() throws RunnerException {
-        log.log(Level.INFO, "🚀 INICIANDO BENCHMARK EXTREMO");
-        log.log(Level.INFO, "Configuración: WarmupContainer con optimizaciones extremas activas");
-        log.log(Level.INFO, "Target: < 10ms startup time");
+    private static void runContainerOptimizationBenchmarks() throws RunnerException {
+        System.out.println("🏗️ Running Container Optimization Benchmarks...");
+        System.out.println("Validating WarmupContainer O(1) optimizations");
+        System.out.println("Duration: ~4-6 minutes");
+        System.out.println();
         
-        Options extremeOptions = new OptionsBuilder()
-                .include(ExtremeStartupBenchmark.class.getSimpleName())
-                .result(RESULTS_DIR + "/" + EXTREME_RESULTS)
-                .resultFormat(ResultFormatType.JSON)
-                .verbosity(VerboseMode.NORMAL)
-                .build();
+        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMAT);
+        String resultsFile = RESULTS_DIR + "/container_optimization_" + timestamp + ".json";
         
-        new Runner(extremeOptions).run();
+        Options opt = new OptionsBuilder()
+            .include(".*Container.*|.*WarmupContainer.*")
+            .warmupIterations(2)
+            .measurementIterations(5)
+            .forks(1)
+            .threads(1)
+            .jvmArgs("-Xms256m", "-Xmx512m")
+            .resultFormat(ResultFormatType.JSON)
+            .result(resultsFile)
+            .verbosity(VerboseMode.EXTRA)
+            .build();
         
-        log.log(Level.INFO, "✅ Benchmark extremo completado: {0}", EXTREME_RESULTS);
+        new Runner(opt).run();
+        
+        printSummary(resultsFile);
     }
     
     /**
-     * 📈 Ejecutar análisis comparativo
+     * Run startup performance benchmarks
      */
-    private static void runComparisonAnalysis() throws RunnerException {
-        log.log(Level.INFO, "📈 EJECUTANDO ANÁLISIS COMPARATIVO");
+    private static void runStartupBenchmarks() throws RunnerException {
+        System.out.println("🚀 Running Startup Performance Benchmarks...");
+        System.out.println("Application startup time analysis and optimization");
+        System.out.println("Duration: ~3-5 minutes");
+        System.out.println();
         
-        Options comparisonOptions = new OptionsBuilder()
-                .include(BaselineStartupBenchmark.class.getSimpleName() + ".*")
-                .include(ExtremeStartupBenchmark.class.getSimpleName() + ".*")
-                .result(RESULTS_DIR + "/" + COMPARISON_RESULTS)
-                .resultFormat(ResultFormatType.JSON)
-                .verbosity(VerboseMode.NORMAL)
-                .build();
+        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMAT);
+        String resultsFile = RESULTS_DIR + "/startup_performance_" + timestamp + ".json";
         
-        new Runner(comparisonOptions).run();
+        Options opt = new OptionsBuilder()
+            .include(".*Startup.*|.*Baseline.*|.*ExtremeStartup.*")
+            .warmupIterations(2)
+            .measurementIterations(5)
+            .forks(1)
+            .threads(1)
+            .jvmArgs("-Xms256m", "-Xmx512m")
+            .resultFormat(ResultFormatType.JSON)
+            .result(resultsFile)
+            .verbosity(VerboseMode.EXTRA)
+            .build();
         
-        log.log(Level.INFO, "✅ Análisis comparativo completado: {0}", COMPARISON_RESULTS);
+        new Runner(opt).run();
+        
+        printSummary(resultsFile);
     }
     
     /**
-     * 📁 Crear directorio de resultados
+     * Run quick benchmark suite for development/testing
      */
-    private static void createResultsDirectory() {
-        File resultsDir = new File(RESULTS_DIR);
-        if (!resultsDir.exists()) {
-            boolean created = resultsDir.mkdirs();
-            if (created) {
-                log.log(Level.INFO, "📁 Directorio de resultados creado: {0}", RESULTS_DIR);
-            }
-        } else {
-            log.log(Level.INFO, "📁 Directorio de resultados existe: {0}", RESULTS_DIR);
+    private static void runQuickBenchmarks() throws RunnerException {
+        System.out.println("⚡ Running Quick Benchmark Suite...");
+        System.out.println("Fast validation for development and testing");
+        System.out.println("Duration: ~1-2 minutes");
+        System.out.println();
+        
+        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMAT);
+        String resultsFile = RESULTS_DIR + "/quick_benchmark_" + timestamp + ".json";
+        
+        Options opt = new OptionsBuilder()
+            .include(".*O1.*|.*Simple.*|.*Direct.*")
+            .warmupIterations(1)
+            .measurementIterations(3)
+            .forks(1)
+            .threads(1)
+            .jvmArgs("-Xms128m", "-Xmx256m")
+            .resultFormat(ResultFormatType.JSON)
+            .result(resultsFile)
+            .verbosity(VerboseMode.NORMAL)
+            .build();
+        
+        new Runner(opt).run();
+        
+        printSummary(resultsFile);
+    }
+    
+    /**
+     * Parse benchmark mode from command line arguments
+     */
+    private static BenchmarkMode parseBenchmarkMode(String[] args) {
+        if (args.length == 0) {
+            return BenchmarkMode.ALL;
+        }
+        
+        String modeArg = args[0].toLowerCase();
+        switch (modeArg) {
+            case "all":
+                return BenchmarkMode.ALL;
+            case "comparison":
+                return BenchmarkMode.FRAMEWORK_COMPARISON;
+            case "aop":
+                return BenchmarkMode.AOP_OPTIMIZATION;
+            case "container":
+                return BenchmarkMode.CONTAINER_OPTIMIZATION;
+            case "startup":
+                return BenchmarkMode.STARTUP_BENCHMARKS;
+            case "quick":
+                return BenchmarkMode.QUICK;
+            default:
+                return BenchmarkMode.ALL;
         }
     }
     
     /**
-     * 📊 Generar reporte final
+     * Print benchmark execution summary
      */
-    private static void generateFinalReport() {
-        log.log(Level.INFO, "📊 GENERANDO REPORTE FINAL");
-        log.log(Level.INFO, "================================================");
-        log.log(Level.INFO, "📁 Archivos de resultados generados:");
-        log.log(Level.INFO, "   • {0}", BASELINE_RESULTS);
-        log.log(Level.INFO, "   • {0}", EXTREME_RESULTS);
-        log.log(Level.INFO, "   • {0}", COMPARISON_RESULTS);
-        log.log(Level.INFO, "================================================");
-        log.log(Level.INFO, "🎯 Para analizar los resultados:");
-        log.log(Level.INFO, "   1. Comparar baseline vs extreme startup times");
-        log.log(Level.INFO, "   2. Verificar si se alcanzó objetivo < 10ms");
-        log.log(Level.INFO, "   3. Medir mejoras de rendimiento");
-        log.log(Level.INFO, "================================================");
+    private static void printSummary(String resultsFile) {
+        System.out.println();
+        System.out.println("================================================================================");
+        System.out.println("✅ BENCHMARK EXECUTION COMPLETED");
+        System.out.println("================================================================================");
+        System.out.println("Results saved to: " + resultsFile);
+        System.out.println();
+        System.out.println("📊 Quick Analysis Commands:");
+        System.out.println("  cat " + resultsFile + " | jq '.results[].primaryMetric.score'");
+        System.out.println("  cat " + resultsFile + " | jq '.results[] | {name, score}'");
+        System.out.println();
+        System.out.println("🎯 Key Performance Indicators:");
+        System.out.println("  - O(1) vs O(n) complexity validation");
+        System.out.println("  - Framework startup time comparisons");
+        System.out.println("  - Memory usage optimization analysis");
+        System.out.println("  - Throughput and latency metrics");
+        System.out.println();
+        System.out.println("Completed at: " + LocalDateTime.now().format(TIMESTAMP_FORMAT));
+        System.out.println("================================================================================");
     }
     
     /**
-     * 🔧 MÉTODOS DE UTILIDAD
+     * Benchmark execution modes
      */
-    
-    /**
-     * Ejecutar solo benchmark baseline
-     */
-    public static void runBaselineOnly() throws RunnerException {
-        log.log(Level.INFO, "📊 EJECUTANDO SOLO BENCHMARK BASELINE");
-        createResultsDirectory();
-        runBaselineBenchmark();
-    }
-    
-    /**
-     * Ejecutar solo benchmark extremo
-     */
-    public static void runExtremeOnly() throws RunnerException {
-        log.log(Level.INFO, "🚀 EJECUTANDO SOLO BENCHMARK EXTREMO");
-        createResultsDirectory();
-        runExtremeStartupBenchmark();
-    }
-    
-    /**
-     * Obtener ruta del directorio de resultados
-     */
-    public static String getResultsDirectory() {
-        return RESULTS_DIR;
-    }
-    
-    /**
-     * Verificar si los resultados existen
-     */
-    public static boolean resultsExist() {
-        File baseline = new File(RESULTS_DIR + "/" + BASELINE_RESULTS);
-        File extreme = new File(RESULTS_DIR + "/" + EXTREME_RESULTS);
-        File comparison = new File(RESULTS_DIR + "/" + COMPARISON_RESULTS);
+    private enum BenchmarkMode {
+        ALL("All benchmark suites"),
+        FRAMEWORK_COMPARISON("Framework comparison benchmarks"),
+        AOP_OPTIMIZATION("AOP optimization benchmarks"),
+        CONTAINER_OPTIMIZATION("Container optimization benchmarks"),
+        STARTUP_BENCHMARKS("Startup performance benchmarks"),
+        QUICK("Quick development benchmarks");
         
-        return baseline.exists() && extreme.exists() && comparison.exists();
+        private final String description;
+        
+        BenchmarkMode(String description) {
+            this.description = description;
+        }
+        
+        public String getDescription() {
+            return description;
+        }
     }
 }

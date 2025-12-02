@@ -7,11 +7,6 @@ public class PropertyManager {
 
     private final PropertySource propertySource;
 
-    // No-args constructor for framework dependency injection
-    public PropertyManager() throws IOException {
-        this.propertySource = new PropertySource();
-    }
-
     public PropertyManager(String propertyFile) throws IOException {
         this.propertySource = new PropertySource(propertyFile);
     }

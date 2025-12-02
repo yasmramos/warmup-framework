@@ -19,11 +19,6 @@ import java.util.Arrays;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -61,19 +56,11 @@ public class AspectManager {
     public AspectManager(WarmupContainer container) {
         this.container = container;
         this.asyncExecutor = io.warmup.framework.async.AsyncExecutor.getInstance();
-        // ✅ CRITICAL FIX: Registrar MethodInterceptors automáticamente
-        System.out.println("🔥 [DEBUG] AspectManager constructor called with container");
-        registerMethodInterceptors();
-        System.out.println("🔥 [DEBUG] registerMethodInterceptors() called");
     }
     
     public AspectManager() {
         this.container = null;
         this.asyncExecutor = io.warmup.framework.async.AsyncExecutor.getInstance();
-        // ✅ CRITICAL FIX: Registrar MethodInterceptors automáticamente
-        System.out.println("🔥 [DEBUG] AspectManager constructor called without container");
-        registerMethodInterceptors();
-        System.out.println("🔥 [DEBUG] registerMethodInterceptors() called");
     }
 
     private void registerMethodInterceptors() {
@@ -93,13 +80,13 @@ public class AspectManager {
             if (MethodInterceptor.class.isAssignableFrom(asyncInterceptorClass)) {
                 log.log(Level.INFO, "🔍 Found MethodInterceptor: {0}", asyncInterceptorClass.getSimpleName());
                 
-                // ✅ FIX: Crear instancia directamente en lugar de obtener como bean
-                try {
-                    Object asyncInterceptorInstance = asyncInterceptorClass.getDeclaredConstructor().newInstance();
+                // Obtener instancia del container
+                Object asyncInterceptorInstance = container.getBean(asyncInterceptorClass);
+                if (asyncInterceptorInstance != null) {
                     log.log(Level.INFO, "📋 Registrando {0} como aspecto automáticamente", asyncInterceptorClass.getSimpleName());
                     registerAspect(asyncInterceptorClass, asyncInterceptorInstance);
-                } catch (Exception e) {
-                    log.log(Level.SEVERE, "❌ No se pudo crear instancia de {0}: {1}", new Object[]{asyncInterceptorClass.getSimpleName(), e.getMessage()});
+                } else {
+                    log.log(Level.WARNING, "⚠️ No se pudo obtener instancia de {0}", asyncInterceptorClass.getSimpleName());
                 }
             } else {
                 log.log(Level.WARNING, "⚠️ {0} no implementa MethodInterceptor", asyncInterceptorClass.getSimpleName());
@@ -490,14 +477,9 @@ public class AspectManager {
 
     public Object invokeWithAspects(Object target, java.lang.reflect.Method method, Object[] args) throws Throwable {
         log.log(Level.INFO, "Ejecutando m\u00e9todo con AOP: {0}", method.getName());
-        
-        // 🔥 DEBUG: Verificar si el método tiene @Async annotation
-        boolean hasAsyncAnnotation = AsmCoreUtils.hasAnnotation(method, "io.warmup.framework.annotation.Async");
-        log.log(Level.INFO, "🔥 DEBUG: Método {0} tiene @Async: {1}", new Object[]{method.getName(), hasAsyncAnnotation});
 
         // 🔥 @Async INTEGRATION: Detectar y manejar métodos @Async
-        if (hasAsyncAnnotation) {
-            log.log(Level.INFO, "🔥 DETECTADO @Async en método: {0} - manejando directamente", method.getName());
+        if (AsmCoreUtils.hasAnnotation(method, "io.warmup.framework.annotation.Async")) {
             return handleAsyncMethod(target, method, args);
         }
 
@@ -510,10 +492,6 @@ public class AspectManager {
 
         // Si hay aspectos @Around, encadenarlos
         if (!aroundAspects.isEmpty()) {
-            log.log(Level.INFO, "🔥 DEBUG: Encontrados {0} aspectos @Around para método {1}", new Object[]{aroundAspects.size(), method.getName()});
-            for (AspectInfo aspect : aroundAspects) {
-                log.log(Level.INFO, "   @Around aspect: {0} con pointcut: {1}", new Object[]{aspect.getAdviceMethod().getDeclaringClass().getSimpleName(), aspect.getPointcutExpression()});
-            }
             log.log(Level.INFO, "Ejecutando {0} aspectos @Around para: {1}", new Object[]{aroundAspects.size(), method.getName()});
 
             // Construir cadena de invocación
@@ -788,8 +766,7 @@ public class AspectManager {
      * Elimina el bucle anidado O(n*m) usando cache pre-computado
      */
     public boolean shouldApplyAopToClass(Class<?> clazz) {
-        // ✅ FIX: Manejar el caso donde container es null (durante inicialización)
-        if (container != null && !container.isAopEnabled()) {
+        if (!container.isAopEnabled()) {
             log.log(Level.FINE, "AOP deshabilitado, no aplicar a: {0}", clazz.getSimpleName());
             return false;
         }
@@ -854,8 +831,6 @@ public class AspectManager {
         long timeout = asyncAnnotation.timeout();
         Async.ExceptionHandling exceptionHandling = asyncAnnotation.exceptionHandling();
 
-
-
         log.log(Level.INFO, "Ejecutando método @Async: {0} con executor: {1}", 
                 new Object[]{method.getName(), executorName});
 
@@ -875,69 +850,26 @@ public class AspectManager {
     private Object executeAsyncReturningFuture(Object target, java.lang.reflect.Method method, Object[] args,
                                              String executorName, long timeout,
                                              Async.ExceptionHandling exceptionHandling) {
-        log.log(Level.INFO, "🔍 [DEBUG] executeAsyncReturningFuture() - Método: {0}, target class: {1}", 
-                new Object[]{method.getName(), target.getClass().getSimpleName()});
-
-        try {
-            // 🔧 FIX: Envolver la invocación del método en AsyncExecutor para aplicar timeout correctamente
-            // Esto asegura que el timeout se mide desde el INICIO de la ejecución del método, no después
-            log.log(Level.INFO, "⚡ [ASYNC] Envolverendo invocación de método {0} en AsyncExecutor con timeout: {1}ms", 
-                    new Object[]{method.getName(), timeout});
-            
-            @SuppressWarnings("unchecked")
-            CompletableFuture<Object> future = (CompletableFuture<Object>) asyncExecutor.executeAsync(executorName, 
-                () -> {
-                    try {
-                        // INVOCAR el método y obtener el resultado
-                        Object methodResult = AsmCoreUtils.invokeMethod(target, method.getName(), args);
-                        return methodResult;
-                    } catch (Exception e) {
-                        log.log(Level.WARNING, "❌ [ERROR] Excepción durante invocación del método {0}: {1}", 
-                                new Object[]{method.getName(), e.getMessage()});
-                        throw new RuntimeException("Error invocando método " + method.getName(), e);
+        CompletableFuture<Object> result = asyncExecutor.executeAsync(executorName, 
+            () -> {
+                try {
+                    Object methodResult = AsmCoreUtils.invokeMethod(target, method.getName(), args);
+                    
+                    // 🔥 Si el método devuelve un CompletableFuture, unwrap antes de retornarlo
+                    if (methodResult instanceof CompletableFuture) {
+                        CompletableFuture<?> methodFuture = (CompletableFuture<?>) methodResult;
+                        return methodFuture.join(); // Unwrap hasta obtener el resultado real
                     }
-                }, 
-                (int) timeout, 
-                exceptionHandling);
-            
-            // 🔧 FIX: Desenvolver CompletableFuture anidado sin bloquear
-            // Si el método devuelve CompletableFuture, AsyncExecutor envuelve el CompletableFuture en otro CompletableFuture
-            // Usamos thenCompose() para desenvolverlo de forma asíncrona
-            CompletableFuture<Object> result = future.thenCompose(innerResult -> {
-                if (innerResult instanceof CompletableFuture) {
-                    log.log(Level.INFO, "✅ [INFO] Método {0} devuelve CompletableFuture - desenrollando futuras anidadas", 
-                            method.getName());
-                    // Desenvolver el CompletableFuture anidado
-                    return (CompletableFuture<Object>) innerResult;
-                } else {
-                    // Si no es CompletableFuture, envolver el resultado en un future completado
-                    return CompletableFuture.completedFuture(innerResult);
+                    
+                    return methodResult;
+                } catch (Throwable throwable) {
+                    throw new java.util.concurrent.CompletionException(throwable);
                 }
-            });
-            
-            log.log(Level.INFO, "✅ [SUCCESS] Método {0} envuelto en AsyncExecutor exitosamente con unwrap", method.getName());
-            return result;
-            
-        } catch (Throwable throwable) {
-            // Manejar excepciones durante la invocación del método
-            log.log(Level.WARNING, "❌ [ERROR] Excepción durante invocación del método {0}: {1}", 
-                    new Object[]{method.getName(), throwable.getMessage()});
-            
-            // Manejar según la estrategia de excepción
-            switch (exceptionHandling) {
-                case COMPLETE_EXCEPTIONALLY:
-                    CompletableFuture<Object> exceptionalFuture = new CompletableFuture<>();
-                    exceptionalFuture.completeExceptionally(throwable);
-                    return exceptionalFuture;
-                    
-                case RETURN_NULL:
-                    return CompletableFuture.completedFuture(null);
-                    
-                default:
-                    // Propagar la excepción para compatibilidad
-                    throw new RuntimeException("Method invocation failed: " + method.getName(), throwable);
-            }
-        }
+            }, 
+            (int) timeout, 
+            exceptionHandling);
+        
+        return result;
     }
 
     /**

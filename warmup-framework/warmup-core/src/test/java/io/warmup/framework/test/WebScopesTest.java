@@ -36,16 +36,6 @@ public class WebScopesTest {
     public void setUp() {
         warmup = Warmup.create();
         warmup.scanPackages("io.warmup.framework.test");
-        
-        // Manually register inner test classes since they are not detected by component scanning
-        warmup.getContainer().registerBean("requestScopedBean", RequestScopedBean.class, new RequestScopedBean());
-        warmup.getContainer().registerBean("sessionScopedBean", SessionScopedBean.class, new SessionScopedBean());
-        warmup.getContainer().registerBean("applicationScopedBean", ApplicationScopedBean.class, new ApplicationScopedBean());
-        warmup.getContainer().registerBean("singletonBean", SingletonBean.class, new SingletonBean());
-        warmup.getContainer().registerBean("noScopeBean", NoScopeBean.class, new NoScopeBean());
-        // RequestScopedWithDeps has constructor dependencies, so it will be created by DI container
-        warmup.getContainer().registerBean("sessionScopedWithLifecycle", SessionScopedWithLifecycle.class, new SessionScopedWithLifecycle());
-        
         try {
             warmup.getContainer().start();
         } catch (Exception e) {
@@ -241,6 +231,8 @@ public class WebScopesTest {
     public void testSessionScope() {
         System.out.println("🔍 Testing @SessionScope functionality...");
         
+        warmup.registerBean(SessionScopedBean.class, new SessionScopedBean());
+        
         String sessionId1 = "session-123";
         String sessionId2 = "session-456";
         
@@ -309,21 +301,23 @@ public class WebScopesTest {
     public void testRequestScope() {
         System.out.println("🔍 Testing @RequestScope functionality...");
         
+        warmup.registerBean(RequestScopedBean.class, new RequestScopedBean());
+        
         String requestId1 = "request-123";
         String requestId2 = "request-456";
         
         // Set first request
         webScopeContext.setCurrentRequest(requestId1);
         
-        // Get bean for request 1 (container will create it automatically)
-        RequestScopedBean request1_1 = warmup.getBean(RequestScopedBean.class);
+        // Get bean for request 1
+        RequestScopedBean request1_1 = warmup.getContainer().getRequestScopedBean(RequestScopedBean.class);
         String id1 = request1_1.getId();
         System.out.println("🔍 Request 1 Bean ID: " + id1);
         assertNotNull(id1);
         assertTrue(request1_1.hasUniqueId(), "Request bean 1 should have a unique ID");
         
         // Get bean again for request 1 - should be same instance
-        RequestScopedBean request1_2 = warmup.getBean(RequestScopedBean.class);
+        RequestScopedBean request1_2 = warmup.getContainer().getRequestScopedBean(RequestScopedBean.class);
         assertEquals(id1, request1_2.getId(), "Same request should return same bean instance");
         assertSame(request1_1, request1_2, "Same request should return same bean instance");
         
@@ -331,7 +325,7 @@ public class WebScopesTest {
         webScopeContext.setCurrentRequest(requestId2);
         
         // Get bean for request 2 - should be different instance
-        RequestScopedBean request2 = warmup.getBean(RequestScopedBean.class);
+        RequestScopedBean request2 = warmup.getContainer().getRequestScopedBean(RequestScopedBean.class);
         String id2 = request2.getId();
         System.out.println("🔍 Request 2 Bean ID: " + id2);
         System.out.println("🔍 Comparing IDs: id1=" + id1 + " vs id2=" + id2);
@@ -349,11 +343,13 @@ public class WebScopesTest {
     public void testRequestScopeCleanup() {
         System.out.println("🔍 Testing request scope cleanup...");
         
+        warmup.registerBean(RequestScopedBean.class, new RequestScopedBean());
+        
         String requestId = "request-cleanup-test";
         webScopeContext.setCurrentRequest(requestId);
         
-        // Create request-scoped bean (container will create it automatically)
-        RequestScopedBean requestBean = warmup.getBean(RequestScopedBean.class);
+        // Create request-scoped bean
+        RequestScopedBean requestBean = warmup.getContainer().getRequestScopedBean(RequestScopedBean.class);
         assertNotNull(requestBean);
         
         // Cleanup request scope
@@ -395,14 +391,17 @@ public class WebScopesTest {
     public void testScopeStatistics() {
         System.out.println("🔍 Testing scope statistics...");
         
-        // Create some scoped beans using the manually registered beans
+        warmup.registerBean(SessionScopedBean.class, new SessionScopedBean());
+        warmup.registerBean(ApplicationScopedBean.class, new ApplicationScopedBean());
+        
+        // Create some scoped beans
         webScopeContext.setCurrentSession("stats-session-1");
-        SessionScopedBean session1 = warmup.getBean(SessionScopedBean.class);
+        warmup.getContainer().getSessionScopedBean(SessionScopedBean.class, "stats-session-1");
         
         webScopeContext.setCurrentSession("stats-session-2");
-        SessionScopedBean session2 = warmup.getBean(SessionScopedBean.class);
+        warmup.getContainer().getSessionScopedBean(SessionScopedBean.class, "stats-session-2");
         
-        ApplicationScopedBean appBean = warmup.getBean(ApplicationScopedBean.class);
+        warmup.getBean(ApplicationScopedBean.class);
         
         // Get statistics
         Map<String, Object> stats = webScopeContext.getScopeStatistics();

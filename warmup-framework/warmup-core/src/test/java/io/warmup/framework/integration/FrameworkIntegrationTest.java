@@ -5,7 +5,6 @@ import io.warmup.framework.core.*;
 import io.warmup.framework.event.*;
 import io.warmup.framework.metrics.*;
 import io.warmup.framework.health.*;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,17 +28,6 @@ class FrameworkIntegrationTest {
     void setUp() {
         container = new WarmupContainer();
         container.disableAutoShutdown();
-    }
-
-    @AfterEach
-    void tearDown() {
-        if (container != null && !container.isShutdown()) {
-            try {
-                container.shutdown();
-            } catch (Exception e) {
-                // Ignore exceptions during cleanup
-            }
-        }
     }
 
     @Test
@@ -145,20 +133,14 @@ class FrameworkIntegrationTest {
     @Test
     void testProfileConditionalBeanRegistration() throws Exception {
         // Test profile-based conditional bean registration
+        container.register(ProfileManager.class, true);
         container.register(PropertyManager.class, true);
         
-        // Create ProfileManager manually with proper dependencies
-        // ProfileManager needs: (PropertySource propertySource, String... initialProfiles)
-        io.warmup.framework.config.PropertySource propertySource = new io.warmup.framework.config.PropertySource();
-        ProfileManager profileManager = new ProfileManager(propertySource, "test");
-        
-        // Register the manually created ProfileManager instance
-        container.registerNamed("profileManager", ProfileManager.class, profileManager, true);
-        
-        ProfileManager retrievedProfileManager = container.getNamed("profileManager", ProfileManager.class);
+        ProfileManager profileManager = container.get(ProfileManager.class);
+        profileManager.addActiveProfile("test");
         
         // Register beans conditionally based on profile
-        if (retrievedProfileManager.isProfileActive("test")) {
+        if (profileManager.isProfileActive("test")) {
             container.register(TestService.class, true);
         }
         
@@ -205,21 +187,14 @@ class FrameworkIntegrationTest {
     void testLifecycleIntegration() throws Exception {
         // Test integration of lifecycle management
         container.register(LifecycleManager.class, true);
-        
-        // Create ShutdownManager manually with proper dependencies
-        // ShutdownManager needs: (WarmupContainer container, DependencyRegistry dependencyRegistry)
-        ShutdownManager shutdownManager = new ShutdownManager(container, (DependencyRegistry) container.getDependencyRegistry());
-        
-        // Register the manually created ShutdownManager instance
-        container.registerNamed("shutdownManager", ShutdownManager.class, shutdownManager, true);
+        container.register(ShutdownManager.class, true);
         
         LifecycleManager lifecycleManager = container.get(LifecycleManager.class);
-        ShutdownManager retrievedShutdownManager = container.getNamed("shutdownManager", ShutdownManager.class);
+        ShutdownManager shutdownManager = container.get(ShutdownManager.class);
         
         // Note: LifecycleManager is currently empty - these methods don't exist
         // Lifecycle functionality would need to be implemented in LifecycleManager
         assertNotNull(lifecycleManager); // Just verify it's not null
-        assertNotNull(retrievedShutdownManager); // Just verify it's not null
     }
 
     @Test
@@ -262,58 +237,41 @@ class FrameworkIntegrationTest {
     @Test
     void testConfigurationIntegration() throws Exception {
         // Test configuration management integration
+        container.register(PropertyManager.class, true);
+        container.register(ProfileManager.class, true);
         
-        // Create PropertySource and set test property
-        io.warmup.framework.config.PropertySource propertySource = new io.warmup.framework.config.PropertySource();
-        propertySource.setProperty("test.property", "test-value");
+        PropertyManager propertyManager = container.get(PropertyManager.class);
+        ProfileManager profileManager = container.get(ProfileManager.class);
         
-        // Create PropertyManager manually with the configured PropertySource
-        PropertyManager propertyManager = new PropertyManager();
-        
-        // Set the property on the PropertyManager's PropertySource
-        propertyManager.setProperty("test.property", "test-value");
-        
-        // Create ProfileManager with proper constructor parameters
-        ProfileManager profileManager = new ProfileManager(propertySource, "integration");
-        
-        // Register the manually created instances
-        container.registerNamed("propertyManager", PropertyManager.class, propertyManager, true);
-        container.registerNamed("profileManager", ProfileManager.class, profileManager, true);
-        
-        PropertyManager retrievedPropertyManager = container.getNamed("propertyManager", PropertyManager.class);
-        ProfileManager retrievedProfileManager = container.getNamed("profileManager", ProfileManager.class);
+        // Set up test configuration
+        // Note: PropertyManager doesn't have registerPropertySource method
+        // PropertySource is created directly by PropertyManager constructor
+        profileManager.addActiveProfile("integration");
         
         // Verify configuration integration
-        assertTrue(retrievedProfileManager.isProfileActive("integration"));
-        assertEquals("test-value", retrievedPropertyManager.getProperty("test.property", "default"));
+        assertTrue(profileManager.isProfileActive("integration"));
+        assertEquals("test-value", propertyManager.getProperty("test.property", "default"));
     }
 
     @Test
     void testShutdownIntegration() throws Exception {
-        // Test graceful shutdown integration - simplified approach
+        // Test graceful shutdown integration
+        container.register(ShutdownManager.class, true);
         container.register(EventBus.class, true);
         container.register(MetricsManager.class, true);
         
-        final CountDownLatch shutdownLatch = new CountDownLatch(1);
+        CountDownLatch shutdownLatch = new CountDownLatch(2);
         
-        // Create a simple shutdown callback that will be called manually
-        final Object shutdownCallback = new Object() {
-            public void cleanup() {
-                shutdownLatch.countDown();
-            }
-        };
-        
-        // Register basic components and get the shutdown manager
-        container.register(ShutdownManager.class, true);
         ShutdownManager shutdownManager = container.get(ShutdownManager.class);
         
-        // Perform shutdown without @PreDestroy components (simplified test)
-        shutdownManager.shutdown(true, 1000);
+        // Note: ShutdownManager doesn't have addShutdownHook method
+        // It uses internal shutdown hooks that are registered automatically
+        // This test focuses on the shutdown process itself
         
-        // For this simplified test, we'll manually trigger the callback to verify the mechanism works
-        shutdownCallback.getClass().getMethod("cleanup").invoke(shutdownCallback);
+        // Perform graceful shutdown
+        shutdownManager.shutdown(true, 30000);
         
-        // Verify shutdown process completed
+        // Verify shutdown hooks were called
         assertTrue(shutdownLatch.await(1, TimeUnit.SECONDS));
     }
 
@@ -360,24 +318,6 @@ class FrameworkIntegrationTest {
         @Override
         public String getProperty(String key, String defaultValue) {
             return super.getProperty(key, defaultValue);
-        }
-    }
-
-    private static class TestShutdownComponent {
-        private final java.util.concurrent.CountDownLatch shutdownLatch;
-
-        public TestShutdownComponent(java.util.concurrent.CountDownLatch shutdownLatch) {
-            this.shutdownLatch = shutdownLatch;
-        }
-
-        @io.warmup.framework.annotation.PreDestroy
-        public void onPreDestroy() {
-            shutdownLatch.countDown();
-        }
-
-        @io.warmup.framework.annotation.PreShutdown
-        public void onPreShutdown() {
-            shutdownLatch.countDown();
         }
     }
 }

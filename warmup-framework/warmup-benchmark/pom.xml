@@ -22,8 +22,8 @@
 
     <properties>
         <jmh.version>1.37</jmh.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -149,7 +149,7 @@
                 </executions>
             </plugin>
 
-            <!-- Exec Maven Plugin -->
+            <!-- JMH Plugin -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -168,7 +168,7 @@
                                 <argument>-classpath</argument>
                                 <classpath/>
                                 <argument>org.openjdk.jmh.Main</argument>
-                                <argument>${benchmark.args}</argument>
+                                <argument>${{benchmark.args}}</argument>
                             </arguments>
                         </configuration>
                     </execution>

@@ -522,14 +522,6 @@ public final class AsmCoreUtils {
             ClassAnalysisVisitor visitor = new ClassAnalysisVisitor();
             reader.accept(visitor, ClassReader.SKIP_DEBUG);
             
-            log.log(Level.INFO, "🔥 DEBUG: ASM analizó clase {0} - métodos encontrados: {1}, campos: {2}", 
-                   new Object[]{className, visitor.methods.size(), visitor.fields.size()});
-            
-            log.log(Level.INFO, "🔥 DEBUG: Métodos en clase {0}:", className);
-            for (AsmMethodInfo method : visitor.methods) {
-                log.log(Level.INFO, "   🔥 {0} - {1}", new Object[]{method.name, method.descriptor});
-            }
-            
             return new AsmClassInfo(
                 className,
                 visitor.interfaces.toArray(new String[0]),
@@ -556,12 +548,7 @@ public final class AsmCoreUtils {
         try {
             // Usar el classloader de la clase actual
             java.io.InputStream is = AsmCoreUtils.class.getClassLoader().getResourceAsStream(resourcePath);
-            if (is == null) {
-                log.log(Level.WARNING, "🔥 DEBUG: No se pudo encontrar recurso: {0}", resourcePath);
-                return null;
-            }
-            log.log(Level.INFO, "🔥 DEBUG: Recurso encontrado: {0}", resourcePath);
-            return readAllBytesFromInputStream(is);
+            return is != null ? readAllBytesFromInputStream(is) : null;
         } catch (Exception e) {
             log.log(Level.WARNING, "Could not load bytecode for resource: " + resourcePath, e);
             return null;
@@ -3549,7 +3536,7 @@ public final class AsmCoreUtils {
      * Invocación rápida para métodos sin parámetros
      */
     public static Object invokeMethodNoParamsProgressive(Object instance, String methodName) throws Throwable {
-        return invokeMethodProgressive(instance, methodName);
+        return invokeMethodProgressive(instance, methodName, new Class<?>[0]);
     }
     
     /**

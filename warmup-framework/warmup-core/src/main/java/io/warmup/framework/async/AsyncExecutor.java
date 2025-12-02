@@ -26,68 +26,33 @@ public class AsyncExecutor implements Executor {
         ExecutorService executor = executors.computeIfAbsent(executorName,
                 name -> createExecutor(name + "-async"));
 
-        CompletableFuture<Object> future = new CompletableFuture<>();
-        
-        executor.submit(() -> {
+        CompletableFuture<Object> future = CompletableFuture.supplyAsync(() -> {
             try {
-                System.out.println("🔥 DEBUG: AsyncExecutor ejecutando tarea...");
-                Object result = task.call();
-                System.out.println("🔥 DEBUG: AsyncExecutor tarea completada exitosamente, resultado: " + result);
-                if (exceptionHandling == Async.ExceptionHandling.RETURN_NULL && result == null) {
-                    // Si RETURN_NULL y el resultado es null, completamos normalmente
-                    future.complete(result);
-                } else {
-                    future.complete(result);
-                }
+                return task.call();
             } catch (Exception e) {
-                System.out.println("🔥 DEBUG: Caught Exception in AsyncExecutor: " + e.getMessage() + " - handling with: " + exceptionHandling);
-                // Manejar según el tipo de excepción
-                if (exceptionHandling == Async.ExceptionHandling.RETURN_NULL) {
-                    System.out.println("🔥 DEBUG: Completando future con null (RETURN_NULL)");
-                    future.complete(null);
-                } else {
-                    // Para COMPLETE_EXCEPTIONALLY, completar excepcionalmente
-                    System.out.println("🔥 DEBUG: Completando future excepcionalmente");
-                    future.completeExceptionally(e);
-                }
+                System.out.println("Caught Exception in AsyncExecutor: " + e.getMessage() + " - handling with: " + exceptionHandling);
+                // Para excepciones específicas según el manejo de errores
+                return handleException(e, exceptionHandling);
             } catch (Throwable e) {
-                System.out.println("🔥 DEBUG: Caught Throwable in AsyncExecutor: " + e.getMessage() + " - handling with: " + exceptionHandling);
-                if (exceptionHandling == Async.ExceptionHandling.RETURN_NULL) {
-                    System.out.println("🔥 DEBUG: Completando future con null (RETURN_NULL)");
-                    future.complete(null);
-                } else {
-                    System.out.println("🔥 DEBUG: Completando future excepcionalmente");
-                    future.completeExceptionally(e);
-                }
+                System.out.println("Caught Throwable in AsyncExecutor: " + e.getMessage() + " - handling with: " + exceptionHandling);
+                // Para otros tipos de errores
+                return handleException(e, exceptionHandling);
             }
-        });
+        }, executor);
 
         // Aplicar timeout si es necesario (compatible con Java 8)
         if (timeout > 0) {
-            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-            
-            // Crear un future para el timeout
             CompletableFuture<Object> timeoutFuture = new CompletableFuture<>();
+            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
             
             // Programar timeout
             ScheduledFuture<?> timeoutTask = scheduler.schedule(() -> {
-                if (!future.isDone()) {
-                    timeoutFuture.completeExceptionally(new TimeoutException("Task timeout after " + timeout + " milliseconds"));
-                }
+                timeoutFuture.completeExceptionally(new TimeoutException("Task timeout after " + timeout + " milliseconds"));
+                scheduler.shutdown();
             }, timeout, TimeUnit.MILLISECONDS);
             
-            // Combinar el future original con el timeout
-            CompletableFuture<Object> combinedFuture = future.applyToEither(timeoutFuture, result -> result);
-            
-            // Asegurar que el scheduler se cierre cuando el future se complete
-            combinedFuture.whenComplete((result, throwable) -> {
-                if (!timeoutTask.isDone()) {
-                    timeoutTask.cancel(false);
-                }
-                scheduler.shutdown();
-            });
-            
-            return combinedFuture;
+            // Combinar con el future original
+            return future.applyToEither(timeoutFuture, result -> result);
         }
 
         return future;

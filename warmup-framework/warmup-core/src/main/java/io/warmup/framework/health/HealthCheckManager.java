@@ -27,12 +27,12 @@ public class HealthCheckManager {
     private final AtomicLong totalHealthCheckDuration = new AtomicLong(0);
     
     // O(1) TTL Caches - Health Results (5s), Health Status (5s)
-    private Map<String, Object> healthResultsCache = new ConcurrentHashMap<>();
-    private Map<String, Long> healthResultsExpiry = new ConcurrentHashMap<>();
+    private final Map<String, HealthResult> healthResultsCache = new ConcurrentHashMap<>();
+    private final Map<String, Long> healthResultsExpiry = new ConcurrentHashMap<>();
     private static final long HEALTH_RESULTS_TTL = TimeUnit.SECONDS.toMillis(5);
     
-    private Map<String, Object> healthStatusCache = new ConcurrentHashMap<>();
-    private Map<String, Long> healthStatusExpiry = new ConcurrentHashMap<>();
+    private final Map<String, Object> healthStatusCache = new ConcurrentHashMap<>();
+    private final Map<String, Long> healthStatusExpiry = new ConcurrentHashMap<>();
     private static final long HEALTH_STATUS_TTL = TimeUnit.SECONDS.toMillis(5);
     
     // O(1) Cache Invalidation Flags
@@ -88,31 +88,11 @@ public class HealthCheckManager {
         
         String cacheKey = "allHealthResults";
         
-        try {
-            // Defensive validation - check if cache maps are properly initialized
-            if (healthResultsCache == null || healthResultsExpiry == null) {
-                log.warning("Health results cache maps are null, clearing and reinitializing");
-                synchronized (this) {
-                    if (healthResultsCache == null || healthResultsExpiry == null) {
-                        // Use HashMap as fallback if ConcurrentHashMap fails
-                        healthResultsCache = new ConcurrentHashMap<>();
-                        healthResultsExpiry = new ConcurrentHashMap<>();
-                    }
-                }
-            }
-            
-            // O(1) Cache check with TTL validation
-            if (!healthResultsDirty && lastHealthResults != null && 
-                isCacheValid(cacheKey, healthResultsCache, healthResultsExpiry)) {
-                cachedHealthResults.incrementAndGet();
-                log.info("Usando resultados cacheados de health checks");
-                return new HashMap<>(lastHealthResults);
-            }
-        } catch (Exception e) {
-            log.log(Level.WARNING, "Error accessing health results cache: " + e.getMessage(), e);
-            // Force refresh by marking cache as dirty
-            healthResultsDirty = true;
-            lastHealthResults = null;
+        // O(1) Cache check with TTL validation
+        if (!healthResultsDirty && isCacheValid(cacheKey, healthResultsCache, healthResultsExpiry)) {
+            cachedHealthResults.incrementAndGet();
+            log.info("Usando resultados cacheados de health checks");
+            return new HashMap<>(lastHealthResults);
         }
 
         Map<String, HealthResult> results = new ConcurrentHashMap<>();
@@ -139,24 +119,13 @@ public class HealthCheckManager {
         waitForFutures(futures);
 
         // Guardar en cache con O(1) operations
-        try {
-            lastHealthResults = new ConcurrentHashMap<>(results);
-            lastHealthCheckTime = System.currentTimeMillis();
-            
-            // O(1) Cache storage with defensive checks - usar Boolean.TRUE como marker
-            if (healthResultsCache != null) {
-                healthResultsCache.put(cacheKey, Boolean.TRUE); // Store marker for TTL tracking
-            }
-            if (healthResultsExpiry != null) {
-                healthResultsExpiry.put(cacheKey, System.currentTimeMillis() + HEALTH_RESULTS_TTL);
-            }
-            healthResultsDirty = false;
-        } catch (Exception e) {
-            log.log(Level.WARNING, "Error caching health results: " + e.getMessage(), e);
-            // Force fresh cache on next call
-            lastHealthResults = null;
-            healthResultsDirty = true;
-        }
+        lastHealthResults = new ConcurrentHashMap<>(results);
+        lastHealthCheckTime = System.currentTimeMillis();
+        
+        // O(1) Cache storage
+        healthResultsCache.put(cacheKey, null); // Store just for TTL tracking
+        healthResultsExpiry.put(cacheKey, System.currentTimeMillis() + HEALTH_RESULTS_TTL);
+        healthResultsDirty = false;
         
         long duration = System.currentTimeMillis() - startTime;
         totalHealthCheckDuration.addAndGet(duration);
@@ -198,73 +167,20 @@ public class HealthCheckManager {
     
     // O(1) Cache invalidation helpers
     private void invalidateHealthStatusCache() {
-        try {
-            if (healthStatusCache != null) {
-                healthStatusCache.clear();
-            }
-            if (healthStatusExpiry != null) {
-                healthStatusExpiry.clear();
-            }
-            healthStatusDirty = true;
-        } catch (Exception e) {
-            log.log(Level.WARNING, "Error invalidating health status cache: " + e.getMessage(), e);
-        }
+        healthStatusCache.clear();
+        healthStatusExpiry.clear();
+        healthStatusDirty = true;
     }
     
     private void invalidateHealthResultsCache() {
-        try {
-            if (healthResultsCache != null) {
-                healthResultsCache.clear();
-            }
-            if (healthResultsExpiry != null) {
-                healthResultsExpiry.clear();
-            }
-            healthResultsDirty = true;
-        } catch (Exception e) {
-            log.log(Level.WARNING, "Error invalidating health results cache: " + e.getMessage(), e);
-        }
+        healthResultsCache.clear();
+        healthResultsExpiry.clear();
+        healthResultsDirty = true;
     }
     
     private boolean isCacheValid(String key, Map<String, ?> cache, Map<String, Long> expiry) {
-        try {
-            // Defensive checks for null parameters
-            if (key == null || cache == null || expiry == null) {
-                log.log(Level.FINE, "Cache validation failed: key={0}, cache={1}, expiry={2}", 
-                        new Object[]{key != null, cache != null, expiry != null});
-                return false;
-            }
-            
-            // Check if cache key exists and has the expected marker
-            if (!cache.containsKey(key)) {
-                log.log(Level.FINE, "Cache key not found: {0}", key);
-                return false;
-            }
-            
-            // Verify the marker is present (Boolean.TRUE for health results)
-            Object marker = cache.get(key);
-            if (marker == null) {
-                log.log(Level.FINE, "Cache marker is null for key: {0}", key);
-                return false;
-            }
-            
-            Long expireTime = expiry.get(key);
-            if (expireTime == null) {
-                return false;
-            }
-            
-            long currentTime = System.currentTimeMillis();
-            boolean valid = currentTime < expireTime;
-            
-            if (!valid) {
-                log.log(Level.FINE, "Cache expired for key: {0}, expired at: {1}, current: {2}", 
-                        new Object[]{key, expireTime, currentTime});
-            }
-            
-            return valid;
-        } catch (Exception e) {
-            log.log(Level.WARNING, "Error validating cache for key: " + key + ": " + e.getMessage(), e);
-            return false;
-        }
+        Long expireTime = expiry.get(key);
+        return expireTime != null && System.currentTimeMillis() < expireTime;
     }
 
     public Map<String, HealthResult> checkHealthForceRefresh() {
@@ -355,12 +271,7 @@ public class HealthCheckManager {
     public HealthResult getHealthCheck(String name) {
         HealthCheck check = healthChecks.get(name);
         if (check != null) {
-            try {
-                return check.check();
-            } catch (Exception e) {
-                log.log(Level.SEVERE, "Health check [{0}] threw exception: {1}", new Object[]{name, e.getMessage()});
-                return HealthResult.down("Health check failed with exception", e);
-            }
+            return check.check();
         }
         return HealthResult.unknown("Health check not found: " + name);
     }
@@ -392,23 +303,11 @@ public class HealthCheckManager {
         healthChecks.clear();
         healthCheckRegistrations.set(0);
         
-        // O(1) Clear all caches with defensive checks
-        try {
-            if (healthResultsCache != null) {
-                healthResultsCache.clear();
-            }
-            if (healthResultsExpiry != null) {
-                healthResultsExpiry.clear();
-            }
-            if (healthStatusCache != null) {
-                healthStatusCache.clear();
-            }
-            if (healthStatusExpiry != null) {
-                healthStatusExpiry.clear();
-            }
-        } catch (Exception e) {
-            log.log(Level.WARNING, "Error clearing caches: " + e.getMessage(), e);
-        }
+        // O(1) Clear all caches
+        healthResultsCache.clear();
+        healthResultsExpiry.clear();
+        healthStatusCache.clear();
+        healthStatusExpiry.clear();
         
         // O(1) Reset dirty flags
         healthChecksDirty = false;

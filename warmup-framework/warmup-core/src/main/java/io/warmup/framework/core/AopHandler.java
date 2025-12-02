@@ -31,21 +31,7 @@ public class AopHandler {
      */
     public void setContainer(WarmupContainer container) {
         this.container = container;
-        // ✅ FIX: Actualizar container en lugar de crear nueva instancia
-        if (aspectManager != null) {
-            try {
-                // Usar reflection para actualizar el container en la instancia existente
-                java.lang.reflect.Field containerField = AspectManager.class.getDeclaredField("container");
-                containerField.setAccessible(true);
-                containerField.set(aspectManager, container);
-                log.log(Level.INFO, "🔧 Container actualizado en AspectManager existente");
-            } catch (Exception e) {
-                log.log(Level.SEVERE, "❌ Error actualizando container en AspectManager: {0}", e.getMessage());
-            }
-        } else {
-            // Si aspectManager es null, crear uno nuevo como fallback
-            this.aspectManager = new AspectManager(container);
-        }
+        this.aspectManager = new AspectManager(container);
     }
 
     public void enableAop(boolean enabled) {
@@ -62,16 +48,8 @@ public class AopHandler {
     }
 
     public <T> T applyAopIfNeeded(T instance, Class<T> type) {
-        if (!aopEnabled) {
-            log.log(Level.INFO, "🔍 [DEBUG] AOP no aplicado - AOP deshabilitado para: {0}", type.getSimpleName());
-            return instance;
-        }
-        if (!shouldApplyAopToClass(type)) {
-            log.log(Level.INFO, "🔍 [DEBUG] AOP no aplicado - shouldApplyAopToClass() = false para: {0}", type.getSimpleName());
-            return instance;
-        }
-        if (aspectManager.getAspects().isEmpty()) {
-            log.log(Level.INFO, "🔍 [DEBUG] AOP no aplicado - no hay aspectos registrados para: {0}", type.getSimpleName());
+        if (!aopEnabled || !shouldApplyAopToClass(type) || aspectManager.getAspects().isEmpty()) {
+            log.log(Level.FINE, "AOP no aplicado a: {0}", type.getSimpleName());
             return instance;
         }
         log.log(Level.FINE, "Aplicando AOP a: {0}", type.getSimpleName());
