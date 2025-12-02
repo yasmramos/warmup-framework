@@ -450,5 +450,28 @@ public class LazyValidator implements Validator {
                 return "Validation failed";
             }
         }
+        
+        @Override
+        public Map<String, Object> getAttributes() {
+            Map<String, Object> attributes = new HashMap<>();
+            // Extraer todos los atributos de la anotación
+            for (java.lang.reflect.Method method : annotation.annotationType().getMethods()) {
+                if (method.getName().startsWith("") && method.getParameterCount() == 0 && 
+                    !method.getName().equals("annotationType") && !method.getName().equals("toString")) {
+                    try {
+                        Object value = method.invoke(annotation);
+                        attributes.put(method.getName(), value);
+                    } catch (Exception e) {
+                        // Ignorar errores al extraer atributos
+                    }
+                }
+            }
+            return attributes;
+        }
+        
+        @Override
+        public Object getAttribute(String name) {
+            return getAttributes().get(name);
+        }
     }
 }

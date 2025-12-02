@@ -104,7 +104,8 @@ public class WarmupAnnotationProcessor extends AbstractProcessor {
 
     private void generateIndividualResolver(String packageName, ComponentInfo info) {
         String simpleName = info.className.substring(info.className.lastIndexOf('.') + 1);
-        String className = simpleName + "Resolver";
+        String fullClassName = info.className.replace('.', '_');
+        String className = fullClassName + "Resolver";
 
         try {
             JavaFileObject file = processingEnv.getFiler().createSourceFile(packageName + "." + className);
@@ -230,7 +231,8 @@ public class WarmupAnnotationProcessor extends AbstractProcessor {
 
                 for (ComponentInfo info : components) {
                     String simpleName = info.className.substring(info.className.lastIndexOf('.') + 1);
-                    out.println("        registry.getDependencies().put(" + info.className + ".class, new " + simpleName + "Resolver());");
+                    String fullClassName = info.className.replace('.', '_');
+                    out.println("        registry.getDependencies().put(" + info.className + ".class, new " + fullClassName + "Resolver());");
                 }
 
                 out.println("    }");

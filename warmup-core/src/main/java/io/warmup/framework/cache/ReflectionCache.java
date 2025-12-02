@@ -351,10 +351,10 @@ public class ReflectionCache implements Serializable {
         double classHitRate = totalClass > 0 ? (double) classHits / totalClass * 100 : 0;
         
         return new ReflectionCacheStats(
-            methodsCache.size(), methodHits, methodMisses, methodHitRate,
-            constructorsCache.size(), constructorHits, constructorMisses, constructorHitRate,
-            fieldsCache.size(), fieldHits, fieldMisses, fieldHitRate,
-            declaredClassesCache.size(), classHits, classMisses, classHitRate
+            methodsCache.size(), methodHits, methodMisses, (long) methodHitRate,
+            constructorsCache.size(), constructorHits, constructorMisses, (long) constructorHitRate,
+            fieldsCache.size(), fieldHits, fieldMisses, (long) fieldHitRate,
+            declaredClassesCache.size(), classHits, classMisses, (long) classHitRate
         );
     }
     

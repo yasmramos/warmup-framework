@@ -836,7 +836,7 @@ public class WarmupContainer implements IContainer {
     /**
      * 🎯 Get dependency registry (Legacy compatibility)
      */
-    public Object getDependencyRegistry() {
+    public DependencyRegistry getDependencyRegistry() {
         return containerCoordinator.getCoreContainer().getDependencyRegistry();
     }
     

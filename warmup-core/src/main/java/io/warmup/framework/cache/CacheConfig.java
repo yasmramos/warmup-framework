@@ -31,14 +31,14 @@ public class CacheConfig implements Serializable {
     private boolean enableMetrics = true;
     
     /**
-     * Constructor privado para patrón Builder
+     * Constructor público para compatibilidad
      */
-    private CacheConfig() {}
+    public CacheConfig() {}
     
     /**
      * Constructor con nombre específico
      */
-    private CacheConfig(String cacheName) {
+    public CacheConfig(String cacheName) {
         this.cacheName = cacheName;
     }
     
@@ -164,6 +164,15 @@ public class CacheConfig implements Serializable {
     
     public boolean isMetricsEnabled() {
         return enableMetrics;
+    }
+    
+    // Métodos de compatibilidad para API existente
+    public int getMaxMemoryCacheSize() {
+        return maxMemorySize;
+    }
+    
+    public long getMaxCacheAge() {
+        return maxAge;
     }
     
     /**

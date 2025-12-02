@@ -36,7 +36,7 @@ public class DependencyRegistryDemo {
     
     @Component
     @Profile("dev")
-    static class TestServiceImpl implements TestService {
+    public static class TestServiceImpl implements TestService {
         @Override
         public String getMessage() {
             return "Hello from DependencyRegistry!";
@@ -46,7 +46,7 @@ public class DependencyRegistryDemo {
     @Component 
     @Named("production")
     @Profile("prod")
-    static class ProductionServiceImpl implements TestService {
+    public static class ProductionServiceImpl implements TestService {
         @Override
         public String getMessage() {
             return "Production service active";

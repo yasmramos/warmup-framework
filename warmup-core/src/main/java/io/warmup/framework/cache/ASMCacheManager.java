@@ -48,6 +48,16 @@ public class ASMCacheManager implements Serializable {
     }
     
     /**
+     * Obtiene la instancia singleton del ASMCacheManager con configuración
+     */
+    public static synchronized ASMCacheManager getInstance(CacheConfig config) {
+        if (instance == null) {
+            instance = new ASMCacheManager();
+        }
+        return instance;
+    }
+    
+    /**
      * Calcula el hash del código fuente original
      */
     public String calculateSourceHash(byte[] originalClassData) {
@@ -117,6 +127,26 @@ public class ASMCacheManager implements Serializable {
             entries--;
             log.log(Level.FINE, "Entrada invalidada del cache: {0}", cacheKey);
         }
+    }
+    
+    /**
+     * Invalida todas las entradas que pertenezcan a un paquete específico
+     */
+    public void invalidatePackage(String packageName) {
+        int invalidCount = 0;
+        
+        for (String key : bytecodeCache.keySet()) {
+            if (key != null && key.startsWith(packageName)) {
+                CacheEntry removed = bytecodeCache.remove(key);
+                if (removed != null) {
+                    invalidCount++;
+                }
+            }
+        }
+        
+        entries -= invalidCount;
+        log.log(Level.INFO, "Paquete invalidado: {0}. Entradas eliminadas: {1}", 
+                new Object[]{packageName, invalidCount});
     }
     
     /**
