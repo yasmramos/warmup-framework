@@ -221,6 +221,12 @@ public class ContainerCoordinator {
             
             for (String className : criticalClasses) {
                 try {
+                    // ✅ FIX: Verificar que className no sea null antes de procesar
+                    if (className == null || className.isEmpty()) {
+                        log.log(Level.FINE, "Skipping null or empty class name in pre-warm");
+                        continue;
+                    }
+                    
                     // Pre-cargar información de clase en cache
                     // Solo registrar información básica de clase, no bytecode directamente
                     io.warmup.framework.asm.AsmCoreUtils.AsmClassInfo classInfo = 
@@ -228,13 +234,15 @@ public class ContainerCoordinator {
                     if (classInfo != null) {
                         // Marcar la clase como pre-cargada para futura optimización
                         log.log(Level.FINE, "Pre-warmed class info: " + className);
+                    } else {
+                        log.log(Level.FINE, "Class not available for pre-warming: " + className);
                     }
                 } catch (Exception e) {
                     log.log(Level.FINE, "Could not pre-warm class: " + className, e);
                 }
             }
             
-            log.log(Level.INFO, "Pre-warmed {0} critical classes in ASM cache", criticalClasses.length);
+            log.log(Level.INFO, "Pre-warm cache operation completed for critical classes");
             
         } catch (Exception e) {
             log.log(Level.WARNING, "Error during cache pre-warming", e);

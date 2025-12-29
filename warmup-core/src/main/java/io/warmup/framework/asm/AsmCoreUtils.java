@@ -209,6 +209,11 @@ public final class AsmCoreUtils {
      * ✅ OBTIENE INFORMACIÓN COMPLETA DE UNA CLASE USANDO ASM
      */
     public static AsmClassInfo getClassInfo(String className) {
+        // ✅ FIX: Verificar que className no sea null o vacío antes de procesar
+        if (className == null || className.isEmpty()) {
+            log.log(Level.WARNING, "Attempted to get class info for null or empty class name");
+            return null;
+        }
         return asmClassInfoCache.computeIfAbsent(className, AsmCoreUtils::analyzeClassWithASM);
     }
     
@@ -216,6 +221,11 @@ public final class AsmCoreUtils {
      * ✅ ENCUENTRA MÉTODOS ESPECÍFICOS EN UNA CLASE
      */
     public static List<AsmMethodInfo> findMethods(String className, String methodName) {
+        // ✅ FIX: Verificar que className no sea null o vacío
+        if (className == null || className.isEmpty()) {
+            log.log(Level.WARNING, "Attempted to find methods in null or empty class name");
+            return new ArrayList<>();
+        }
         String cacheKey = className + "." + methodName;
         return asmMethodCache.computeIfAbsent(cacheKey, k -> {
             AsmClassInfo classInfo = getClassInfo(className);
@@ -250,6 +260,11 @@ public final class AsmCoreUtils {
      * ✅ ENCUENTRA CONSTRUCTORES ESPECÍFICOS
      */
     public static List<AsmConstructorInfo> findConstructors(String className) {
+        // ✅ FIX: Verificar que className no sea null o vacío
+        if (className == null || className.isEmpty()) {
+            log.log(Level.WARNING, "Attempted to find constructors in null or empty class name");
+            return new ArrayList<>();
+        }
         String cacheKey = className + ".<init>";
         return asmConstructorCache.computeIfAbsent(cacheKey, k -> {
             AsmClassInfo classInfo = getClassInfo(className);
@@ -277,6 +292,11 @@ public final class AsmCoreUtils {
      * ✅ ENCUENTRA CAMPOS ESPECÍFICOS
      */
     public static List<AsmFieldInfo> findFields(String className) {
+        // ✅ FIX: Verificar que className no sea null o vacío
+        if (className == null || className.isEmpty()) {
+            log.log(Level.WARNING, "Attempted to find fields in null or empty class name");
+            return new ArrayList<>();
+        }
         String cacheKey = className + ".<field>";
         return asmFieldCache.computeIfAbsent(cacheKey, k -> {
             AsmClassInfo classInfo = getClassInfo(className);
