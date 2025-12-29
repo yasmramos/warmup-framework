@@ -117,9 +117,13 @@ public class ASMCacheManager {
 //        return customInstance;
 //    }
     public static ASMCacheManager getInstance(CacheConfig config) {
-        String key = config.getCacheDirectory(); // <-- Clave basada en directorio
-        // Opcional: String key = config.getCacheDirectory() + "|" + config.getMaxCacheAge();
-        return instances.computeIfAbsent(key, k -> new ASMCacheManager(config));
+        // FIX: Verificar que la clave no sea null para evitar NullPointerException en ConcurrentHashMap
+        String cacheDir = config.getCacheDirectory();
+        if (cacheDir == null || cacheDir.isEmpty()) {
+            cacheDir = CacheConfig.defaultConfig().getCacheDirectory();
+            log.log(Level.WARNING, "Cache directory was null/empty, using default: {0}", cacheDir);
+        }
+        return instances.computeIfAbsent(cacheDir, k -> new ASMCacheManager(config));
     }
 
     /**
