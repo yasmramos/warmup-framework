@@ -46,8 +46,22 @@ public class ASMCacheManager {
     private static final Object LOCK = new Object();
 
     private ASMCacheManager(CacheConfig config) {
+        // FIX: Verificar que config no sea null para evitar NullPointerException
+        if (config == null) {
+            log.log(Level.WARNING, "CacheConfig was null in constructor, using default config");
+            config = CacheConfig.defaultConfig();
+        }
+        
         this.config = config;
-        this.cacheDirectory = Paths.get(config.cacheDirectory);
+        
+        // FIX: Verificar que cacheDirectory no sea null
+        String cacheDir = config.cacheDirectory;
+        if (cacheDir == null || cacheDir.isEmpty()) {
+            cacheDir = CacheConfig.defaultConfig().cacheDirectory;
+            log.log(Level.WARNING, "Cache directory was null/empty in constructor, using default: {0}", cacheDir);
+        }
+        
+        this.cacheDirectory = Paths.get(cacheDir);
         this.memoryCache = new LRUCache<>(config.maxMemoryCacheSize);
         this.isTestEnvironment = detectTestEnvironment();
         this.diskExecutor = Executors.newFixedThreadPool(
@@ -117,6 +131,12 @@ public class ASMCacheManager {
 //        return customInstance;
 //    }
     public static ASMCacheManager getInstance(CacheConfig config) {
+        // FIX: Verificar que config no sea null para evitar NullPointerException
+        if (config == null) {
+            log.log(Level.WARNING, "CacheConfig was null, using default config");
+            config = CacheConfig.defaultConfig();
+        }
+        
         // FIX: Verificar que la clave no sea null para evitar NullPointerException en ConcurrentHashMap
         String cacheDir = config.getCacheDirectory();
         if (cacheDir == null || cacheDir.isEmpty()) {
