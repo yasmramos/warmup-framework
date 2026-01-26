@@ -498,7 +498,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ```bash
 # Clone and build
-git clone https://github.com/your-org/warmup-framework.git
+git clone https://github.com/yasmramos/warmup-framework.git
 cd warmup-framework
 mvn clean install
 
