@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-io.warmup.framework.integration.spring.WarmupValidationAutoConfiguration,\
-io.warmup.framework.integration.config.WarmupIntegrationConfiguration

@@ -143,7 +143,9 @@ public class ASMCacheManager {
             cacheDir = CacheConfig.defaultConfig().getCacheDirectory();
             log.log(Level.WARNING, "Cache directory was null/empty, using default: {0}", cacheDir);
         }
-        return instances.computeIfAbsent(cacheDir, k -> new ASMCacheManager(config));
+        final String finalCacheDir = cacheDir;
+        final CacheConfig finalConfig = config;
+        return instances.computeIfAbsent(finalCacheDir, k -> new ASMCacheManager(finalConfig));
     }
 
     /**
