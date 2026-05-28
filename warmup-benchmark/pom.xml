@@ -185,37 +185,6 @@
                 </configuration>
             </plugin>
 
-            <!-- JMH Maven Plugin -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jmh-maven-plugin</artifactId>
-                <version>1.35</version>
-                <executions>
-                    <execution>
-                        <id>run-jmh-benchmarks</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <skipTests>false</skipTests>
-                            <include>.*</include>
-                            <exclude>.*Hot.*</exclude>
-                            <jvmArgs>
-                                <jvmArg>-Xms512m</jvmArg>
-                                <jvmArg>-Xmx1024m</jvmArg>
-                            </jvmArgs>
-                            <operationsPerInvocation>1</operationsPerInvocation>
-                            <timePerIteration>3s</timePerIteration>
-                            <warmupIterations>1</warmupIterations>
-                            <measurementIterations>1</measurementIterations>
-                            <threads>1</threads>
-                            <forkCount>1</forkCount>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <!-- Surefire for Unit Tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

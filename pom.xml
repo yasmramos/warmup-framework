@@ -10,9 +10,7 @@
         <module>warmup-aop</module>
         <module>warmup-processor</module>
         <module>warmup-examples</module>
-        <module>warmup-integration</module>
         <module>warmup-benchmark</module>
-        <module>warmup-test</module>
     </modules>
     <dependencies>
         <dependency>
